@@ -1,0 +1,32 @@
+{
+  "collection_timestamp": "2025-10-26T13:26:22.652922",
+  "total_posts": 1337,
+  "total_comments": 32909,
+  "subreddits": [
+    "Ozempic",
+    "Semaglutide",
+    "WeightLossAdvice",
+    "diabetes_t2"
+  ],
+  "keywords": [
+    "semaglutide",
+    "ozempic",
+    "wegovy",
+    "rybelsus"
+  ],
+  "date_range": {
+    "earliest_post": "2020-01-11T16:59:32",
+    "latest_post": "2025-10-25T14:47:48"
+  },
+  "posts_by_subreddit": {
+    "Ozempic": 398,
+    "Semaglutide": 383,
+    "WeightLossAdvice": 289,
+    "diabetes_t2": 267
+  },
+  "statistics": {
+    "avg_score": 131.30366492146598,
+    "avg_comments_per_post": 52.970830216903515,
+    "unique_authors": 1217
+  }
+}

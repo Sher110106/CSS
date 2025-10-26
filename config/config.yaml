@@ -1,0 +1,68 @@
+# Reddit API Configuration
+reddit:
+  client_id: "YOUR_CLIENT_ID"
+  client_secret: "YOUR_CLIENT_SECRET"
+  user_agent: "semaglutide_research_v1.0"
+  
+# Data Collection
+data_collection:
+  subreddits:
+    - "Ozempic"
+    - "Semaglutide"
+    - "WeightLossAdvice"
+    - "diabetes_t2"
+  keywords:
+    - "semaglutide"
+    - "ozempic"
+    - "wegovy"
+    - "rybelsus"
+  target_posts: 1500
+  time_filter: "all"
+  sort_by: "relevance"
+  
+# Preprocessing
+preprocessing:
+  min_word_length: 3
+  max_word_length: 15
+  min_post_length: 10
+  remove_digits: false
+  custom_stopwords:
+    - "deleted"
+    - "removed"
+    - "mg"
+    - "week"
+    - "day"
+    - "month"
+  keep_medical_terms: true
+  
+# Topic Modeling
+topic_modeling:
+  num_topics_range: [5, 7, 10]
+  passes: 10
+  iterations: 400
+  chunksize: 100
+  alpha: "auto"
+  eta: "auto"
+  min_df: 5
+  max_df: 0.7
+  
+# Sentiment Analysis
+sentiment:
+  compound_threshold_positive: 0.05
+  compound_threshold_negative: -0.05
+  
+# Visualization
+visualization:
+  figure_dpi: 300
+  figure_format: "png"
+  color_palette: "viridis"
+  
+# Paths
+paths:
+  raw_data: "data/raw/"
+  processed_data: "data/processed/"
+  anonymized_data: "data/anonymized/"
+  metadata: "data/metadata/"
+  models: "models/"
+  visualizations: "visualizations/"
+  logs: "logs/"

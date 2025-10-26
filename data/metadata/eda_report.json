@@ -1,0 +1,949 @@
+{
+  "report_metadata": {
+    "generated_at": "2025-10-26T15:48:49.104446",
+    "data_source": "combined_processed.csv",
+    "total_documents_analyzed": 19204
+  },
+  "basic_statistics": {},
+  "temporal_analysis": {
+    "posts_by_month": {
+      "2020-01": 4,
+      "2020-09": 12,
+      "2020-12": 3,
+      "2021-03": 21,
+      "2021-06": 38,
+      "2021-07": 8,
+      "2021-08": 1,
+      "2021-09": 15,
+      "2021-10": 9,
+      "2021-11": 4,
+      "2021-12": 2,
+      "2022-01": 11,
+      "2022-02": 19,
+      "2022-03": 41,
+      "2022-04": 40,
+      "2022-05": 64,
+      "2022-06": 39,
+      "2022-07": 36,
+      "2022-08": 45,
+      "2022-09": 96,
+      "2022-10": 39,
+      "2022-11": 98,
+      "2022-12": 146,
+      "2023-01": 173,
+      "2023-02": 183,
+      "2023-03": 302,
+      "2023-04": 345,
+      "2023-05": 455,
+      "2023-06": 390,
+      "2023-07": 368,
+      "2023-08": 274,
+      "2023-09": 318,
+      "2023-10": 331,
+      "2023-11": 237,
+      "2023-12": 171,
+      "2024-01": 270,
+      "2024-02": 426,
+      "2024-03": 653,
+      "2024-04": 491,
+      "2024-05": 540,
+      "2024-06": 423,
+      "2024-07": 631,
+      "2024-08": 714,
+      "2024-09": 815,
+      "2024-10": 731,
+      "2024-11": 696,
+      "2024-12": 535,
+      "2025-01": 757,
+      "2025-02": 539,
+      "2025-03": 751,
+      "2025-04": 551,
+      "2025-05": 1095,
+      "2025-06": 945,
+      "2025-07": 912,
+      "2025-08": 838,
+      "2025-09": 732,
+      "2025-10": 821
+    },
+    "most_active_month": "2025-05",
+    "max_posts_in_month": 1095,
+    "least_active_month": "2021-08",
+    "min_posts_in_month": 1
+  },
+  "vocabulary": {
+    "total_tokens": 671865,
+    "unique_tokens": 16760,
+    "vocabulary_richness": 0.02494548756074509,
+    "top_50_words": [
+      [
+        "weight",
+        9691
+      ],
+      [
+        "get",
+        8896
+      ],
+      [
+        "eat",
+        7578
+      ],
+      [
+        "lose",
+        7021
+      ],
+      [
+        "take",
+        5984
+      ],
+      [
+        "like",
+        5945
+      ],
+      [
+        "ozempic",
+        5412
+      ],
+      [
+        "start",
+        5347
+      ],
+      [
+        "feel",
+        4707
+      ],
+      [
+        "work",
+        4441
+      ],
+      [
+        "make",
+        4380
+      ],
+      [
+        "food",
+        4170
+      ],
+      [
+        "people",
+        4026
+      ],
+      [
+        "well",
+        3827
+      ],
+      [
+        "time",
+        3786
+      ],
+      [
+        "also",
+        3704
+      ],
+      [
+        "help",
+        3541
+      ],
+      [
+        "good",
+        3535
+      ],
+      [
+        "want",
+        3534
+      ],
+      [
+        "think",
+        3447
+      ],
+      [
+        "try",
+        3431
+      ],
+      [
+        "loss",
+        3358
+      ],
+      [
+        "much",
+        3330
+      ],
+      [
+        "need",
+        3297
+      ],
+      [
+        "would",
+        3216
+      ],
+      [
+        "know",
+        3205
+      ],
+      [
+        "one",
+        3197
+      ],
+      [
+        "year",
+        3163
+      ],
+      [
+        "use",
+        3148
+      ],
+      [
+        "dose",
+        3025
+      ],
+      [
+        "say",
+        3021
+      ],
+      [
+        "see",
+        2995
+      ],
+      [
+        "calorie",
+        2992
+      ],
+      [
+        "doctor",
+        2822
+      ],
+      [
+        "thing",
+        2794
+      ],
+      [
+        "still",
+        2732
+      ],
+      [
+        "really",
+        2722
+      ],
+      [
+        "back",
+        2708
+      ],
+      [
+        "semaglutide",
+        2698
+      ],
+      [
+        "effect",
+        2646
+      ],
+      [
+        "medication",
+        2610
+      ],
+      [
+        "even",
+        2544
+      ],
+      [
+        "first",
+        2428
+      ],
+      [
+        "side",
+        2387
+      ],
+      [
+        "lot",
+        2338
+      ],
+      [
+        "way",
+        2306
+      ],
+      [
+        "change",
+        2299
+      ],
+      [
+        "body",
+        2216
+      ],
+      [
+        "diet",
+        2201
+      ],
+      [
+        "keep",
+        2146
+      ]
+    ],
+    "top_100_words": [
+      [
+        "weight",
+        9691
+      ],
+      [
+        "get",
+        8896
+      ],
+      [
+        "eat",
+        7578
+      ],
+      [
+        "lose",
+        7021
+      ],
+      [
+        "take",
+        5984
+      ],
+      [
+        "like",
+        5945
+      ],
+      [
+        "ozempic",
+        5412
+      ],
+      [
+        "start",
+        5347
+      ],
+      [
+        "feel",
+        4707
+      ],
+      [
+        "work",
+        4441
+      ],
+      [
+        "make",
+        4380
+      ],
+      [
+        "food",
+        4170
+      ],
+      [
+        "people",
+        4026
+      ],
+      [
+        "well",
+        3827
+      ],
+      [
+        "time",
+        3786
+      ],
+      [
+        "also",
+        3704
+      ],
+      [
+        "help",
+        3541
+      ],
+      [
+        "good",
+        3535
+      ],
+      [
+        "want",
+        3534
+      ],
+      [
+        "think",
+        3447
+      ],
+      [
+        "try",
+        3431
+      ],
+      [
+        "loss",
+        3358
+      ],
+      [
+        "much",
+        3330
+      ],
+      [
+        "need",
+        3297
+      ],
+      [
+        "would",
+        3216
+      ],
+      [
+        "know",
+        3205
+      ],
+      [
+        "one",
+        3197
+      ],
+      [
+        "year",
+        3163
+      ],
+      [
+        "use",
+        3148
+      ],
+      [
+        "dose",
+        3025
+      ],
+      [
+        "say",
+        3021
+      ],
+      [
+        "see",
+        2995
+      ],
+      [
+        "calorie",
+        2992
+      ],
+      [
+        "doctor",
+        2822
+      ],
+      [
+        "thing",
+        2794
+      ],
+      [
+        "still",
+        2732
+      ],
+      [
+        "really",
+        2722
+      ],
+      [
+        "back",
+        2708
+      ],
+      [
+        "semaglutide",
+        2698
+      ],
+      [
+        "effect",
+        2646
+      ],
+      [
+        "medication",
+        2610
+      ],
+      [
+        "even",
+        2544
+      ],
+      [
+        "first",
+        2428
+      ],
+      [
+        "side",
+        2387
+      ],
+      [
+        "lot",
+        2338
+      ],
+      [
+        "way",
+        2306
+      ],
+      [
+        "change",
+        2299
+      ],
+      [
+        "body",
+        2216
+      ],
+      [
+        "diet",
+        2201
+      ],
+      [
+        "keep",
+        2146
+      ],
+      [
+        "long",
+        2073
+      ],
+      [
+        "look",
+        2036
+      ],
+      [
+        "low",
+        2017
+      ],
+      [
+        "find",
+        1991
+      ],
+      [
+        "stop",
+        1948
+      ],
+      [
+        "since",
+        1903
+      ],
+      [
+        "tell",
+        1896
+      ],
+      [
+        "drug",
+        1895
+      ],
+      [
+        "life",
+        1826
+      ],
+      [
+        "high",
+        1825
+      ],
+      [
+        "pound",
+        1820
+      ],
+      [
+        "wegovy",
+        1814
+      ],
+      [
+        "sugar",
+        1813
+      ],
+      [
+        "exercise",
+        1769
+      ],
+      [
+        "give",
+        1762
+      ],
+      [
+        "insurance",
+        1691
+      ],
+      [
+        "could",
+        1660
+      ],
+      [
+        "bad",
+        1606
+      ],
+      [
+        "med",
+        1594
+      ],
+      [
+        "come",
+        1591
+      ],
+      [
+        "may",
+        1572
+      ],
+      [
+        "less",
+        1567
+      ],
+      [
+        "healthy",
+        1531
+      ],
+      [
+        "every",
+        1523
+      ],
+      [
+        "last",
+        1514
+      ],
+      [
+        "thank",
+        1500
+      ],
+      [
+        "blood",
+        1495
+      ],
+      [
+        "anyone",
+        1494
+      ],
+      [
+        "something",
+        1486
+      ],
+      [
+        "issue",
+        1443
+      ],
+      [
+        "rybelsus",
+        1423
+      ],
+      [
+        "never",
+        1422
+      ],
+      [
+        "meal",
+        1421
+      ],
+      [
+        "gain",
+        1418
+      ],
+      [
+        "drink",
+        1418
+      ],
+      [
+        "protein",
+        1404
+      ],
+      [
+        "health",
+        1384
+      ],
+      [
+        "fat",
+        1364
+      ],
+      [
+        "lbs",
+        1348
+      ],
+      [
+        "sure",
+        1342
+      ],
+      [
+        "carb",
+        1325
+      ],
+      [
+        "many",
+        1320
+      ],
+      [
+        "great",
+        1300
+      ],
+      [
+        "experience",
+        1272
+      ],
+      [
+        "hard",
+        1244
+      ],
+      [
+        "without",
+        1223
+      ],
+      [
+        "right",
+        1220
+      ],
+      [
+        "two",
+        1168
+      ],
+      [
+        "message",
+        1165
+      ],
+      [
+        "water",
+        1164
+      ]
+    ],
+    "singleton_words": 6942,
+    "words_appearing_more_than_10_times": 3722,
+    "words_appearing_more_than_100_times": 1005
+  },
+  "ngrams": {
+    "top_bigrams": [
+      [
+        "weight loss",
+        2868
+      ],
+      [
+        "lose weight",
+        2483
+      ],
+      [
+        "side effect",
+        2073
+      ],
+      [
+        "feel like",
+        1044
+      ],
+      [
+        "blood sugar",
+        814
+      ],
+      [
+        "private message",
+        732
+      ],
+      [
+        "lose pound",
+        718
+      ],
+      [
+        "lose lbs",
+        584
+      ],
+      [
+        "food noise",
+        511
+      ],
+      [
+        "good luck",
+        499
+      ],
+      [
+        "fda approve",
+        425
+      ],
+      [
+        "make sure",
+        420
+      ],
+      [
+        "gain weight",
+        406
+      ],
+      [
+        "thank post",
+        401
+      ],
+      [
+        "may want",
+        398
+      ],
+      [
+        "start may",
+        377
+      ],
+      [
+        "question concern",
+        375
+      ],
+      [
+        "please contact",
+        374
+      ],
+      [
+        "bot action",
+        372
+      ],
+      [
+        "action perform",
+        372
+      ],
+      [
+        "perform automatically",
+        372
+      ],
+      [
+        "automatically please",
+        372
+      ],
+      [
+        "contact moderator",
+        372
+      ],
+      [
+        "moderator subreddit",
+        372
+      ],
+      [
+        "subreddit message",
+        372
+      ],
+      [
+        "message compose",
+        372
+      ],
+      [
+        "medication include",
+        370
+      ],
+      [
+        "anyone offer",
+        369
+      ],
+      [
+        "low carb",
+        367
+      ],
+      [
+        "long term",
+        367
+      ]
+    ],
+    "top_trigrams": [
+      [
+        "bot action perform",
+        372
+      ],
+      [
+        "action perform automatically",
+        372
+      ],
+      [
+        "perform automatically please",
+        372
+      ],
+      [
+        "automatically please contact",
+        372
+      ],
+      [
+        "please contact moderator",
+        372
+      ],
+      [
+        "contact moderator subreddit",
+        372
+      ],
+      [
+        "moderator subreddit message",
+        372
+      ],
+      [
+        "subreddit message compose",
+        372
+      ],
+      [
+        "non fda approve",
+        367
+      ],
+      [
+        "message compose semaglutide",
+        366
+      ],
+      [
+        "compose semaglutide question",
+        366
+      ],
+      [
+        "semaglutide question concern",
+        366
+      ],
+      [
+        "thank post semaglutide",
+        365
+      ],
+      [
+        "post semaglutide brief",
+        365
+      ],
+      [
+        "semaglutide brief reminder",
+        365
+      ],
+      [
+        "brief reminder rule",
+        365
+      ],
+      [
+        "reminder rule permit",
+        365
+      ],
+      [
+        "rule permit discussion",
+        365
+      ],
+      [
+        "permit discussion non",
+        365
+      ],
+      [
+        "discussion non fda",
+        365
+      ]
+    ],
+    "total_bigrams": 652661,
+    "unique_bigrams": 320053,
+    "total_trigrams": 633457,
+    "unique_trigrams": 560698
+  },
+  "subreddit_analysis": {
+    "Ozempic": {
+      "document_count": 360,
+      "avg_tokens": 59.34444444444444,
+      "avg_score": 159.41944444444445,
+      "date_range": {
+        "earliest": "2021-09-07 07:25:20",
+        "latest": "2025-10-24 09:40:08"
+      }
+    },
+    "Semaglutide": {
+      "document_count": 322,
+      "avg_tokens": 60.98757763975155,
+      "avg_score": 221.444099378882,
+      "date_range": {
+        "earliest": "2022-07-25 20:51:46",
+        "latest": "2025-10-25 14:47:48"
+      }
+    },
+    "WeightLossAdvice": {
+      "document_count": 266,
+      "avg_tokens": 76.1390977443609,
+      "avg_score": 33.61278195488722,
+      "date_range": {
+        "earliest": "2021-03-29 09:12:56",
+        "latest": "2025-08-09 09:34:57"
+      }
+    },
+    "diabetes_t2": {
+      "document_count": 258,
+      "avg_tokens": 71.46124031007751,
+      "avg_score": 11.011627906976743,
+      "date_range": {
+        "earliest": "2020-01-11 16:59:32",
+        "latest": "2025-10-24 04:25:25"
+      }
+    },
+    "NaN": {
+      "document_count": 0,
+      "avg_tokens": NaN,
+      "avg_score": NaN,
+      "date_range": {
+        "earliest": "NaT",
+        "latest": "NaT"
+      }
+    }
+  },
+  "key_findings": [
+    "Dataset contains 19,204 documents spanning 2114 days",
+    "Most frequent terms: 'weight', 'get', 'eat', 'lose', 'take'",
+    "Average document length: 35.0 tokens",
+    "Most active subreddit: r/Ozempic (360 documents)",
+    "Most active period: 2025-05"
+  ]
+}
