@@ -1,0 +1,38 @@
+2025-10-26 16:15:58,446 - sentiment_analysis - INFO - Sentiment Analyzer initialized
+2025-10-26 16:15:58,446 - sentiment_analysis - INFO - Positive threshold: 0.05
+2025-10-26 16:15:58,446 - sentiment_analysis - INFO - Negative threshold: -0.05
+2025-10-26 16:15:58,446 - sentiment_analysis - INFO - Loading documents with topics...
+2025-10-26 16:15:58,684 - sentiment_analysis - INFO - Loaded 19204 documents
+2025-10-26 16:15:58,684 - sentiment_analysis - INFO - Columns: ['doc_id', 'doc_type', 'author', 'score', 'created_utc', 'text', 'cleaned_text', 'tokens', 'token_count', 'subreddit', 'dominant_topic', 'topic_probability', 'topic_0_prob', 'topic_1_prob', 'topic_2_prob', 'topic_3_prob', 'topic_4_prob']
+2025-10-26 16:15:58,684 - sentiment_analysis - INFO - Analyzing sentiment for all documents...
+2025-10-26 16:16:01,649 - sentiment_analysis - INFO - 
+Sentiment Statistics:
+2025-10-26 16:16:01,649 - sentiment_analysis - INFO -   Mean compound: 0.2248
+2025-10-26 16:16:01,649 - sentiment_analysis - INFO -   Std compound: 0.5780
+2025-10-26 16:16:01,649 - sentiment_analysis - INFO -   Min compound: -0.9946
+2025-10-26 16:16:01,649 - sentiment_analysis - INFO -   Max compound: 0.9993
+2025-10-26 16:16:01,651 - sentiment_analysis - INFO - 
+Sentiment Distribution:
+2025-10-26 16:16:01,651 - sentiment_analysis - INFO -   positive: 11887 (61.9%)
+2025-10-26 16:16:01,651 - sentiment_analysis - INFO -   negative: 6058 (31.5%)
+2025-10-26 16:16:01,651 - sentiment_analysis - INFO -   neutral: 1259 (6.6%)
+2025-10-26 16:16:02,036 - sentiment_analysis - INFO - Documents with sentiment saved to data/processed/documents_with_sentiment.csv
+2025-10-26 16:16:02,038 - sentiment_analysis - INFO - Analyzing sentiment by topic...
+2025-10-26 16:16:02,051 - sentiment_analysis - INFO - 
+Sentiment by Topic:
+2025-10-26 16:16:02,052 - sentiment_analysis - INFO -   Topic 0: -0.0417 (5 docs)
+2025-10-26 16:16:02,052 - sentiment_analysis - INFO -   Topic 1: 0.2387 (13099 docs)
+2025-10-26 16:16:02,052 - sentiment_analysis - INFO -   Topic 2: 0.2106 (462 docs)
+2025-10-26 16:16:02,052 - sentiment_analysis - INFO -   Topic 3: 0.1702 (5259 docs)
+2025-10-26 16:16:02,052 - sentiment_analysis - INFO -   Topic 4: 0.5211 (379 docs)
+2025-10-26 16:16:02,053 - sentiment_analysis - INFO - Sentiment by topic saved to data/processed/sentiment_by_topic.csv
+2025-10-26 16:16:02,053 - sentiment_analysis - INFO - Analyzing sentiment over time...
+2025-10-26 16:16:02,057 - sentiment_analysis - INFO - Temporal analysis complete: 57 periods
+2025-10-26 16:16:02,058 - sentiment_analysis - INFO - Temporal sentiment saved to data/processed/sentiment_temporal.csv
+2025-10-26 16:16:02,058 - sentiment_analysis - INFO - Analyzing sentiment by topic over time...
+2025-10-26 16:16:02,060 - sentiment_analysis - INFO - Topic-temporal analysis complete
+2025-10-26 16:16:02,060 - sentiment_analysis - INFO - Topic-temporal sentiment saved to data/processed/sentiment_topic_temporal.csv
+2025-10-26 16:16:02,060 - sentiment_analysis - INFO - Finding extreme sentiment documents...
+2025-10-26 16:16:02,077 - sentiment_analysis - INFO - Extreme sentiments saved to data/processed/extreme_sentiments.csv
+2025-10-26 16:16:02,077 - sentiment_analysis - INFO - Generating sentiment report...
+2025-10-26 16:16:02,084 - sentiment_analysis - INFO - Sentiment report saved to data/metadata/sentiment_report.json

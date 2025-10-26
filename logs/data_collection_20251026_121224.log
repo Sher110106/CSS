@@ -1,0 +1,18 @@
+2025-10-26 12:12:24,259 - data_collection - INFO - Connected to Reddit as: True
+2025-10-26 12:12:24,259 - data_collection - INFO - Reddit API connection successful
+2025-10-26 12:12:24,259 - data_collection - INFO - ============================================================
+2025-10-26 12:12:24,259 - data_collection - INFO - Starting Reddit Data Collection
+2025-10-26 12:12:24,259 - data_collection - INFO - ============================================================
+2025-10-26 12:12:24,259 - data_collection - INFO - Target subreddits: ['Ozempic', 'Semaglutide', 'WeightLossAdvice', 'diabetes_t2']
+2025-10-26 12:12:24,259 - data_collection - INFO - Keywords: ['semaglutide', 'ozempic', 'wegovy', 'rybelsus']
+2025-10-26 12:12:24,259 - data_collection - INFO - Target posts: 5000
+2025-10-26 12:12:24,259 - data_collection - INFO - 
+Searching r/Ozempic for 'semaglutide'...
+2025-10-26 12:12:30,281 - data_collection - INFO - Found 237 submissions
+2025-10-26 12:14:38,909 - data_collection - INFO - Incremental save: 100 posts, 2620 comments
+2025-10-26 12:16:27,956 - data_collection - INFO - Incremental save: 200 posts, 4149 comments
+2025-10-26 12:17:06,176 - data_collection - INFO - 
+Searching r/Ozempic for 'ozempic'...
+2025-10-26 12:17:11,656 - data_collection - INFO - Found 241 submissions
+2025-10-26 12:19:21,852 - data_collection - INFO - Incremental save: 300 posts, 7561 comments
+2025-10-26 12:22:20,234 - data_collection - INFO - Incremental save: 400 posts, 12454 comments

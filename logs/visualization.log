@@ -1,0 +1,58 @@
+2025-10-26 16:27:00,406 - visualization - INFO - Visualizer initialized
+2025-10-26 16:27:00,406 - visualization - INFO - DPI: 300, Format: png
+2025-10-26 16:27:00,406 - visualization - INFO - Loading data...
+2025-10-26 16:27:00,645 - visualization - INFO - Loaded 19204 documents
+2025-10-26 16:27:00,645 - visualization - INFO - ============================================================
+2025-10-26 16:27:00,645 - visualization - INFO - Starting visualization generation
+2025-10-26 16:27:00,645 - visualization - INFO - ============================================================
+2025-10-26 16:27:00,645 - visualization - INFO - 
+=== Word Clouds ===
+2025-10-26 16:27:00,645 - visualization - INFO - Creating overall word cloud...
+2025-10-26 16:27:03,369 - visualization - INFO - Overall word cloud saved: visualizations/wordclouds/overall_wordcloud.png
+2025-10-26 16:27:03,370 - visualization - INFO - Creating topic word clouds...
+2025-10-26 16:27:03,370 - visualization - WARNING - Skipping Alternative Medications - too few documents
+2025-10-26 16:27:04,865 - visualization - INFO - Topic 1 word cloud saved
+2025-10-26 16:27:05,469 - visualization - INFO - Topic 2 word cloud saved
+2025-10-26 16:27:06,429 - visualization - INFO - Topic 3 word cloud saved
+2025-10-26 16:27:07,017 - visualization - INFO - Topic 4 word cloud saved
+2025-10-26 16:27:07,017 - visualization - INFO - 
+=== Topic Visualizations ===
+2025-10-26 16:27:07,017 - visualization - INFO - Creating topic distribution chart...
+2025-10-26 16:27:07,167 - visualization - INFO - Topic distribution saved: visualizations/charts/topic_distribution.png
+2025-10-26 16:27:07,167 - visualization - INFO - Creating coherence comparison chart...
+2025-10-26 16:27:07,326 - visualization - INFO - Coherence comparison saved: visualizations/charts/coherence_comparison.png
+2025-10-26 16:27:07,326 - visualization - INFO - 
+=== Sentiment Visualizations ===
+2025-10-26 16:27:07,326 - visualization - INFO - Creating sentiment distribution chart...
+2025-10-26 16:27:07,516 - visualization - INFO - Sentiment distribution saved: visualizations/charts/sentiment_distribution.png
+2025-10-26 16:27:07,516 - visualization - INFO - Creating sentiment by topic chart...
+2025-10-26 16:27:07,691 - visualization - INFO - Sentiment by topic saved: visualizations/charts/sentiment_by_topic.png
+2025-10-26 16:27:07,691 - visualization - INFO - Creating sentiment compound box plots...
+2025-10-26 16:27:07,880 - visualization - INFO - Sentiment box plots saved: visualizations/charts/sentiment_boxplots.png
+2025-10-26 16:27:07,880 - visualization - INFO - Creating sentiment heatmap...
+2025-10-26 16:27:08,069 - visualization - INFO - Sentiment heatmap saved: visualizations/charts/sentiment_heatmap.png
+2025-10-26 16:27:08,069 - visualization - INFO - 
+=== Temporal Visualizations ===
+2025-10-26 16:27:08,069 - visualization - INFO - Creating temporal sentiment chart...
+2025-10-26 16:27:08,281 - visualization - INFO - Temporal sentiment saved: visualizations/charts/temporal_sentiment.png
+2025-10-26 16:27:08,282 - visualization - INFO - Creating posting activity chart...
+2025-10-26 16:27:08,474 - visualization - INFO - Posting activity saved: visualizations/charts/posts_over_time.png
+2025-10-26 16:27:08,474 - visualization - INFO - 
+=== Integration Visualizations ===
+2025-10-26 16:27:08,474 - visualization - INFO - Creating topic-sentiment summary...
+2025-10-26 16:27:08,607 - visualization - INFO - Topic-sentiment summary saved: visualizations/charts/topic_sentiment_summary.png
+2025-10-26 16:27:08,607 - visualization - INFO - 
+=== Finalizing ===
+2025-10-26 16:27:08,607 - visualization - INFO - Copying figures to report folder...
+2025-10-26 16:27:08,608 - visualization - INFO - Copied topic_distribution.png to report folder
+2025-10-26 16:27:08,609 - visualization - INFO - Copied coherence_comparison.png to report folder
+2025-10-26 16:27:08,611 - visualization - INFO - Copied sentiment_distribution.png to report folder
+2025-10-26 16:27:08,612 - visualization - INFO - Copied sentiment_by_topic.png to report folder
+2025-10-26 16:27:08,613 - visualization - INFO - Copied sentiment_boxplots.png to report folder
+2025-10-26 16:27:08,614 - visualization - INFO - Copied topic_sentiment_summary.png to report folder
+2025-10-26 16:27:08,614 - visualization - INFO - Copied temporal_sentiment.png to report folder
+2025-10-26 16:27:08,623 - visualization - INFO - Copied overall_wordcloud.png to report folder
+2025-10-26 16:27:08,623 - visualization - INFO - 
+============================================================
+2025-10-26 16:27:08,623 - visualization - INFO - All visualizations generated successfully!
+2025-10-26 16:27:08,623 - visualization - INFO - ============================================================

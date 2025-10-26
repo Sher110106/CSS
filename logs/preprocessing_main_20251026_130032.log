@@ -1,0 +1,26 @@
+2025-10-26 13:00:32,581 - preprocessing_main - INFO - ============================================================
+2025-10-26 13:00:32,581 - preprocessing_main - INFO - Starting Data Preprocessing
+2025-10-26 13:00:32,581 - preprocessing_main - INFO - ============================================================
+2025-10-26 13:00:32,581 - preprocessing_main - INFO - Loading raw data...
+2025-10-26 13:00:32,733 - preprocessing_main - INFO - Loaded 1337 posts and 32909 comments
+2025-10-26 13:00:33,004 - preprocessing_main - INFO - 
+Processing posts...
+2025-10-26 13:00:45,687 - preprocessing_main - INFO - 
+Processing comments...
+2025-10-26 13:02:41,805 - preprocessing_main - INFO - 
+Combining posts and comments...
+2025-10-26 13:02:41,816 - preprocessing_main - ERROR - Preprocessing failed: "['subreddit'] not in index"
+2025-10-26 13:02:41,816 - preprocessing_main - ERROR - Traceback (most recent call last):
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/scripts/02_data_preprocessing.py", line 436, in main
+    comments_keep = comments_processed[keep_cols].copy()
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4119, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['subreddit'] not in index"
+

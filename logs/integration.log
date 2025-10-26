@@ -1,0 +1,97 @@
+2025-10-26 16:21:47,527 - integration - INFO - Integration Analyzer initialized
+2025-10-26 16:21:47,527 - integration - INFO - Loading integrated dataset...
+2025-10-26 16:21:48,503 - integration - INFO - Loaded 19204 documents with all features
+2025-10-26 16:21:48,503 - integration - INFO - Columns: ['doc_id', 'doc_type', 'author', 'score', 'created_utc', 'text', 'cleaned_text', 'tokens', 'token_count', 'subreddit', 'dominant_topic', 'topic_probability', 'topic_0_prob', 'topic_1_prob', 'topic_2_prob', 'topic_3_prob', 'topic_4_prob', 'compound', 'pos', 'neu', 'neg', 'sentiment_class']
+2025-10-26 16:21:48,503 - integration - INFO - Assigning topic names...
+2025-10-26 16:21:48,504 - integration - INFO - Topic names assigned
+2025-10-26 16:21:48,504 - integration - INFO -   Topic 0 (Alternative Medications): 5 docs
+2025-10-26 16:21:48,504 - integration - INFO -   Topic 1 (Weight Loss Experiences): 13099 docs
+2025-10-26 16:21:48,504 - integration - INFO -   Topic 2 (Insurance & Access): 462 docs
+2025-10-26 16:21:48,504 - integration - INFO -   Topic 3 (Diet & Side Effects): 5259 docs
+2025-10-26 16:21:48,505 - integration - INFO -   Topic 4 (Community Support): 379 docs
+2025-10-26 16:21:48,505 - integration - INFO - Generating integration report...
+2025-10-26 16:21:48,505 - integration - INFO - Analyzing topic-sentiment correlation...
+2025-10-26 16:21:48,511 - integration - INFO - 
+ANOVA Results:
+2025-10-26 16:21:48,511 - integration - INFO -   F-statistic: 39.1450
+2025-10-26 16:21:48,511 - integration - INFO -   P-value: 1.0782e-32
+2025-10-26 16:21:48,511 - integration - INFO -   Result: Highly significant difference in sentiment across topics
+2025-10-26 16:21:48,525 - integration - INFO - 
+Significant pairwise differences:
+2025-10-26 16:21:48,525 - integration - INFO -   Alternative Medications vs Community Support: p=0.0000
+2025-10-26 16:21:48,525 - integration - INFO -   Weight Loss Experiences vs Diet & Side Effects: p=0.0000
+2025-10-26 16:21:48,525 - integration - INFO -   Weight Loss Experiences vs Community Support: p=0.0000
+2025-10-26 16:21:48,525 - integration - INFO -   Insurance & Access vs Community Support: p=0.0000
+2025-10-26 16:21:48,525 - integration - INFO -   Diet & Side Effects vs Community Support: p=0.0000
+2025-10-26 16:21:48,525 - integration - INFO - Extracting representative posts...
+2025-10-26 16:21:48,546 - integration - INFO - Extracted 35 representative posts
+2025-10-26 16:21:48,546 - integration - INFO - Saved to data/anonymized/representative_posts.csv
+2025-10-26 16:21:48,546 - integration - INFO - Analyzing keywords by topic and sentiment...
+2025-10-26 16:21:49,311 - integration - INFO - Keyword analysis complete
+2025-10-26 16:21:49,311 - integration - INFO - Generating key insights...
+2025-10-26 16:21:49,318 - integration - INFO - Generated 7 key insights
+2025-10-26 16:21:49,318 - integration - INFO - Creating final anonymized dataset...
+2025-10-26 16:21:49,462 - integration - INFO - Final dataset created: 19204 documents
+2025-10-26 16:21:49,462 - integration - INFO - Saved to data/anonymized/final_dataset.csv
+2025-10-26 16:21:49,465 - integration - ERROR - Error generating report: Object of type bool is not JSON serializable
+Traceback (most recent call last):
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/scripts/06_integration.py", line 498, in generate_integration_report
+    save_json(report, report_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/css/semaglutide-reddit-analysis/scripts/utils.py", line 119, in save_json
+    json.dump(data, f, indent=2)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 433, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 440, in _iterencode
+    o = _default(o)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type bool is not JSON serializable
+2025-10-26 16:22:05,997 - integration - INFO - Integration Analyzer initialized
+2025-10-26 16:22:05,997 - integration - INFO - Loading integrated dataset...
+2025-10-26 16:22:06,956 - integration - INFO - Loaded 19204 documents with all features
+2025-10-26 16:22:06,956 - integration - INFO - Columns: ['doc_id', 'doc_type', 'author', 'score', 'created_utc', 'text', 'cleaned_text', 'tokens', 'token_count', 'subreddit', 'dominant_topic', 'topic_probability', 'topic_0_prob', 'topic_1_prob', 'topic_2_prob', 'topic_3_prob', 'topic_4_prob', 'compound', 'pos', 'neu', 'neg', 'sentiment_class']
+2025-10-26 16:22:06,956 - integration - INFO - Assigning topic names...
+2025-10-26 16:22:06,956 - integration - INFO - Topic names assigned
+2025-10-26 16:22:06,957 - integration - INFO -   Topic 0 (Alternative Medications): 5 docs
+2025-10-26 16:22:06,957 - integration - INFO -   Topic 1 (Weight Loss Experiences): 13099 docs
+2025-10-26 16:22:06,957 - integration - INFO -   Topic 2 (Insurance & Access): 462 docs
+2025-10-26 16:22:06,957 - integration - INFO -   Topic 3 (Diet & Side Effects): 5259 docs
+2025-10-26 16:22:06,957 - integration - INFO -   Topic 4 (Community Support): 379 docs
+2025-10-26 16:22:06,957 - integration - INFO - Generating integration report...
+2025-10-26 16:22:06,957 - integration - INFO - Analyzing topic-sentiment correlation...
+2025-10-26 16:22:06,960 - integration - INFO - 
+ANOVA Results:
+2025-10-26 16:22:06,961 - integration - INFO -   F-statistic: 39.1450
+2025-10-26 16:22:06,961 - integration - INFO -   P-value: 1.0782e-32
+2025-10-26 16:22:06,961 - integration - INFO -   Result: Highly significant difference in sentiment across topics
+2025-10-26 16:22:06,974 - integration - INFO - 
+Significant pairwise differences:
+2025-10-26 16:22:06,974 - integration - INFO -   Alternative Medications vs Community Support: p=0.0000
+2025-10-26 16:22:06,974 - integration - INFO -   Weight Loss Experiences vs Diet & Side Effects: p=0.0000
+2025-10-26 16:22:06,974 - integration - INFO -   Weight Loss Experiences vs Community Support: p=0.0000
+2025-10-26 16:22:06,974 - integration - INFO -   Insurance & Access vs Community Support: p=0.0000
+2025-10-26 16:22:06,974 - integration - INFO -   Diet & Side Effects vs Community Support: p=0.0000
+2025-10-26 16:22:06,974 - integration - INFO - Extracting representative posts...
+2025-10-26 16:22:06,995 - integration - INFO - Extracted 35 representative posts
+2025-10-26 16:22:06,995 - integration - INFO - Saved to data/anonymized/representative_posts.csv
+2025-10-26 16:22:06,995 - integration - INFO - Analyzing keywords by topic and sentiment...
+2025-10-26 16:22:07,762 - integration - INFO - Keyword analysis complete
+2025-10-26 16:22:07,762 - integration - INFO - Generating key insights...
+2025-10-26 16:22:07,766 - integration - INFO - Generated 7 key insights
+2025-10-26 16:22:07,766 - integration - INFO - Creating final anonymized dataset...
+2025-10-26 16:22:07,921 - integration - INFO - Final dataset created: 19204 documents
+2025-10-26 16:22:07,922 - integration - INFO - Saved to data/anonymized/final_dataset.csv
+2025-10-26 16:22:07,924 - integration - INFO - Integration report saved to data/metadata/integration_report.json
+2025-10-26 16:22:07,924 - integration - INFO - Key insights saved to data/metadata/key_insights.json

@@ -1,0 +1,87 @@
+2025-10-26 12:23:23,578 - data_collection - INFO - Connected to Reddit as: True
+2025-10-26 12:23:23,578 - data_collection - INFO - Reddit API connection successful
+2025-10-26 12:23:23,578 - data_collection - INFO - ============================================================
+2025-10-26 12:23:23,578 - data_collection - INFO - Starting Reddit Data Collection
+2025-10-26 12:23:23,578 - data_collection - INFO - ============================================================
+2025-10-26 12:23:23,578 - data_collection - INFO - Target subreddits: ['Ozempic', 'Semaglutide', 'WeightLossAdvice', 'diabetes_t2']
+2025-10-26 12:23:23,578 - data_collection - INFO - Keywords: ['semaglutide', 'ozempic', 'wegovy', 'rybelsus']
+2025-10-26 12:23:23,578 - data_collection - INFO - Target posts: 1500
+2025-10-26 12:23:23,578 - data_collection - INFO - 
+Searching r/Ozempic for 'semaglutide'...
+2025-10-26 12:23:25,939 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:25:29,189 - data_collection - INFO - Incremental save: 100 posts, 2620 comments
+2025-10-26 12:25:31,195 - data_collection - INFO - 
+Searching r/Ozempic for 'ozempic'...
+2025-10-26 12:25:33,504 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:28:50,166 - data_collection - INFO - Incremental save: 200 posts, 7565 comments
+2025-10-26 12:28:52,172 - data_collection - INFO - 
+Searching r/Ozempic for 'wegovy'...
+2025-10-26 12:28:54,065 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:30:42,719 - data_collection - INFO - 
+Searching r/Ozempic for 'rybelsus'...
+2025-10-26 12:30:44,898 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:30:46,030 - data_collection - INFO - Incremental save: 300 posts, 9307 comments
+2025-10-26 12:32:24,267 - data_collection - INFO - 
+Searching r/Semaglutide for 'semaglutide'...
+2025-10-26 12:32:26,647 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:32:31,799 - data_collection - INFO - Incremental save: 400 posts, 10287 comments
+2025-10-26 12:35:33,598 - data_collection - INFO - 
+Searching r/Semaglutide for 'ozempic'...
+2025-10-26 12:35:35,846 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:35:40,860 - data_collection - INFO - Incremental save: 500 posts, 15066 comments
+2025-10-26 12:38:00,691 - data_collection - INFO - 
+Searching r/Semaglutide for 'wegovy'...
+2025-10-26 12:38:03,162 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:38:10,611 - data_collection - INFO - Incremental save: 600 posts, 18890 comments
+2025-10-26 12:40:01,000 - data_collection - INFO - 
+Searching r/Semaglutide for 'rybelsus'...
+2025-10-26 12:40:03,149 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:40:22,882 - data_collection - INFO - Incremental save: 700 posts, 21864 comments
+2025-10-26 12:41:47,363 - data_collection - INFO - 
+Searching r/WeightLossAdvice for 'semaglutide'...
+2025-10-26 12:41:48,978 - data_collection - INFO - Found 91 submissions
+2025-10-26 12:42:18,071 - data_collection - INFO - Incremental save: 800 posts, 23343 comments
+2025-10-26 12:43:36,368 - data_collection - INFO - 
+Searching r/WeightLossAdvice for 'ozempic'...
+2025-10-26 12:43:38,203 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:44:12,711 - data_collection - INFO - Incremental save: 900 posts, 25090 comments
+2025-10-26 12:45:32,512 - data_collection - INFO - 
+Searching r/WeightLossAdvice for 'wegovy'...
+2025-10-26 12:45:34,284 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:46:08,922 - data_collection - INFO - Incremental save: 1000 posts, 26408 comments
+2025-10-26 12:47:06,445 - data_collection - INFO - 
+Searching r/WeightLossAdvice for 'rybelsus'...
+2025-10-26 12:47:07,269 - data_collection - INFO - Found 20 submissions
+2025-10-26 12:47:24,678 - data_collection - INFO - 
+Searching r/diabetes_t2 for 'semaglutide'...
+2025-10-26 12:47:26,192 - data_collection - INFO - Found 61 submissions
+2025-10-26 12:48:02,197 - data_collection - INFO - Incremental save: 1100 posts, 28101 comments
+2025-10-26 12:48:36,520 - data_collection - INFO - 
+Searching r/diabetes_t2 for 'ozempic'...
+2025-10-26 12:48:38,685 - data_collection - INFO - Found 100 submissions
+2025-10-26 12:49:59,990 - data_collection - INFO - Incremental save: 1200 posts, 30672 comments
+2025-10-26 12:50:24,928 - data_collection - INFO - 
+Searching r/diabetes_t2 for 'wegovy'...
+2025-10-26 12:50:25,997 - data_collection - INFO - Found 43 submissions
+2025-10-26 12:51:01,722 - data_collection - INFO - 
+Searching r/diabetes_t2 for 'rybelsus'...
+2025-10-26 12:51:03,654 - data_collection - INFO - Found 93 submissions
+2025-10-26 12:51:54,308 - data_collection - INFO - Incremental save: 1300 posts, 32488 comments
+2025-10-26 12:52:32,618 - data_collection - INFO - ============================================================
+2025-10-26 12:52:32,619 - data_collection - INFO - Data Collection Complete
+2025-10-26 12:52:32,620 - data_collection - INFO - Total posts collected: 1337
+2025-10-26 12:52:32,620 - data_collection - INFO - Total comments collected: 32909
+2025-10-26 12:52:32,620 - data_collection - INFO - ============================================================
+2025-10-26 12:52:32,620 - data_collection - INFO - Saving collected data...
+2025-10-26 12:52:32,733 - data_collection - INFO - Saved 1337 posts to data/raw/posts.csv
+2025-10-26 12:52:32,952 - data_collection - INFO - Saved 32909 comments to data/raw/comments.csv
+2025-10-26 12:52:32,962 - data_collection - INFO - Saved collection report to data/metadata/collection_report.json
+2025-10-26 12:52:32,962 - data_collection - INFO - 
+============================================================
+2025-10-26 12:52:32,962 - data_collection - INFO - Collection Summary
+2025-10-26 12:52:32,962 - data_collection - INFO - ============================================================
+2025-10-26 12:52:32,962 - data_collection - INFO - collection_timestamp: 2025-10-26T12:52:32.952158
+2025-10-26 12:52:32,962 - data_collection - INFO - total_posts: 1337
+2025-10-26 12:52:32,962 - data_collection - INFO - total_comments: 32909
+2025-10-26 12:52:32,962 - data_collection - INFO - date_range: {'earliest_post': '2020-01-11T16:59:32', 'latest_post': '2025-10-25T14:47:48'}
+2025-10-26 12:52:32,962 - data_collection - INFO - statistics: {'avg_score': 131.3089005235602, 'avg_comments_per_post': 52.970830216903515, 'unique_authors': 1217}

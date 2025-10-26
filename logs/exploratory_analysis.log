@@ -1,0 +1,41 @@
+2025-10-26 15:48:42,535 - eda - INFO - EDA Analyzer initialized
+2025-10-26 15:48:42,535 - eda - INFO - ============================================================
+2025-10-26 15:48:42,535 - eda - INFO - Starting Exploratory Data Analysis
+2025-10-26 15:48:42,535 - eda - INFO - ============================================================
+2025-10-26 15:48:42,535 - eda - INFO - Loading processed data...
+2025-10-26 15:48:43,830 - eda - INFO - Loaded 19204 documents successfully
+2025-10-26 15:48:43,830 - eda - INFO -   - Posts: 1206
+2025-10-26 15:48:43,830 - eda - INFO -   - Comments: 17998
+2025-10-26 15:48:43,830 - eda - INFO - Calculating basic statistics...
+2025-10-26 15:48:43,841 - eda - INFO - Basic statistics calculated
+2025-10-26 15:48:43,841 - eda - INFO -   - Date range: 2114 days
+2025-10-26 15:48:43,841 - eda - INFO -   - Mean tokens: 35.0
+2025-10-26 15:48:43,841 - eda - INFO - Performing temporal analysis...
+2025-10-26 15:48:44,395 - eda - INFO - Temporal analysis complete
+2025-10-26 15:48:44,395 - eda - INFO - Performing vocabulary analysis...
+2025-10-26 15:48:45,023 - eda - INFO - Vocabulary analysis complete
+2025-10-26 15:48:45,023 - eda - INFO -   - Unique tokens: 16,760
+2025-10-26 15:48:45,023 - eda - INFO -   - Top word: weight (9,691 occurrences)
+2025-10-26 15:48:45,023 - eda - INFO - Performing n-gram analysis...
+2025-10-26 15:48:45,687 - eda - INFO - N-gram analysis complete
+2025-10-26 15:48:45,705 - eda - INFO - Generating word cloud...
+2025-10-26 15:48:48,542 - eda - INFO - Word cloud generated
+2025-10-26 15:48:48,542 - eda - INFO - Analyzing subreddit patterns...
+2025-10-26 15:48:48,743 - eda - INFO - Subreddit analysis complete
+2025-10-26 15:48:48,743 - eda - INFO - Analyzing document lengths...
+2025-10-26 15:48:49,104 - eda - INFO - Document length analysis complete
+2025-10-26 15:48:49,104 - eda - INFO - Generating comprehensive EDA report...
+2025-10-26 15:48:49,105 - eda - INFO - EDA report saved to data/metadata/eda_report.json
+2025-10-26 15:48:49,105 - eda - INFO - ============================================================
+2025-10-26 15:48:49,105 - eda - INFO - EDA Complete!
+2025-10-26 15:48:49,105 - eda - INFO - ============================================================
+2025-10-26 15:48:49,105 - eda - INFO - 
+Key Findings:
+2025-10-26 15:48:49,105 - eda - INFO -   • Dataset contains 19,204 documents spanning 2114 days
+2025-10-26 15:48:49,105 - eda - INFO -   • Most frequent terms: 'weight', 'get', 'eat', 'lose', 'take'
+2025-10-26 15:48:49,105 - eda - INFO -   • Average document length: 35.0 tokens
+2025-10-26 15:48:49,105 - eda - INFO -   • Most active subreddit: r/Ozempic (360 documents)
+2025-10-26 15:48:49,105 - eda - INFO -   • Most active period: 2025-05
+2025-10-26 15:48:49,105 - eda - INFO - 
+Visualizations saved to: visualizations/eda
+2025-10-26 15:48:49,105 - eda - INFO - Report saved to: data/metadata/eda_report.json

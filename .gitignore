@@ -31,22 +31,22 @@ wheels/
 .ipynb_checkpoints
 *.ipynb
 
-# Data files
-data/raw/*.csv
-data/raw/*.json
-data/processed/*.csv
-data/processed/*.json
-data/processed/*.pkl
-data/anonymized/*.csv
-data/anonymized/*.json
+# Data files - commented out to include in repo
+# data/raw/*.csv
+# data/raw/*.json
+# data/processed/*.csv
+# data/processed/*.json
+# data/processed/*.pkl
+# data/anonymized/*.csv
+# data/anonymized/*.json
 
-# Models
-models/**/*.model
-models/**/*.pkl
-models/**/*.bin
+# Models - commented out to include in repo
+# models/**/*.model
+# models/**/*.pkl
+# models/**/*.bin
 
-# Logs
-logs/*.log
+# Logs - commented out to include in repo
+# logs/*.log
 
 # IDE
 .vscode/
@@ -55,7 +55,7 @@ logs/*.log
 *.swo
 .DS_Store
 
-# Visualizations (keep structure, ignore large files)
-visualizations/**/*.png
-visualizations/**/*.jpg
-visualizations/**/*.html
+# Visualizations - commented out to include in repo
+# visualizations/**/*.png
+# visualizations/**/*.jpg
+# visualizations/**/*.html
