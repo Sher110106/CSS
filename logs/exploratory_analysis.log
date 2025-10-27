@@ -39,3 +39,44 @@ Key Findings:
 2025-10-26 15:48:49,105 - eda - INFO - 
 Visualizations saved to: visualizations/eda
 2025-10-26 15:48:49,105 - eda - INFO - Report saved to: data/metadata/eda_report.json
+2025-10-27 21:15:00,689 - eda - INFO - EDA Analyzer initialized
+2025-10-27 21:15:00,690 - eda - INFO - ============================================================
+2025-10-27 21:15:00,690 - eda - INFO - Starting Exploratory Data Analysis
+2025-10-27 21:15:00,690 - eda - INFO - ============================================================
+2025-10-27 21:15:00,690 - eda - INFO - Loading processed data...
+2025-10-27 21:15:02,115 - eda - INFO - Loaded 23405 documents successfully
+2025-10-27 21:15:02,115 - eda - INFO -   - Posts: 1221
+2025-10-27 21:15:02,115 - eda - INFO -   - Comments: 22184
+2025-10-27 21:15:02,115 - eda - INFO - Calculating basic statistics...
+2025-10-27 21:15:02,125 - eda - INFO - Basic statistics calculated
+2025-10-27 21:15:02,125 - eda - INFO -   - Date range: 2413 days
+2025-10-27 21:15:02,125 - eda - INFO -   - Mean tokens: 31.3
+2025-10-27 21:15:02,125 - eda - INFO - Performing temporal analysis...
+2025-10-27 21:15:03,274 - eda - INFO - Temporal analysis complete
+2025-10-27 21:15:03,275 - eda - INFO - Performing vocabulary analysis...
+2025-10-27 21:15:03,885 - eda - INFO - Vocabulary analysis complete
+2025-10-27 21:15:03,885 - eda - INFO -   - Unique tokens: 17,987
+2025-10-27 21:15:03,885 - eda - INFO -   - Top word: weight (10,108 occurrences)
+2025-10-27 21:15:03,885 - eda - INFO - Performing n-gram analysis...
+2025-10-27 21:15:04,606 - eda - INFO - N-gram analysis complete
+2025-10-27 21:15:04,626 - eda - INFO - Generating word cloud...
+2025-10-27 21:15:07,708 - eda - INFO - Word cloud generated
+2025-10-27 21:15:07,710 - eda - INFO - Analyzing subreddit patterns...
+2025-10-27 21:15:07,912 - eda - INFO - Subreddit analysis complete
+2025-10-27 21:15:07,912 - eda - INFO - Analyzing document lengths...
+2025-10-27 21:15:08,357 - eda - INFO - Document length analysis complete
+2025-10-27 21:15:08,357 - eda - INFO - Generating comprehensive EDA report...
+2025-10-27 21:15:08,358 - eda - INFO - EDA report saved to data/metadata/eda_report.json
+2025-10-27 21:15:08,358 - eda - INFO - ============================================================
+2025-10-27 21:15:08,358 - eda - INFO - EDA Complete!
+2025-10-27 21:15:08,358 - eda - INFO - ============================================================
+2025-10-27 21:15:08,358 - eda - INFO - 
+Key Findings:
+2025-10-27 21:15:08,358 - eda - INFO -   • Dataset contains 23,405 documents spanning 2413 days
+2025-10-27 21:15:08,358 - eda - INFO -   • Most frequent terms: 'weight', 'get', 'eat', 'like', 'lose'
+2025-10-27 21:15:08,358 - eda - INFO -   • Average document length: 31.3 tokens
+2025-10-27 21:15:08,358 - eda - INFO -   • Most active subreddit: r/Semaglutide (396 documents)
+2025-10-27 21:15:08,358 - eda - INFO -   • Most active period: 2025-10
+2025-10-27 21:15:08,358 - eda - INFO - 
+Visualizations saved to: visualizations/eda
+2025-10-27 21:15:08,358 - eda - INFO - Report saved to: data/metadata/eda_report.json

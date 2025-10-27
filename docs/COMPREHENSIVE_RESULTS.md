@@ -1,9 +1,9 @@
 # Comprehensive Analysis Results: Semaglutide Reddit Analysis
 
 **Project**: Analysis of Semaglutide Discussions on Reddit  
-**Date**: 2025-10-26  
-**Total Documents Analyzed**: 19,204  
-**Analysis Period**: 2020-01-11 to 2025-10-26 (5.8 years)
+**Date**: 2025-10-27  
+**Total Documents Analyzed**: 23,405  
+**Analysis Period**: 2019-03-20 to 2025-10-27 (6.6 years)
 
 ---
 
@@ -37,7 +37,7 @@
 - **Collection Method**: PRAW API
 - **NLP Techniques**: LDA topic modeling, VADER sentiment analysis
 - **Statistical Analysis**: ANOVA, t-tests, descriptive statistics
-- **Visualization**: 20+ publication-ready figures
+- **Visualization**: 15+ publication-ready figures
 
 ### Key Technologies
 - Python 3.13.6

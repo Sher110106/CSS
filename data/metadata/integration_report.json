@@ -1,7 +1,7 @@
 {
   "report_metadata": {
-    "generated_at": "2025-10-26T16:22:07.923981",
-    "total_documents": 19204,
+    "generated_at": "2025-10-27T21:17:14.639454",
+    "total_documents": 23405,
     "analysis_modules": [
       "Data Collection",
       "Preprocessing",
@@ -13,8 +13,8 @@
   },
   "topic_sentiment_correlation": {
     "anova": {
-      "f_statistic": 39.14502926580896,
-      "p_value": 1.078191357311389e-32,
+      "f_statistic": 52.124619182981654,
+      "p_value": 8.791195301007866e-44,
       "significant": true
     },
     "pairwise_comparisons": [
@@ -23,26 +23,26 @@
         "topic_2": 1,
         "topic_1_name": "Alternative Medications",
         "topic_2_name": "Weight Loss Experiences",
-        "t_statistic": -1.0735719730219104,
-        "p_value": 0.2830343364705479,
-        "significant": false
+        "t_statistic": -6.958248752855638,
+        "p_value": 3.5674350098012368e-12,
+        "significant": true
       },
       {
         "topic_1": 0,
         "topic_2": 2,
         "topic_1_name": "Alternative Medications",
         "topic_2_name": "Insurance & Access",
-        "t_statistic": -1.3460578057882884,
-        "p_value": 0.17893972596066537,
-        "significant": false
+        "t_statistic": 12.129052147123337,
+        "p_value": 1.0055524211560362e-33,
+        "significant": true
       },
       {
         "topic_1": 0,
         "topic_2": 3,
         "topic_1_name": "Alternative Medications",
         "topic_2_name": "Diet & Side Effects",
-        "t_statistic": -0.8088351178686248,
-        "p_value": 0.41864656145404167,
+        "t_statistic": 0.47500211490895045,
+        "p_value": 0.6347910939743318,
         "significant": false
       },
       {
@@ -50,8 +50,8 @@
         "topic_2": 4,
         "topic_1_name": "Alternative Medications",
         "topic_2_name": "Community Support",
-        "t_statistic": -6.300118046059467,
-        "p_value": 8.195662153705847e-10,
+        "t_statistic": 2.73531239670077,
+        "p_value": 0.006237476944560823,
         "significant": true
       },
       {
@@ -59,17 +59,17 @@
         "topic_2": 2,
         "topic_1_name": "Weight Loss Experiences",
         "topic_2_name": "Insurance & Access",
-        "t_statistic": 1.0241156341822324,
-        "p_value": 0.3057989311851379,
-        "significant": false
+        "t_statistic": 17.388933698573734,
+        "p_value": 1.167282869581058e-61,
+        "significant": true
       },
       {
         "topic_1": 1,
         "topic_2": 3,
         "topic_1_name": "Weight Loss Experiences",
         "topic_2_name": "Diet & Side Effects",
-        "t_statistic": 7.1752384712575115,
-        "p_value": 7.493354729446481e-13,
+        "t_statistic": 7.775707102958154,
+        "p_value": 1.1879769283945522e-14,
         "significant": true
       },
       {
@@ -77,8 +77,8 @@
         "topic_2": 4,
         "topic_1_name": "Weight Loss Experiences",
         "topic_2_name": "Community Support",
-        "t_statistic": -9.400486851720004,
-        "p_value": 6.294249700678345e-21,
+        "t_statistic": 7.616631193149246,
+        "p_value": 3.221585339096507e-14,
         "significant": true
       },
       {
@@ -86,17 +86,17 @@
         "topic_2": 3,
         "topic_1_name": "Insurance & Access",
         "topic_2_name": "Diet & Side Effects",
-        "t_statistic": 1.4500281110469475,
-        "p_value": 0.1471055172033098,
-        "significant": false
+        "t_statistic": -10.484928398730768,
+        "p_value": 3.510138036385952e-25,
+        "significant": true
       },
       {
         "topic_1": 2,
         "topic_2": 4,
         "topic_1_name": "Insurance & Access",
         "topic_2_name": "Community Support",
-        "t_statistic": -13.34092007224719,
-        "p_value": 5.841952366603006e-37,
+        "t_statistic": -9.394219892763951,
+        "p_value": 8.975344684492014e-21,
         "significant": true
       },
       {
@@ -104,9 +104,9 @@
         "topic_2": 4,
         "topic_1_name": "Diet & Side Effects",
         "topic_2_name": "Community Support",
-        "t_statistic": -11.61515187953849,
-        "p_value": 7.732026927764425e-31,
-        "significant": true
+        "t_statistic": 1.2228770761761838,
+        "p_value": 0.22143372854294768,
+        "significant": false
       }
     ]
   },
@@ -127,54 +127,55 @@
   "key_insights": [
     {
       "category": "Overall Sentiment",
-      "insight": "The community shows predominantly positive sentiment with 61.9% positive discussions across 19,204 documents.",
+      "insight": "The community shows predominantly positive sentiment with 68.8% positive discussions across 23,405 documents.",
       "data": {
-        "total_documents": 19204,
-        "positive_percentage": 61.89856279941679
+        "total_documents": 23405,
+        "positive_percentage": 68.80581072420424
       }
     },
     {
       "category": "Discussion Focus",
-      "insight": "Weight loss experiences dominate discussions (68.2% of content), indicating this is the primary reason people use semaglutide in these communities.",
+      "insight": "Weight loss experiences dominate discussions (72.4% of content), indicating this is the primary reason people use semaglutide in these communities.",
       "data": {
-        "dominant_topic": 1,
-        "dominant_topic_name": "Weight Loss Experiences",
-        "percentage": 68.20974796917308
+        "dominant_topic": 0,
+        "dominant_topic_name": "Alternative Medications",
+        "percentage": 72.4161503952147
       }
     },
     {
       "category": "Community Dynamics",
-      "insight": "Community support discussions are overwhelmingly positive (96.6%), demonstrating strong peer support and helpful information sharing.",
+      "insight": "Community support discussions are overwhelmingly positive (67.2%), demonstrating strong peer support and helpful information sharing.",
       "data": {
-        "support_positive_percentage": 96.56992084432717
+        "support_positive_percentage": 67.1875
       }
     },
     {
       "category": "Side Effects",
-      "insight": "Despite discussions about side effects, 58.2% remain positive, suggesting benefits outweigh adverse effects for most users.",
+      "insight": "Despite discussions about side effects, 69.1% remain positive, suggesting benefits outweigh adverse effects for most users.",
       "data": {
-        "side_effects_positive_percentage": 58.185966913861954
+        "side_effects_positive_percentage": 69.0909090909091
       }
     },
     {
       "category": "Access & Affordability",
-      "insight": "Insurance/access discussions are more positive than expected (56.7%), likely due to community sharing solutions and support for obtaining medication.",
+      "insight": "Insurance/access discussions are more positive than expected (49.1%), likely due to community sharing solutions and support for obtaining medication.",
       "data": {
-        "insurance_positive_percentage": 56.709956709956714
+        "insurance_positive_percentage": 49.130434782608695
       }
     },
     {
       "category": "Temporal Trends",
-      "insight": "Sentiment remains consistently positive across years (0.238 average), indicating sustained satisfaction over time.",
+      "insight": "Sentiment remains consistently positive across years (0.348 average), indicating sustained satisfaction over time.",
       "data": {
-        "mean_sentiment_across_years": 0.23837697493654497,
+        "mean_sentiment_across_years": 0.3477167635906842,
         "yearly_sentiment": {
-          "2020": 0.3099368421052631,
-          "2021": 0.21777755102040813,
-          "2022": 0.23501142433234423,
-          "2023": 0.213356695799267,
-          "2024": 0.22886615162454876,
-          "2025": 0.2253131847374386
+          "2019": 0.4152857142857143,
+          "2020": 0.387765606361829,
+          "2021": 0.38509990689013035,
+          "2022": 0.3301433962264151,
+          "2023": 0.26540351027397263,
+          "2024": 0.32001017909356727,
+          "2025": 0.3303090320031608
         }
       }
     },
@@ -183,34 +184,34 @@
       "insight": "Sentiment varies significantly by topic, with community support (0.52) being most positive and alternative medications (-0.04) being slightly negative.",
       "data": {
         "topic_sentiment_ranking": {
-          "Community Support": 0.5210865435356201,
-          "Weight Loss Experiences": 0.23869161004656844,
-          "Insurance & Access": 0.21062316017316018,
-          "Diet & Side Effects": 0.17024190910819548,
-          "Alternative Medications": -0.04166
+          "Weight Loss Experiences": 0.5072007532956685,
+          "Alternative Medications": 0.3364340787067084,
+          "Diet & Side Effects": 0.32923616161616165,
+          "Community Support": 0.30755454545454547,
+          "Insurance & Access": 0.10603445652173912
         }
       }
     }
   ],
   "final_dataset_summary": {
-    "total_documents": 19204,
+    "total_documents": 23405,
     "date_range": {
-      "start": "2020-01-11 16:59:32",
-      "end": "2025-10-26 00:34:11"
+      "start": "2019-03-20 16:13:21",
+      "end": "2025-10-27 21:05:08"
     },
     "topic_distribution": {
-      "Weight Loss Experiences": 13099,
-      "Diet & Side Effects": 5259,
-      "Insurance & Access": 462,
-      "Community Support": 379,
-      "Alternative Medications": 5
+      "Alternative Medications": 16949,
+      "Community Support": 3520,
+      "Diet & Side Effects": 1485,
+      "Insurance & Access": 920,
+      "Weight Loss Experiences": 531
     },
     "sentiment_distribution": {
-      "positive": 11887,
-      "negative": 6058,
-      "neutral": 1259
+      "positive": 16104,
+      "negative": 6016,
+      "neutral": 1285
     },
-    "mean_sentiment": 0.22477166215371794,
+    "mean_sentiment": 0.3264517923520615,
     "columns": [
       "doc_id",
       "doc_type",

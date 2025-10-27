@@ -1,0 +1,32 @@
+2025-10-27 21:12:00,305 - preprocessing_main - INFO - ============================================================
+2025-10-27 21:12:00,305 - preprocessing_main - INFO - Starting Data Preprocessing
+2025-10-27 21:12:00,305 - preprocessing_main - INFO - ============================================================
+2025-10-27 21:12:00,305 - preprocessing_main - INFO - Loading raw data...
+2025-10-27 21:12:00,499 - preprocessing_main - INFO - Loaded 1402 posts and 53332 comments
+2025-10-27 21:12:00,945 - preprocessing_main - INFO - 
+Processing posts...
+2025-10-27 21:12:14,980 - preprocessing_main - INFO - 
+Processing comments...
+2025-10-27 21:14:44,238 - preprocessing_main - INFO - 
+Combining posts and comments...
+2025-10-27 21:14:44,256 - preprocessing_main - INFO - Combined dataset: 23405 documents
+2025-10-27 21:14:44,256 - preprocessing_main - INFO - 
+Saving processed data...
+2025-10-27 21:14:45,690 - preprocessing_main - INFO - Saved processed dataframes
+2025-10-27 21:14:45,690 - preprocessing_main - INFO - 
+Creating corpus for topic modeling...
+2025-10-27 21:14:45,925 - preprocessing_main - INFO - Saved corpus: 23405 documents
+2025-10-27 21:14:45,926 - preprocessing_main - INFO - 
+Generating preprocessing report...
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - 
+============================================================
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Preprocessing Summary
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - ============================================================
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Original documents: 54,734
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Processed documents: 23,405
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Filtered out: 31,329
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Total tokens: 733,369
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Vocabulary size: 17,987
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - Avg tokens/doc: 31.3
+2025-10-27 21:14:46,064 - preprocessing_main - INFO - ============================================================
+2025-10-27 21:14:46,107 - preprocessing_main - INFO - ✓ MODULE 2 COMPLETE

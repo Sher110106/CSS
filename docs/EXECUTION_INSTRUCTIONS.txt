@@ -1,0 +1,480 @@
+================================================================================
+OVERNIGHT DATA COLLECTION - EXECUTION INSTRUCTIONS
+================================================================================
+
+Created: 2025-10-27
+Purpose: Collect large corpus of Reddit data for semaglutide analysis
+Scripts: Enhanced with robust error handling and checkpointing
+
+================================================================================
+WHAT WAS CREATED
+================================================================================
+
+1. scripts/01_data_collection_overnight.py
+   - Enhanced scraper with adaptive rate limiting
+   - Auto-checkpoint every 5 minutes
+   - Error recovery and retry logic
+   - Multiple collection strategies
+   - Graceful shutdown handling
+
+2. scripts/run_overnight_collection.py  
+   - User-friendly runner script
+   - Command-line interface
+   - Resume capability
+   - Progress monitoring
+
+3. scripts/test_collection.py
+   - Small-scale test (50 posts)
+   - Validates setup before overnight run
+   - Takes 2-3 minutes
+
+4. Documentation:
+   - OVERNIGHT_COLLECTION_GUIDE.md (comprehensive)
+   - QUICK_START.md (cheat sheet)
+   - This file (execution instructions)
+
+================================================================================
+STEP-BY-STEP EXECUTION
+================================================================================
+
+STEP 1: Verify Reddit API Credentials
+--------------------------------------
+Location: .env file in project root
+
+Required:
+  REDDIT_CLIENT_ID=your_client_id_here
+  REDDIT_CLIENT_SECRET=your_secret_here
+  REDDIT_USER_AGENT=semaglutide_research_v1.0
+
+Get credentials:
+  1. Go to: https://www.reddit.com/prefs/apps
+  2. Click "Create App" or "Create Another App"
+  3. Select type: "script"
+  4. Fill in name: "Semaglutide Research"
+  5. Fill in redirect uri: http://localhost:8080
+  6. Copy client_id (under app name)
+  7. Copy secret
+
+STEP 2: Test Collection (MANDATORY)
+-----------------------------------
+Command:
+  cd /Users/sher/project/css/semaglutide-reddit-analysis
+  source venv/bin/activate  # If using venv
+  python scripts/test_collection.py
+
+Expected output:
+  ✅ TEST PASSED - Collection system working!
+  ✓ Posts collected: 50+
+  ✓ Comments collected: 200+
+
+If test fails:
+  - Check credentials in .env
+  - Check internet connection
+  - Verify Reddit is accessible
+  - Check logs/test_collection_*.log
+
+STEP 3: Run Overnight Collection
+--------------------------------
+Basic command (interactive):
+  python scripts/run_overnight_collection.py
+
+You'll be prompted for:
+  - Target posts (default: 10000)
+  - Max hours (default: 8)
+  - Confirmation to start
+
+Advanced command (with arguments):
+  python scripts/run_overnight_collection.py --target 20000 --hours 12
+
+Full options:
+  --target N      : Target number of posts (default: 10000)
+  --hours H       : Max runtime in hours (default: 8.0)
+  --resume        : Resume from last checkpoint
+  --no-confirm    : Skip confirmation, start immediately
+
+STEP 4: Monitor Progress
+------------------------
+While running, check:
+  
+  A. Console output:
+     - Shows progress every 5 minutes
+     - Posts collected / target
+     - Collection rate (posts/hour)
+     - Error count
+  
+  B. Log file:
+     tail -f logs/overnight_collection_*.log
+  
+  C. Data files (in another terminal):
+     wc -l data/raw/posts_checkpoint.csv
+
+STEP 5: Stopping (If Needed)
+----------------------------
+Graceful stop:
+  1. Press Ctrl+C ONCE
+  2. Wait for "Saving progress..." message
+  3. Script will save all data and exit
+
+Resume later:
+  python scripts/run_overnight_collection.py --resume
+
+Emergency stop:
+  - Data auto-saved every 5 minutes
+  - At most 5 min of collection lost
+  - Resume with --resume flag
+
+================================================================================
+EXAMPLE USAGE SCENARIOS
+================================================================================
+
+Scenario 1: Standard Overnight Run
+-----------------------------------
+Goal: Collect 10,000 posts overnight
+
+Commands:
+  cd /Users/sher/project/css/semaglutide-reddit-analysis
+  source venv/bin/activate
+  python scripts/test_collection.py          # Verify setup
+  python scripts/run_overnight_collection.py # Start collection
+  # Leave running overnight
+  # Check results in morning
+
+Expected:
+  - Runtime: 4-8 hours
+  - Output: ~10,000 posts, ~40,000 comments
+  - Files: data/raw/posts.csv, data/raw/comments.csv
+
+
+Scenario 2: Large Collection (20k+ posts)
+------------------------------------------
+Goal: Maximum data collection
+
+Commands:
+  # First run (overnight)
+  python scripts/run_overnight_collection.py --target 15000 --hours 10
+  
+  # Backup first batch
+  cp data/raw/posts.csv data/raw/posts_batch1.csv
+  cp data/raw/comments.csv data/raw/comments_batch1.csv
+  
+  # Second run (next night)
+  python scripts/run_overnight_collection.py --target 15000 --hours 10
+  
+  # Combine (in Python):
+  import pandas as pd
+  b1 = pd.read_csv('data/raw/posts_batch1.csv')
+  b2 = pd.read_csv('data/raw/posts.csv')
+  combined = pd.concat([b1, b2]).drop_duplicates(subset=['post_id'])
+  combined.to_csv('data/raw/posts_combined.csv', index=False)
+
+
+Scenario 3: Quick Test Run
+--------------------------
+Goal: Test with small dataset before full run
+
+Commands:
+  python scripts/run_overnight_collection.py --target 200 --hours 0.5
+
+Expected:
+  - Runtime: 15-30 minutes
+  - Output: ~200 posts
+  - Use to verify everything works
+
+
+Scenario 4: Resume After Interruption
+-------------------------------------
+Situation: Script stopped (crash, Ctrl+C, power loss)
+
+Commands:
+  # Check what was collected
+  wc -l data/raw/posts_checkpoint.csv
+  
+  # Resume collection
+  python scripts/run_overnight_collection.py --resume
+
+Notes:
+  - Resumes from last checkpoint (max 5 min loss)
+  - Continues toward same target
+  - Skips already-collected posts
+
+================================================================================
+CONFIGURATION CUSTOMIZATION
+================================================================================
+
+To adjust collection parameters, edit: config/config.yaml
+
+Add more subreddits:
+  data_collection:
+    subreddits:
+      - "Ozempic"
+      - "Semaglutide"
+      - "WeightLossAdvice"
+      - "diabetes_t2"
+      - "loseit"          # ADD NEW
+      - "progresspics"    # ADD NEW
+
+Add more keywords:
+  keywords:
+    - "semaglutide"
+    - "ozempic"
+    - "wegovy"
+    - "rybelsus"
+    - "mounjaro"        # ADD NEW
+    - "weight loss"     # ADD NEW
+
+After editing config.yaml, no code changes needed - just run again.
+
+================================================================================
+OUTPUT FILES
+================================================================================
+
+After successful collection:
+
+data/raw/
+├── posts.csv              Main posts file
+├── comments.csv           Main comments file
+└── checkpoint.json        Progress tracker (deleted after success)
+
+data/metadata/
+└── overnight_collection_report.json    Statistics and metadata
+
+logs/
+└── overnight_collection_YYYYMMDD_HHMMSS.log    Detailed execution log
+
+Data format (posts.csv):
+  - post_id: Unique Reddit post ID
+  - author: Username (for anonymization later)
+  - title: Post title
+  - selftext: Post body text
+  - score: Upvotes
+  - num_comments: Number of comments
+  - created_utc: Timestamp
+  - subreddit: Source subreddit
+  - url: Full URL
+  - upvote_ratio: Upvote percentage
+  - collected_at: When we collected it
+
+Data format (comments.csv):
+  - comment_id: Unique comment ID
+  - post_id: Parent post ID
+  - author: Username
+  - body: Comment text
+  - score: Upvotes
+  - created_utc: Timestamp
+  - parent_id: Parent comment/post ID
+  - collected_at: When we collected it
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "Authentication failed" / "403 Forbidden"
+Solution:
+  1. Check .env file has correct credentials
+  2. Verify credentials at reddit.com/prefs/apps
+  3. Ensure app type is "script" not "web app"
+  4. Try regenerating secret
+
+Problem: "Rate limit exceeded" / "429 Error"
+Solution:
+  - This is normal and handled automatically
+  - Script will slow down and retry
+  - Just let it run, it will recover
+  - If persistent, may need to reduce target
+
+Problem: Very slow collection (<5 posts/hour)
+Solutions:
+  - Check config.yaml keywords are relevant
+  - Add more subreddits to config
+  - Try running during US off-peak hours
+  - Reddit may be rate-limiting heavily
+
+Problem: Script hangs / no progress
+Diagnosis:
+  1. Check log file: tail logs/overnight_collection_*.log
+  2. Look for timeout errors or rate limit messages
+  3. If truly stuck (10+ min no activity), Ctrl+C and restart
+
+Problem: Network timeout / connection errors
+Solution:
+  1. Stop with Ctrl+C
+  2. Wait 5-10 minutes
+  3. Resume: python scripts/run_overnight_collection.py --resume
+
+Problem: "No module named 'praw'" or other import errors
+Solution:
+  # Reinstall dependencies
+  source venv/bin/activate
+  pip install -r requirements.txt
+
+Problem: Can't find checkpoint to resume
+Explanation:
+  - Checkpoint only exists if previous run was interrupted
+  - After successful completion, checkpoint is cleaned up
+  - If no checkpoint, just start a new run normally
+
+================================================================================
+PERFORMANCE EXPECTATIONS
+================================================================================
+
+Typical Collection Rates:
+  Fast conditions:    50-100 posts/hour
+  Normal conditions:  20-50 posts/hour
+  Slow conditions:    5-20 posts/hour
+  Rate limited:       <5 posts/hour
+
+Time Estimates for Different Targets:
+  1,000 posts:   1-2 hours
+  5,000 posts:   2-5 hours
+  10,000 posts:  4-8 hours
+  20,000 posts:  8-16 hours
+
+Factors affecting speed:
+  + More available posts matching criteria
+  + Off-peak hours (US nighttime)
+  + Good internet connection
+  - Reddit rate limiting
+  - Peak hours (US daytime)
+  - Already collected most available posts
+
+================================================================================
+VERIFICATION AFTER COLLECTION
+================================================================================
+
+Quick check:
+  cd /Users/sher/project/css/semaglutide-reddit-analysis
+  wc -l data/raw/posts.csv
+  wc -l data/raw/comments.csv
+
+Detailed check:
+  python -c "
+  import pandas as pd
+  posts = pd.read_csv('data/raw/posts.csv')
+  comments = pd.read_csv('data/raw/comments.csv')
+  print(f'Posts: {len(posts):,}')
+  print(f'Comments: {len(comments):,}')
+  print(f'Unique posts: {posts.post_id.nunique()}')
+  print(f'Subreddits: {list(posts.subreddit.unique())}')
+  print(f'Date range: {posts.created_utc.min()} to {posts.created_utc.max()}')
+  print(f'Avg comments per post: {posts.num_comments.mean():.1f}')
+  "
+
+Check report:
+  cat data/metadata/overnight_collection_report.json
+
+================================================================================
+NEXT STEPS AFTER COLLECTION
+================================================================================
+
+Once you have collected sufficient data:
+
+1. Verify data quality:
+   python scripts/validate_collection.py  # If exists
+
+2. Run preprocessing:
+   python scripts/02_data_preprocessing.py
+
+3. Continue with analysis pipeline:
+   python scripts/03_exploratory_analysis.py
+   python scripts/04_topic_modeling.py
+   python scripts/05_sentiment_analysis.py
+
+4. Backup your data:
+   cp -r data/raw data/raw_backup_$(date +%Y%m%d)
+
+================================================================================
+TIPS FOR SUCCESS
+================================================================================
+
+1. Always run test_collection.py first
+   - Catches issues early
+   - Validates credentials
+   - Only takes 2-3 minutes
+
+2. Start with moderate target
+   - First run: 5,000-10,000 posts
+   - See how long it takes
+   - Scale up for subsequent runs
+
+3. Monitor first hour
+   - Check logs after 30-60 min
+   - Verify data is being collected
+   - Confirm rate is acceptable
+
+4. Use screen/tmux for remote servers
+   screen -S reddit_collect
+   python scripts/run_overnight_collection.py
+   # Ctrl+A, D to detach
+   # screen -r reddit_collect to reattach
+
+5. Run during off-peak hours
+   - Best: Midnight-8am US Eastern Time
+   - Reddit API faster during these hours
+
+6. Don't interrupt frequently
+   - Let it run for at least 1-2 hours
+   - Frequent restarts may trigger rate limits
+
+7. Backup periodically
+   - After successful runs, backup data/raw
+   - Prevents loss if something goes wrong
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+If you encounter issues:
+  1. Check the log file first
+  2. Review OVERNIGHT_COLLECTION_GUIDE.md
+  3. Try test_collection.py to isolate problem
+  4. Check Reddit status: redditstatus.com
+
+Common log file locations:
+  logs/overnight_collection_*.log
+  logs/test_collection_*.log
+
+================================================================================
+CHECKLIST BEFORE STARTING
+================================================================================
+
+Pre-flight checklist:
+  [ ] Reddit credentials configured in .env
+  [ ] Tested with test_collection.py (PASSED)
+  [ ] Reviewed config.yaml settings
+  [ ] Stable internet connection
+  [ ] Computer won't sleep/shutdown
+  [ ] Sufficient disk space (100MB+ free)
+  [ ] Noted log file location for monitoring
+  [ ] Know how to stop gracefully (Ctrl+C once)
+  [ ] Understand resume process (--resume)
+
+Ready to start checklist:
+  [ ] Virtual environment activated (if using one)
+  [ ] In project directory
+  [ ] No other Reddit scripts running
+  [ ] Have realistic time expectations
+  [ ] Know target post count
+  [ ] Know max runtime
+
+Post-collection checklist:
+  [ ] Verified posts.csv exists and has data
+  [ ] Verified comments.csv exists
+  [ ] Checked collection report JSON
+  [ ] No major errors in log
+  [ ] Post count meets minimum needs
+  [ ] Backed up data if needed
+  [ ] Ready for preprocessing step
+
+================================================================================
+READY TO GO!
+================================================================================
+
+Your scripts are ready for overnight data collection.
+
+Quick start:
+  1. cd /Users/sher/project/css/semaglutide-reddit-analysis
+  2. source venv/bin/activate
+  3. python scripts/test_collection.py
+  4. python scripts/run_overnight_collection.py
+
+Good luck! 🚀

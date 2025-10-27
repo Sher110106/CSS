@@ -172,3 +172,77 @@ Topic Distribution:
 2025-10-26 15:55:47,807 - topic_modeling - INFO -   Topic 4: 379 docs (2.0%)
 2025-10-26 15:55:48,216 - topic_modeling - INFO - Documents with topics saved to data/processed/documents_with_topics.csv
 2025-10-26 15:55:48,218 - topic_modeling - INFO - Report saved to data/metadata/topic_modeling_report.json
+2025-10-27 21:15:23,016 - topic_modeling - INFO - Topic Modeler initialized
+2025-10-27 21:15:23,016 - topic_modeling - INFO - Loading processed data...
+2025-10-27 21:15:24,073 - topic_modeling - INFO - Loaded 23405 documents
+2025-10-27 21:15:24,073 - topic_modeling - INFO - Sample text: ['semaglutide', 'weight', 'loss', 'learn', 'hey', 'everyone', 'want', 'share', 'experience', 'semaglutide']...
+2025-10-27 21:15:24,073 - topic_modeling - INFO - Preparing corpus for LDA...
+2025-10-27 21:15:24,469 - topic_modeling - INFO - Initial dictionary size: 17987
+2025-10-27 21:15:24,481 - topic_modeling - INFO - Filtered dictionary size: 5992
+2025-10-27 21:15:24,773 - topic_modeling - INFO - Corpus created with 23405 documents
+2025-10-27 21:15:24,858 - topic_modeling - INFO - Dictionary and corpus saved
+2025-10-27 21:15:24,858 - topic_modeling - INFO - Optimizing number of topics...
+2025-10-27 21:15:24,858 - topic_modeling - INFO - 
+============================================================
+2025-10-27 21:15:24,858 - topic_modeling - INFO - Testing 5 topics
+2025-10-27 21:15:24,858 - topic_modeling - INFO - ============================================================
+2025-10-27 21:15:24,858 - topic_modeling - INFO - Training LDA model with 5 topics...
+2025-10-27 21:15:45,098 - topic_modeling - INFO - Model with 5 topics trained
+2025-10-27 21:15:45,099 - topic_modeling - INFO - Calculating coherence for 5 topics...
+2025-10-27 21:15:51,004 - topic_modeling - INFO - Coherence score (5 topics): 0.6406
+2025-10-27 21:15:52,962 - topic_modeling - INFO - Results for 5 topics:
+2025-10-27 21:15:52,962 - topic_modeling - INFO -   Coherence: 0.6406
+2025-10-27 21:15:52,962 - topic_modeling - INFO -   Perplexity: -7.0494
+2025-10-27 21:15:52,962 - topic_modeling - INFO - 
+============================================================
+2025-10-27 21:15:52,962 - topic_modeling - INFO - Testing 7 topics
+2025-10-27 21:15:52,962 - topic_modeling - INFO - ============================================================
+2025-10-27 21:15:52,962 - topic_modeling - INFO - Training LDA model with 7 topics...
+2025-10-27 21:16:12,726 - topic_modeling - INFO - Model with 7 topics trained
+2025-10-27 21:16:12,726 - topic_modeling - INFO - Calculating coherence for 7 topics...
+2025-10-27 21:16:18,453 - topic_modeling - INFO - Coherence score (7 topics): 0.5255
+2025-10-27 21:16:20,263 - topic_modeling - INFO - Results for 7 topics:
+2025-10-27 21:16:20,263 - topic_modeling - INFO -   Coherence: 0.5255
+2025-10-27 21:16:20,263 - topic_modeling - INFO -   Perplexity: -7.1734
+2025-10-27 21:16:20,263 - topic_modeling - INFO - 
+============================================================
+2025-10-27 21:16:20,263 - topic_modeling - INFO - Testing 10 topics
+2025-10-27 21:16:20,263 - topic_modeling - INFO - ============================================================
+2025-10-27 21:16:20,263 - topic_modeling - INFO - Training LDA model with 10 topics...
+2025-10-27 21:16:40,760 - topic_modeling - INFO - Model with 10 topics trained
+2025-10-27 21:16:40,760 - topic_modeling - INFO - Calculating coherence for 10 topics...
+2025-10-27 21:16:46,806 - topic_modeling - INFO - Coherence score (10 topics): 0.4587
+2025-10-27 21:16:48,659 - topic_modeling - INFO - Results for 10 topics:
+2025-10-27 21:16:48,659 - topic_modeling - INFO -   Coherence: 0.4587
+2025-10-27 21:16:48,659 - topic_modeling - INFO -   Perplexity: -7.3642
+2025-10-27 21:16:48,659 - topic_modeling - INFO - 
+============================================================
+2025-10-27 21:16:48,659 - topic_modeling - INFO - Best model: 5 topics
+2025-10-27 21:16:48,659 - topic_modeling - INFO - Best coherence: 0.6406
+2025-10-27 21:16:48,659 - topic_modeling - INFO - ============================================================
+
+2025-10-27 21:16:48,663 - topic_modeling - INFO - Comparison saved to models/evaluation/topic_coherence_comparison.csv
+2025-10-27 21:16:48,663 - topic_modeling - INFO - Saving best model (5 topics)...
+2025-10-27 21:16:48,673 - topic_modeling - INFO - Model saved to models/lda/lda_model_5_topics.model
+2025-10-27 21:16:48,673 - topic_modeling - INFO - Generating topic modeling report...
+2025-10-27 21:16:48,673 - topic_modeling - INFO - Extracting topics for 5-topic model...
+2025-10-27 21:16:48,673 - topic_modeling - INFO - Topic 0: get, start, take
+2025-10-27 21:16:48,673 - topic_modeling - INFO -   Words: get, start, take, work, like, well, feel, good, time, see
+2025-10-27 21:16:48,674 - topic_modeling - INFO - Topic 1: message, semaglutide, offer
+2025-10-27 21:16:48,674 - topic_modeling - INFO -   Words: message, semaglutide, offer, private, discussion, permit, please, concern, automatically, action
+2025-10-27 21:16:48,674 - topic_modeling - INFO - Topic 2: doctor, advice, different
+2025-10-27 21:16:48,674 - topic_modeling - INFO -   Words: doctor, advice, different, health, talk, medication, check, everyone, medical, people
+2025-10-27 21:16:48,674 - topic_modeling - INFO - Topic 3: eat, food, calorie
+2025-10-27 21:16:48,674 - topic_modeling - INFO -   Words: eat, food, calorie, protein, carb, sugar, meal, water, drink, low
+2025-10-27 21:16:48,674 - topic_modeling - INFO - Topic 4: weight, lose, look
+2025-10-27 21:16:48,674 - topic_modeling - INFO -   Words: weight, lose, look, loss, body, change, healthy, exercise, pound, want
+2025-10-27 21:16:48,674 - topic_modeling - INFO - Assigning topics to documents...
+2025-10-27 21:16:49,757 - topic_modeling - INFO - 
+Topic Distribution:
+2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 0: 16949 docs (72.4%)
+2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 1: 531 docs (2.3%)
+2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 2: 920 docs (3.9%)
+2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 3: 1485 docs (6.3%)
+2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 4: 3520 docs (15.0%)
+2025-10-27 21:16:50,283 - topic_modeling - INFO - Documents with topics saved to data/processed/documents_with_topics.csv
+2025-10-27 21:16:50,287 - topic_modeling - INFO - Report saved to data/metadata/topic_modeling_report.json

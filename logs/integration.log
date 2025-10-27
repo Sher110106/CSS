@@ -95,3 +95,43 @@ Significant pairwise differences:
 2025-10-26 16:22:07,922 - integration - INFO - Saved to data/anonymized/final_dataset.csv
 2025-10-26 16:22:07,924 - integration - INFO - Integration report saved to data/metadata/integration_report.json
 2025-10-26 16:22:07,924 - integration - INFO - Key insights saved to data/metadata/key_insights.json
+2025-10-27 21:17:12,437 - integration - INFO - Integration Analyzer initialized
+2025-10-27 21:17:12,437 - integration - INFO - Loading integrated dataset...
+2025-10-27 21:17:13,509 - integration - INFO - Loaded 23405 documents with all features
+2025-10-27 21:17:13,510 - integration - INFO - Columns: ['doc_id', 'doc_type', 'author', 'score', 'created_utc', 'text', 'cleaned_text', 'tokens', 'token_count', 'subreddit', 'dominant_topic', 'topic_probability', 'topic_0_prob', 'topic_1_prob', 'topic_2_prob', 'topic_3_prob', 'topic_4_prob', 'compound', 'pos', 'neu', 'neg', 'sentiment_class']
+2025-10-27 21:17:13,510 - integration - INFO - Assigning topic names...
+2025-10-27 21:17:13,510 - integration - INFO - Topic names assigned
+2025-10-27 21:17:13,511 - integration - INFO -   Topic 0 (Alternative Medications): 16949 docs
+2025-10-27 21:17:13,511 - integration - INFO -   Topic 1 (Weight Loss Experiences): 531 docs
+2025-10-27 21:17:13,511 - integration - INFO -   Topic 2 (Insurance & Access): 920 docs
+2025-10-27 21:17:13,511 - integration - INFO -   Topic 3 (Diet & Side Effects): 1485 docs
+2025-10-27 21:17:13,511 - integration - INFO -   Topic 4 (Community Support): 3520 docs
+2025-10-27 21:17:13,511 - integration - INFO - Generating integration report...
+2025-10-27 21:17:13,511 - integration - INFO - Analyzing topic-sentiment correlation...
+2025-10-27 21:17:13,517 - integration - INFO - 
+ANOVA Results:
+2025-10-27 21:17:13,517 - integration - INFO -   F-statistic: 52.1246
+2025-10-27 21:17:13,517 - integration - INFO -   P-value: 8.7912e-44
+2025-10-27 21:17:13,517 - integration - INFO -   Result: Highly significant difference in sentiment across topics
+2025-10-27 21:17:13,534 - integration - INFO - 
+Significant pairwise differences:
+2025-10-27 21:17:13,534 - integration - INFO -   Alternative Medications vs Weight Loss Experiences: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Alternative Medications vs Insurance & Access: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Alternative Medications vs Community Support: p=0.0062
+2025-10-27 21:17:13,534 - integration - INFO -   Weight Loss Experiences vs Insurance & Access: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Weight Loss Experiences vs Diet & Side Effects: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Weight Loss Experiences vs Community Support: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Insurance & Access vs Diet & Side Effects: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO -   Insurance & Access vs Community Support: p=0.0000
+2025-10-27 21:17:13,534 - integration - INFO - Extracting representative posts...
+2025-10-27 21:17:13,561 - integration - INFO - Extracted 35 representative posts
+2025-10-27 21:17:13,561 - integration - INFO - Saved to data/anonymized/representative_posts.csv
+2025-10-27 21:17:13,561 - integration - INFO - Analyzing keywords by topic and sentiment...
+2025-10-27 21:17:14,430 - integration - INFO - Keyword analysis complete
+2025-10-27 21:17:14,430 - integration - INFO - Generating key insights...
+2025-10-27 21:17:14,438 - integration - INFO - Generated 7 key insights
+2025-10-27 21:17:14,438 - integration - INFO - Creating final anonymized dataset...
+2025-10-27 21:17:14,634 - integration - INFO - Final dataset created: 23405 documents
+2025-10-27 21:17:14,634 - integration - INFO - Saved to data/anonymized/final_dataset.csv
+2025-10-27 21:17:14,640 - integration - INFO - Integration report saved to data/metadata/integration_report.json
+2025-10-27 21:17:14,640 - integration - INFO - Key insights saved to data/metadata/key_insights.json

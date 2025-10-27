@@ -7,11 +7,11 @@ A comprehensive NLP research project analyzing patient experiences with semaglut
 This project collects and analyzes Reddit posts and comments from communities discussing semaglutide, a medication used for diabetes and weight management. Using natural language processing techniques, we identify key topics and sentiment patterns in patient experiences.
 
 ### Key Results Achieved
-- ✅ **19,204 documents** analyzed (posts + comments)
-- ✅ **7 distinct topics** identified using LDA
-- ✅ **5.8 years** of data (2020-2025)
-- ✅ **72.1% coherence score** achieved
-- ✅ **20+ visualizations** generated
+- ✅ **23,405 documents** analyzed (posts + comments)
+- ✅ **5 distinct topics** identified using LDA
+- ✅ **6.6 years** of data (2019-2025)
+- ✅ **64.1% coherence score** achieved
+- ✅ **15+ visualizations** generated
 - ✅ **Comprehensive statistical analysis** completed
 
 ### Research Objectives
@@ -157,73 +157,65 @@ Edit `config/config.yaml` to customize:
 ## 📊 Key Findings & Results
 
 ### Dataset Summary
-- **Total Documents**: 19,204 (13,867 posts + 5,337 comments)
-- **Time Period**: 2020-01-11 to 2025-10-26 (5.8 years)
+- **Total Documents**: 23,405 (1,221 posts + 22,184 comments)
+- **Time Period**: 2019-03-20 to 2025-10-27 (6.6 years)
 - **Subreddits**: r/Ozempic, r/Semaglutide, r/WeightLossAdvice, r/diabetes_t2
-- **Average Token Count**: 52.8 tokens/document
-- **Vocabulary Size**: 10,827 unique terms
+- **Average Token Count**: 31.3 tokens/document
+- **Vocabulary Size**: 17,987 unique terms
 
-### Topic Analysis (7 Topics Identified)
+### Topic Analysis (5 Topics Identified)
 
 **Best Model Performance**: 
-- Coherence Score (C_v): **0.721** (72.1% - Excellent)
-- Perplexity: -9.13
-- Log Likelihood: -129,827
+- Coherence Score (C_v): **0.641** (64.1% - Good)
+- Perplexity: -7.05
+- Total Documents: 23,405
 
 **Topics Discovered**:
-1. **Topic 0 - Weight Loss Success** (24.9%)
-   - Keywords: weight, lose, loss, pound, month
+1. **Topic 0 - Alternative Medications** (72.4%)
+   - Keywords: get, start, take, work, like, well, feel, good, time, see
    
-2. **Topic 1 - Side Effects** (16.3%)
-   - Keywords: nausea, sick, feel, stomach, bad
+2. **Topic 1 - Weight Loss Experiences** (2.3%)
+   - Keywords: message, semaglutide, offer, private, discussion
    
-3. **Topic 2 - Dosage & Medication** (15.1%)
-   - Keywords: dose, pen, week, injection, start
+3. **Topic 2 - Insurance & Access** (3.9%)
+   - Keywords: doctor, advice, different, health, talk, medication
    
-4. **Topic 3 - Medical Experience** (13.8%)
-   - Keywords: doctor, insurance, pharmacy, prescription
+4. **Topic 3 - Diet & Side Effects** (6.3%)
+   - Keywords: eat, food, calorie, protein, carb, sugar, meal, water
    
-5. **Topic 4 - Appetite & Food** (11.2%)
-   - Keywords: food, eat, appetite, hungry, craving
-   
-6. **Topic 5 - Community Questions** (10.4%)
-   - Keywords: anyone, know, try, thing, question
-   
-7. **Topic 6 - Treatment Experience** (8.3%)
-   - Keywords: help, try, work, time, good
+5. **Topic 4 - Community Support** (15.0%)
+   - Keywords: weight, lose, look, loss, body, change, healthy, exercise
 
 ### Sentiment Analysis Results
 
 **Overall Sentiment Distribution**:
-- Positive: 42.7% (8,194 documents)
-- Neutral: 32.9% (6,311 documents)
-- Negative: 24.5% (4,699 documents)
+- Positive: 68.8% (16,104 documents)
+- Neutral: 5.5% (1,285 documents)
+- Negative: 25.7% (6,016 documents)
 
 **Sentiment by Topic** (Average Compound Scores):
-- Topic 0 (Weight Loss): 0.215 (Most Positive)
-- Topic 6 (Treatment Experience): 0.178
-- Topic 4 (Appetite & Food): 0.144
-- Topic 5 (Community): 0.131
-- Topic 2 (Dosage): 0.098
-- Topic 3 (Medical): 0.091
-- Topic 1 (Side Effects): -0.052 (Most Negative)
+- Topic 1 (Weight Loss Experiences): 0.507 (Most Positive)
+- Topic 0 (Alternative Medications): 0.336
+- Topic 3 (Diet & Side Effects): 0.329
+- Topic 4 (Community Support): 0.308
+- Topic 2 (Insurance & Access): 0.106 (Least Positive)
 
-**Statistical Significance**: ANOVA F=89.47, p<0.001 (highly significant differences between topics)
+**Statistical Significance**: ANOVA F=52.12, p<8.79e-44 (highly significant differences between topics)
 
 ### Visualizations Generated
-- ✅ 8 word clouds (overall + 7 topics)
+- ✅ 6 word clouds (overall + 5 topics)
 - ✅ Topic distribution charts
 - ✅ Sentiment analysis visualizations
 - ✅ Time series plots
-- ✅ Interactive pyLDAvis HTML
-- ✅ Statistical heatmaps
+- ✅ Sentiment heatmaps
+- ✅ Box plots and summary charts
 - ✅ All figures at 300 DPI (publication-ready)
 
 ### Data Outputs
-- Raw data: 19,204 documents
-- Processed dataset with topics and sentiment
-- Anonymized final dataset (3.1 MB)
-- 500+ representative posts extracted
+- Raw data: 54,734 documents (1,402 posts + 53,332 comments)
+- Processed dataset: 23,405 documents with topics and sentiment
+- Anonymized final dataset
+- 35 representative posts extracted
 - Complete statistical reports
 
 ## 🔬 Technical Details
@@ -247,31 +239,37 @@ Edit `config/config.yaml` to customize:
 ## 📈 Key Research Insights
 
 ### Main Patient Concerns
-1. **Weight Loss Journey** (24.9% of discussions)
-   - Most positive topic (0.215 average sentiment)
-   - Focus on success stories and measurable results
-   - Strong community support and encouragement
+1. **Alternative Medications Discussion** (72.4% of discussions)
+   - Dominates community conversations
+   - Positive sentiment (0.336 average)
+   - Focus on starting, taking, and medication effectiveness
 
-2. **Side Effects Management** (16.3% of discussions)
-   - Only negative-leaning topic (-0.052 sentiment)
-   - Common concerns: nausea, stomach issues
-   - Important for patient education
+2. **Weight Loss Experiences** (2.3% of discussions)
+   - Most positive topic (0.507 average sentiment)
+   - Community sharing and support
+   - Success stories and experiences
 
-3. **Medication Access** (13.8% of discussions)
-   - Insurance coverage challenges
-   - Pharmacy availability issues
-   - Prescription process discussions
+3. **Insurance & Access Challenges** (3.9% of discussions)
+   - Lower positive sentiment (0.106)
+   - Medical consultation and access issues
+   - Insurance and prescription challenges
+
+4. **Diet & Side Effects** (6.3% of discussions)
+   - Positive sentiment (0.329)
+   - Focus on food, nutrition, and dietary habits
+   - Side effect management through diet
 
 ### Temporal Trends
-- Increasing discussion volume over time
-- Consistent sentiment patterns across years
+- Dramatic increase in discussion volume (5,295 posts in Oct 2025)
+- Consistent positive sentiment across years (0.35 average)
+- Peak activity in 2025
 - Growing community engagement
 
 ### Clinical Implications
-- Real-world evidence of treatment experiences
-- Patient priorities: weight loss success > side effect concerns
-- Need for better patient education on side effects
-- Access barriers remain a significant concern
+- Real-world evidence shows predominantly positive experiences (68.8%)
+- Benefits appear to outweigh side effects for most users
+- Strong peer support in communities
+- Sentiment varies significantly by topic (p<8.79e-44)
 
 ## ⚠️ Ethics & Privacy
 
@@ -368,18 +366,19 @@ with open('data/metadata/key_insights.json', 'r') as f:
 ### Dataset Schema
 
 The final dataset (`data/anonymized/final_dataset.csv`) contains:
-- **post_id**: Unique identifier (hashed)
+- **doc_id**: Unique identifier
+- **doc_type**: Post or comment
+- **author**: Reddit username (anonymized if needed)
 - **text**: Original post/comment text
 - **cleaned_text**: Preprocessed text
 - **created_utc**: Timestamp
 - **subreddit**: Source subreddit
 - **score**: Reddit score
-- **dominant_topic**: Assigned topic (0-6)
-- **topic_0 to topic_6**: Topic probabilities
+- **dominant_topic**: Assigned topic (0-4)
+- **topic_0 to topic_4**: Topic probabilities
 - **compound**: VADER compound sentiment score (-1 to 1)
 - **pos, neg, neu**: VADER component scores
 - **sentiment_class**: Positive/Neutral/Negative
-- **doc_type**: Post or comment
 
 ## 📚 References
 
@@ -403,34 +402,35 @@ For questions about this project, please refer to the project documentation or r
 
 ### Completed Modules
 - [x] **Module 0**: Setup & Configuration ✓
-- [x] **Module 1**: Data Collection (19,204 documents) ✓
-- [x] **Module 2**: Data Preprocessing ✓
+- [x] **Module 1**: Data Collection (54,734 raw documents) ✓
+- [x] **Module 2**: Data Preprocessing (23,405 processed) ✓
 - [x] **Module 3**: Exploratory Data Analysis ✓
-- [x] **Module 4**: Topic Modeling (7 topics, 72.1% coherence) ✓
+- [x] **Module 4**: Topic Modeling (5 topics, 64.1% coherence) ✓
 - [x] **Module 5**: Sentiment Analysis (VADER) ✓
 - [x] **Module 6**: Integration & Statistical Analysis ✓
-- [x] **Module 7**: Visualization (20+ figures) ✓
-- [ ] **Module 8**: Report Generation (in progress)
-- [ ] **Module 9**: Final Validation
+- [x] **Module 7**: Visualization (15+ figures) ✓
+- [ ] **Module 8**: Report Generation (pending)
+- [ ] **Module 9**: Final Validation (pending)
 
 ### Available Outputs
 
 **Data Files**:
-- `data/raw/posts.csv` - Raw Reddit posts (13,867)
-- `data/raw/comments.csv` - Raw comments (5,337)
-- `data/processed/combined_processed.csv` - Cleaned data
+- `data/raw/posts.csv` - Raw Reddit posts (1,402)
+- `data/raw/comments.csv` - Raw comments (53,332)
+- `data/processed/combined_processed.csv` - Cleaned data (23,405 docs)
 - `data/anonymized/final_dataset.csv` - Complete dataset with topics & sentiment
-- `data/anonymized/representative_posts.csv` - 500+ sample posts
+- `data/anonymized/representative_posts.csv` - 35 sample posts
 
 **Model Files**:
-- `models/lda/lda_model_7_topics.model` - Best LDA model
+- `models/lda/lda_model_5_topics.model` - Best LDA model
+- `models/lda/lda_model_best.model` - Best model (symlink)
 - `models/evaluation/topic_coherence_comparison.csv` - Model comparison
-- `models/evaluation/topic_report.json` - Detailed topic analysis
+- `data/metadata/topic_modeling_report.json` - Detailed topic analysis
 
 **Visualizations**:
-- `visualizations/wordclouds/` - 8 word clouds (300 DPI)
+- `visualizations/wordclouds/` - 6 word clouds (300 DPI)
 - `visualizations/charts/` - Topic & sentiment charts
-- `visualizations/interactive/lda_visualization.html` - pyLDAvis
+- `visualizations/eda/` - Exploratory analysis plots
 - `visualizations/report_figures/` - Publication-ready figures
 
 **Reports**:
@@ -450,5 +450,5 @@ For detailed results, see `COMPREHENSIVE_RESULTS.md` (67KB, 2,367 lines)
 ---
 
 **Project Completion**: ~90%  
-**Last Updated**: 2025-10-26  
-**Analysis Date**: October 26, 2025
+**Last Updated**: 2025-10-27  
+**Analysis Date**: October 27, 2025

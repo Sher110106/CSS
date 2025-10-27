@@ -1,0 +1,9 @@
+2025-10-27 21:12:00,500 - data_preprocessing - INFO - Loading NLP models...
+2025-10-27 21:12:00,944 - data_preprocessing - INFO - NLP models loaded successfully
+2025-10-27 21:12:00,948 - data_preprocessing - INFO - Preprocessing 1402 documents...
+2025-10-27 21:12:14,979 - data_preprocessing - INFO - Filtered 181 short documents (< 10 tokens)
+2025-10-27 21:12:14,980 - data_preprocessing - INFO - Remaining documents: 1221
+2025-10-27 21:12:14,997 - data_preprocessing - INFO - Preprocessing 53332 documents...
+2025-10-27 21:14:44,232 - data_preprocessing - INFO - Filtered 31148 short documents (< 10 tokens)
+2025-10-27 21:14:44,232 - data_preprocessing - INFO - Remaining documents: 22184
+2025-10-27 21:14:45,691 - data_preprocessing - INFO - Created corpus with 23405 documents
