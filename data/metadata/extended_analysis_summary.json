@@ -1,0 +1,48 @@
+{
+  "extended_analysis_summary": {
+    "generated_at": "2025-11-11T16:10:59.237159",
+    "total_documents_analyzed": 23405,
+    "date_range": "2019-03-20 16:13:21 to 2025-10-27 21:05:08",
+    "subreddit_analysis": {
+      "subreddits": [
+        "Ozempic",
+        "Semaglutide",
+        "WeightLossAdvice",
+        "diabetes_t2",
+        NaN
+      ],
+      "subreddit_counts": {
+        "diabetes_t2": 257,
+        "Ozempic": 269,
+        "WeightLossAdvice": 299,
+        "Semaglutide": 396
+      },
+      "visualizations_created": [
+        "arctic_subreddit_distribution.png",
+        "temporal_trends_by_subreddit.png",
+        "subreddit_sentiment_temporal.png"
+      ]
+    },
+    "4_topic_model": {
+      "status": "completed",
+      "coherence_score": 0.6627040981047965,
+      "model_file": "models/lda/lda_model_4_topics.model",
+      "visualization": "coherence_comparison_with_4topics.png"
+    },
+    "pandemic_analysis": {
+      "cutoff_date": "2020-03-01 00:00:00",
+      "pre_pandemic_docs": 47,
+      "post_pandemic_docs": 23358,
+      "visualizations_created": [
+        "pandemic_posting_behavior.png",
+        "pandemic_sentiment_analysis.png",
+        "pandemic_topic_distribution.png"
+      ]
+    },
+    "documentation": {
+      "temporal_methodology": "docs/TEMPORAL_METHODOLOGY.md",
+      "methodology_json": "data/metadata/temporal_methodology.json"
+    },
+    "output_location": "visualizations/extended_analysis"
+  }
+}
