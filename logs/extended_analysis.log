@@ -1,0 +1,54 @@
+2025-11-11 16:09:55,214 - extended_analysis - INFO - Extended Analyzer initialized
+2025-11-11 16:09:55,214 - extended_analysis - INFO - Loading final dataset...
+2025-11-11 16:09:55,414 - extended_analysis - INFO - Loaded 23405 documents
+2025-11-11 16:09:55,415 - extended_analysis - INFO - Date range: 2019-03-20 16:13:21 to 2025-10-27 21:05:08
+2025-11-11 16:09:55,415 - extended_analysis - INFO - Subreddits: ['Ozempic' 'Semaglutide' 'WeightLossAdvice' 'diabetes_t2' nan]
+2025-11-11 16:09:55,415 - extended_analysis - INFO - ================================================================================
+2025-11-11 16:09:55,415 - extended_analysis - INFO - STARTING EXTENDED ANALYSIS
+2025-11-11 16:09:55,416 - extended_analysis - INFO - ================================================================================
+2025-11-11 16:09:55,416 - extended_analysis - INFO - 
+=== SUBREDDIT-LEVEL ANALYSIS ===
+2025-11-11 16:09:55,416 - extended_analysis - INFO - Creating Arctic-style subreddit bar plot...
+2025-11-11 16:09:55,978 - extended_analysis - INFO - Arctic-style subreddit bar plot saved: visualizations/extended_analysis/arctic_subreddit_distribution.png
+2025-11-11 16:09:55,979 - extended_analysis - INFO - Creating temporal trends by subreddit...
+2025-11-11 16:09:57,158 - extended_analysis - INFO - Temporal trends by subreddit saved: visualizations/extended_analysis/temporal_trends_by_subreddit.png
+2025-11-11 16:09:57,158 - extended_analysis - INFO - Creating subreddit sentiment temporal analysis...
+2025-11-11 16:09:58,254 - extended_analysis - INFO - Subreddit sentiment temporal saved: visualizations/extended_analysis/subreddit_sentiment_temporal.png
+2025-11-11 16:09:58,258 - extended_analysis - INFO - 
+=== 4-TOPIC MODEL EVALUATION ===
+2025-11-11 16:09:58,259 - extended_analysis - INFO - Training and evaluating 4-topic LDA model...
+2025-11-11 16:10:00,065 - extended_analysis - INFO - Loaded dictionary with 5992 terms
+2025-11-11 16:10:00,065 - extended_analysis - INFO - Loaded corpus with 23405 documents
+2025-11-11 16:10:00,065 - extended_analysis - INFO - Training 4-topic LDA model...
+2025-11-11 16:10:47,463 - extended_analysis - INFO - 4-topic model trained successfully
+2025-11-11 16:10:47,464 - extended_analysis - INFO - Calculating coherence score for 4-topic model...
+2025-11-11 16:10:49,012 - extended_analysis - INFO - Coherence score (4 topics): 0.6627
+2025-11-11 16:10:49,012 - extended_analysis - INFO - Extracting topics from 4-topic model...
+2025-11-11 16:10:49,013 - extended_analysis - INFO - Topic 0: weight, lose, get, like, look, start, feel, work, good, take
+2025-11-11 16:10:49,013 - extended_analysis - INFO - Topic 1: get, doctor, blood, take, use, dose, insulin, med, diabetic, medication
+2025-11-11 16:10:49,013 - extended_analysis - INFO - Topic 2: message, semaglutide, offer, private, discussion, permit, please, sub, question, concern
+2025-11-11 16:10:49,014 - extended_analysis - INFO - Topic 3: eat, food, calorie, carb, protein, like, meal, sugar, make, get
+2025-11-11 16:10:53,992 - extended_analysis - INFO - Updated coherence comparison file with 4-topic model results
+2025-11-11 16:10:53,992 - extended_analysis - INFO - Creating coherence comparison visualization...
+2025-11-11 16:10:54,590 - extended_analysis - INFO - Coherence comparison visualization saved: visualizations/extended_analysis/coherence_comparison_with_4topics.png
+2025-11-11 16:10:54,595 - extended_analysis - INFO - 4-topic model saved: models/lda/lda_model_4_topics.model
+2025-11-11 16:10:54,611 - extended_analysis - INFO - 
+=== PRE VS POST-PANDEMIC ANALYSIS ===
+2025-11-11 16:10:54,611 - extended_analysis - INFO - Analyzing pre vs post-pandemic posting behavior...
+2025-11-11 16:10:55,961 - extended_analysis - INFO - Pandemic posting behavior saved: visualizations/extended_analysis/pandemic_posting_behavior.png
+2025-11-11 16:10:55,966 - extended_analysis - INFO - Analyzing pre vs post-pandemic sentiment...
+2025-11-11 16:10:57,597 - extended_analysis - INFO - Pandemic sentiment analysis saved: visualizations/extended_analysis/pandemic_sentiment_analysis.png
+2025-11-11 16:10:57,600 - extended_analysis - INFO - Analyzing pre vs post-pandemic topic distribution...
+2025-11-11 16:10:59,227 - extended_analysis - INFO - Pandemic topic distribution saved: visualizations/extended_analysis/pandemic_topic_distribution.png
+2025-11-11 16:10:59,228 - extended_analysis - INFO - 
+=== TEMPORAL METHODOLOGY DOCUMENTATION ===
+2025-11-11 16:10:59,229 - extended_analysis - INFO - Documenting temporal trend methodology...
+2025-11-11 16:10:59,236 - extended_analysis - INFO - Temporal methodology documented:
+2025-11-11 16:10:59,237 - extended_analysis - INFO -   JSON: data/metadata/temporal_methodology.json
+2025-11-11 16:10:59,237 - extended_analysis - INFO -   Markdown: docs/TEMPORAL_METHODOLOGY.md
+2025-11-11 16:10:59,237 - extended_analysis - INFO - Creating summary report...
+2025-11-11 16:10:59,242 - extended_analysis - INFO - Summary report saved: data/metadata/extended_analysis_summary.json
+2025-11-11 16:10:59,243 - extended_analysis - INFO - 
+================================================================================
+2025-11-11 16:10:59,243 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
+2025-11-11 16:10:59,243 - extended_analysis - INFO - ================================================================================

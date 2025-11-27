@@ -1,0 +1,226 @@
+{
+  "temporal_trend_methodology": {
+    "overview": "This document explains how temporal trends were derived in the Semaglutide Reddit Analysis project.",
+    "data_source": {
+      "description": "Reddit posts and comments collected from 4 subreddits",
+      "subreddits": [
+        "r/Ozempic",
+        "r/Semaglutide",
+        "r/WeightLossAdvice",
+        "r/diabetes_t2"
+      ],
+      "collection_period": "2019-03-20 16:13:21 to 2025-10-27 21:05:08",
+      "total_documents": 23405,
+      "posts": 1221,
+      "comments": 22184,
+      "data_fields_used": [
+        "created_utc (timestamp)",
+        "subreddit",
+        "doc_type (post/comment)",
+        "compound (sentiment score)",
+        "dominant_topic",
+        "sentiment_class"
+      ]
+    },
+    "time_segmentation": {
+      "primary_method": "Monthly bins (year-month periods)",
+      "implementation": "Using pandas Period functionality with frequency='M'",
+      "code_example": "df['year_month'] = df['created_utc'].dt.to_period('M')",
+      "rationale": "Monthly aggregation provides sufficient granularity while smoothing out daily noise",
+      "total_months": 70,
+      "month_range": "2019-03 to 2025-10",
+      "alternative_segmentation": {
+        "yearly": "For high-level trend analysis",
+        "quarterly": "For seasonal pattern analysis",
+        "pandemic_periods": {
+          "pre_pandemic": "Before 2020-03-01 00:00:00",
+          "post_pandemic": "After 2020-03-01 00:00:00",
+          "cutoff_rationale": "March 2020 marks WHO pandemic declaration"
+        }
+      }
+    },
+    "processing_pipeline": {
+      "step_1": {
+        "name": "Timestamp Parsing",
+        "description": "Convert Unix timestamps to pandas datetime objects",
+        "function": "pd.to_datetime()",
+        "input": "created_utc column from raw data",
+        "output": "Datetime objects with timezone awareness"
+      },
+      "step_2": {
+        "name": "Temporal Feature Engineering",
+        "description": "Extract temporal features for aggregation",
+        "features_created": [
+          "year_month: Monthly period",
+          "year: Calendar year",
+          "month: Month number (1-12)",
+          "pandemic_period: Pre/Post pandemic classification"
+        ]
+      },
+      "step_3": {
+        "name": "Aggregation",
+        "description": "Group data by temporal bins and calculate statistics",
+        "aggregation_functions": {
+          "posting_activity": "count() - number of posts/comments per period",
+          "sentiment_mean": "mean() of compound scores",
+          "sentiment_std": "std() of compound scores",
+          "topic_distribution": "crosstab() or value_counts() normalized"
+        },
+        "code_example": "df.groupby('year_month').agg({'compound': ['mean', 'std'], 'doc_id': 'count'})"
+      },
+      "step_4": {
+        "name": "Multi-dimensional Analysis",
+        "description": "Cross-tabulate temporal data with other dimensions",
+        "dimensions": [
+          "Subreddit: Temporal trends per community",
+          "Topic: Topic prevalence over time",
+          "Sentiment: Sentiment evolution over time",
+          "Pandemic Period: Before/after comparison"
+        ]
+      },
+      "step_5": {
+        "name": "Visualization",
+        "description": "Generate temporal plots with appropriate time axes",
+        "plot_types": [
+          "Line plots: Continuous trends over time",
+          "Bar plots: Discrete period comparisons",
+          "Stacked area: Cumulative distributions over time",
+          "Scatter plots: Individual data points with temporal coloring"
+        ],
+        "x_axis_handling": "Sequential indices with period labels for readability"
+      }
+    },
+    "specific_temporal_analyses": {
+      "posting_activity_trends": {
+        "description": "Track volume of posts/comments over time",
+        "calculation": "Count of documents per month",
+        "insights": [
+          "Identify growth patterns",
+          "Detect activity spikes",
+          "Compare subreddit activity levels"
+        ]
+      },
+      "sentiment_trends": {
+        "description": "Track sentiment evolution over time",
+        "calculation": "Mean and standard deviation of compound scores per month",
+        "metrics": [
+          "compound_mean: Average sentiment",
+          "compound_std: Sentiment variability",
+          "sentiment_class distribution: % positive/neutral/negative"
+        ],
+        "insights": [
+          "Detect sentiment shifts",
+          "Identify stable vs volatile periods",
+          "Compare sentiment across communities"
+        ]
+      },
+      "topic_evolution": {
+        "description": "Track topic prevalence over time",
+        "calculation": "Topic distribution (%) per month",
+        "insights": [
+          "Identify emerging topics",
+          "Track declining interests",
+          "Detect topic shifts around events"
+        ]
+      },
+      "pandemic_comparison": {
+        "description": "Compare metrics before and after pandemic",
+        "cutoff_date": "2020-03-01 00:00:00",
+        "metrics_compared": [
+          "Total posting volume",
+          "Average monthly activity",
+          "Mean sentiment scores",
+          "Topic distribution changes",
+          "Growth rate calculations"
+        ],
+        "calculation_example": "growth_rate = ((post_rate - pre_rate) / pre_rate) * 100"
+      }
+    },
+    "data_quality_considerations": {
+      "handling_missing_months": "Months with no data are preserved in visualizations but marked accordingly",
+      "outlier_detection": "Standard deviation bands used to identify unusual periods",
+      "smoothing": "No smoothing applied to preserve authentic patterns",
+      "minimum_sample_size": "Periods with <10 documents flagged for interpretation caution"
+    },
+    "output_files": {
+      "sentiment_temporal.csv": {
+        "description": "Monthly sentiment aggregates",
+        "columns": [
+          "year_month",
+          "compound_mean",
+          "compound_std",
+          "doc_count"
+        ],
+        "rows": 79
+      },
+      "sentiment_topic_temporal.csv": {
+        "description": "Monthly sentiment by topic",
+        "columns": [
+          "year_month",
+          "topic_name",
+          "compound_mean",
+          "doc_count"
+        ],
+        "rows": 296
+      },
+      "subreddit_sentiment_temporal.csv": {
+        "description": "Monthly sentiment by subreddit",
+        "columns": [
+          "year_month",
+          "subreddit",
+          "sentiment_mean",
+          "sentiment_std",
+          "count"
+        ]
+      },
+      "pandemic_posting_behavior.csv": {
+        "description": "Posting statistics by pandemic period",
+        "columns": [
+          "period",
+          "total_posts",
+          "start_date",
+          "end_date",
+          "months",
+          "posts_per_month"
+        ]
+      },
+      "pandemic_sentiment_stats.csv": {
+        "description": "Sentiment statistics by pandemic period",
+        "columns": [
+          "period",
+          "compound_mean",
+          "compound_std",
+          "compound_median",
+          "pos_mean",
+          "neu_mean",
+          "neg_mean",
+          "count"
+        ]
+      },
+      "pandemic_topic_distribution.csv": {
+        "description": "Topic distribution by pandemic period",
+        "columns": [
+          "period",
+          "Alternative Medications",
+          "Weight Loss Experiences",
+          "Insurance & Access",
+          "Diet & Side Effects",
+          "Community Support"
+        ]
+      }
+    },
+    "reproducibility": {
+      "random_seed": "Not applicable for temporal analysis (deterministic)",
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "matplotlib",
+        "seaborn"
+      ],
+      "python_version": "3.8+",
+      "execution_time": "~2-5 minutes for full temporal analysis pipeline"
+    },
+    "generated_at": "2025-11-11T16:10:59.235578",
+    "generated_by": "Extended Analysis Module (scripts/08_extended_analysis.py)"
+  }
+}
