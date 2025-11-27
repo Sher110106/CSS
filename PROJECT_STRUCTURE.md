@@ -19,7 +19,10 @@ semaglutide-reddit-analysis/
 │   ├── processed/                 # Cleaned and processed data
 │   │   ├── combined_processed.csv
 │   │   ├── documents_with_topics.csv
-│   │   └── documents_with_sentiment.csv
+│   │   ├── documents_with_sentiment.csv
+│   │   ├── period_posting_behavior.csv
+│   │   ├── period_sentiment_stats.csv
+│   │   └── period_topic_distribution.csv
 │   ├── anonymized/                # Final anonymized dataset
 │   │   ├── final_dataset.csv
 │   │   └── representative_posts.csv
@@ -28,9 +31,12 @@ semaglutide-reddit-analysis/
 │       ├── preprocessing_report.json
 │       ├── eda_report.json
 │       ├── topic_modeling_report.json
+│       ├── 4_topic_model_report.json
 │       ├── sentiment_report.json
 │       ├── integration_report.json
-│       └── key_insights.json
+│       ├── key_insights.json
+│       ├── extended_analysis_summary.json
+│       └── temporal_methodology.json
 │
 ├── 📂 models/                     # Trained models
 │   ├── lda/                       # LDA topic models
@@ -42,45 +48,59 @@ semaglutide-reddit-analysis/
 │       └── topic_coherence_comparison.csv
 │
 ├── 📂 scripts/                    # Analysis scripts
-│   ├── 01_data_collection_main.py    # Main collection script
-│   ├── 01_data_collection.py         # Original collection (archived)
+│   ├── 01_data_collection.py         # Enhanced data collection
 │   ├── 02_data_preprocessing.py      # Data preprocessing
 │   ├── 03_exploratory_analysis.py    # EDA
 │   ├── 04_topic_modeling.py          # Topic modeling (LDA)
 │   ├── 05_sentiment_analysis.py      # Sentiment analysis (VADER)
 │   ├── 06_integration.py             # Integration & stats
 │   ├── 07_visualization.py           # Visualization generation
+│   ├── 08_extended_analysis.py       # Extended analysis & period comparison
 │   ├── run_collection.py             # Collection runner (CLI)
 │   ├── test_collection.py            # Test Reddit API
 │   ├── validate_setup.py             # Setup validation
-│   └── utils.py                      # Utility functions
+│   ├── utils.py                      # Utility functions
+│   └── archive/                      # Archived old scripts
 │
-├── 📂 visualizations/             # Generated visualizations
-│   ├── wordclouds/                # Word cloud images
+├── 📂 visualizations/             # Generated visualizations (300 DPI)
+│   ├── wordclouds/                # Word cloud images (6 total)
 │   │   ├── overall_wordcloud.png
-│   │   └── topic_*_wordcloud.png
+│   │   └── topic_*_wordcloud.png (0-4)
 │   ├── charts/                    # Statistical charts
 │   │   ├── topic_distribution.png
 │   │   ├── sentiment_distribution.png
-│   │   └── temporal_sentiment.png
+│   │   ├── temporal_sentiment.png
+│   │   └── sentiment_heatmap.png
 │   ├── eda/                       # EDA visualizations
+│   │   ├── temporal_analysis.png
+│   │   ├── subreddit_analysis.png
+│   │   └── vocabulary_analysis.png
+│   ├── extended_analysis/         # Extended analysis visualizations
+│   │   ├── period_posting_behavior.png
+│   │   ├── period_sentiment_analysis.png
+│   │   └── period_topic_distribution.png
 │   └── report_figures/            # Publication-ready figures
 │
 ├── 📂 docs/                       # Documentation
 │   ├── COLLECTION_GUIDE.md        # Detailed collection guide
-│   ├── CHECKLIST.md               # Pre-execution checklist
-│   ├── COMPREHENSIVE_RESULTS.md   # Complete analysis results
-│   ├── ANALYSIS_SUMMARY_2025-10-27.md  # Latest summary
-│   ├── PIPELINE_EXECUTION_SUMMARY.md   # Pipeline execution log
-│   ├── EXECUTION_INSTRUCTIONS.txt
-│   ├── RUN_ME_FIRST.txt
-│   └── module_reports/            # Individual module reports
-│       ├── MODULE_0_COMPLETE.md
-│       ├── MODULE_1_COMPLETE.md
-│       └── ...
+│   ├── TEMPORAL_METHODOLOGY.md    # Temporal analysis methodology
+│   └── module_reports/            # Module completion reports
+│       ├── PROJECT_SUMMARY.md     # 📌 Complete project summary
+│       ├── MODULE_0_COMPLETE.md   # Setup & configuration
+│       ├── MODULE_1_COMPLETE.md   # Data collection
+│       ├── MODULE_2_COMPLETE.md   # Data preprocessing
+│       ├── MODULE_3_COMPLETE.md   # Exploratory analysis
+│       ├── MODULE_4_COMPLETE.md   # Topic modeling
+│       ├── MODULE_5_COMPLETE.md   # Sentiment analysis
+│       ├── MODULE_6_COMPLETE.md   # Integration & stats
+│       └── MODULE_7_COMPLETE.md   # Visualization
 │
 ├── 📂 logs/                       # Execution logs
-│   └── collection_*.log           # Collection logs
+│   ├── collection_*.log           # Collection logs
+│   ├── extended_analysis.log      # Extended analysis logs
+│   ├── topic_modeling.log         # Topic modeling logs
+│   ├── sentiment_analysis.log     # Sentiment analysis logs
+│   └── archive/                   # Archived old logs
 │
 ├── 📂 notebooks/                  # Jupyter notebooks (if any)
 │
@@ -115,10 +135,10 @@ Run in order:
 6. `python scripts/07_visualization.py`
 
 ### Results
-- **Quick Summary**: `docs/ANALYSIS_SUMMARY_2025-10-27.md`
-- **Full Results**: `docs/COMPREHENSIVE_RESULTS.md`
-- **Latest Report**: `docs/PIPELINE_EXECUTION_SUMMARY.md`
-- **Visualizations**: `visualizations/report_figures/`
+- **📌 Complete Summary**: `docs/module_reports/PROJECT_SUMMARY.md`
+- **Module Reports**: `docs/module_reports/MODULE_*.md`
+- **Methodology**: `docs/TEMPORAL_METHODOLOGY.md`
+- **Visualizations**: `visualizations/` (organized by type)
 
 ## 📊 Key Files
 
@@ -183,7 +203,7 @@ ls -lh logs/
 - `README.md` - Complete project overview
 - `QUICK_START.md` - Get started quickly
 - `docs/COLLECTION_GUIDE.md` - Detailed collection instructions
-- `docs/CHECKLIST.md` - Pre-execution checklist
+- `docs/module_reports/PROJECT_SUMMARY.md` - **Complete project summary**
 
 ### For Developers
 - `PROJECT_STRUCTURE.md` - This file (project layout)
@@ -191,9 +211,9 @@ ls -lh logs/
 - Individual module scripts have detailed docstrings
 
 ### Analysis Reports
-- `docs/ANALYSIS_SUMMARY_2025-10-27.md` - Latest analysis summary
-- `docs/COMPREHENSIVE_RESULTS.md` - Full results with details
-- `docs/module_reports/` - Individual module completion reports
+- `docs/module_reports/PROJECT_SUMMARY.md` - **📌 Master summary document**
+- `docs/module_reports/MODULE_*.md` - Individual module reports (0-7)
+- `docs/TEMPORAL_METHODOLOGY.md` - Temporal analysis methodology
 
 ## 🎨 Visualization Files
 
@@ -248,6 +268,22 @@ REDDIT_USER_AGENT=semaglutide_research_v1.0
 
 ---
 
-**Last Updated**: October 27, 2025  
-**Project Version**: 1.0  
-**Status**: Production Ready
+## 📌 Important Notes
+
+### Study Limitations
+- **Pre-2020 data insufficient**: Only 3 posts collected before March 2020
+- **Valid comparisons**: Early Period (2020-2022) vs Recent Period (2023-2025)
+- **Sample bias**: Reddit users may not represent all semaglutide patients
+- See `docs/module_reports/PROJECT_SUMMARY.md` for full limitations discussion
+
+### Key Changes (Nov 27, 2025)
+- ✅ Removed redundant documentation files (consolidated into PROJECT_SUMMARY.md)
+- ✅ Updated analysis to period-based comparison (deprecated pandemic comparison)
+- ✅ Cleaned up logs folder (archived old logs)
+- ✅ All metadata JSON files retained (each serves unique purpose)
+
+---
+
+**Last Updated**: November 27, 2025  
+**Project Version**: 1.1  
+**Status**: Production Ready - Cleaned & Consolidated

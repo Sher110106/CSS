@@ -52,3 +52,269 @@
 ================================================================================
 2025-11-11 16:10:59,243 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
 2025-11-11 16:10:59,243 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:39:34,656 - extended_analysis - INFO - Extended Analyzer initialized
+2025-11-27 10:39:34,656 - extended_analysis - INFO - Loading final dataset...
+2025-11-27 10:39:34,777 - extended_analysis - INFO - Loaded 23405 documents
+2025-11-27 10:39:34,777 - extended_analysis - INFO - Date range: 2019-03-20 16:13:21 to 2025-10-27 21:05:08
+2025-11-27 10:39:34,778 - extended_analysis - INFO - Subreddits: ['Ozempic' 'Semaglutide' 'WeightLossAdvice' 'diabetes_t2' nan]
+2025-11-27 10:39:34,778 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:39:34,778 - extended_analysis - INFO - STARTING EXTENDED ANALYSIS
+2025-11-27 10:39:34,778 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:39:34,778 - extended_analysis - INFO - 
+=== SUBREDDIT-LEVEL ANALYSIS ===
+2025-11-27 10:39:34,778 - extended_analysis - INFO - Creating Arctic-style subreddit bar plot...
+2025-11-27 10:39:37,074 - extended_analysis - INFO - Arctic-style subreddit bar plot saved: visualizations/extended_analysis/arctic_subreddit_distribution.png
+2025-11-27 10:39:37,075 - extended_analysis - INFO - Creating temporal trends by subreddit...
+2025-11-27 10:39:37,567 - extended_analysis - INFO - Temporal trends by subreddit saved: visualizations/extended_analysis/temporal_trends_by_subreddit.png
+2025-11-27 10:39:37,567 - extended_analysis - INFO - Creating subreddit sentiment temporal analysis...
+2025-11-27 10:39:37,995 - extended_analysis - INFO - Subreddit sentiment temporal saved: visualizations/extended_analysis/subreddit_sentiment_temporal.png
+2025-11-27 10:39:37,997 - extended_analysis - INFO - 
+=== 4-TOPIC MODEL EVALUATION ===
+2025-11-27 10:39:37,997 - extended_analysis - INFO - Training and evaluating 4-topic LDA model...
+2025-11-27 10:39:39,243 - extended_analysis - INFO - Loaded dictionary with 5992 terms
+2025-11-27 10:39:39,243 - extended_analysis - INFO - Loaded corpus with 23405 documents
+2025-11-27 10:39:39,243 - extended_analysis - INFO - Training 4-topic LDA model...
+2025-11-27 10:40:07,396 - extended_analysis - INFO - 4-topic model trained successfully
+2025-11-27 10:40:07,397 - extended_analysis - INFO - Calculating coherence score for 4-topic model...
+2025-11-27 10:40:18,830 - extended_analysis - INFO - Coherence score (4 topics): 0.6627
+2025-11-27 10:40:18,832 - extended_analysis - INFO - Extracting topics from 4-topic model...
+2025-11-27 10:40:18,832 - extended_analysis - INFO - Topic 0: weight, lose, get, like, look, start, feel, work, good, take
+2025-11-27 10:40:18,833 - extended_analysis - INFO - Topic 1: get, doctor, blood, take, use, dose, insulin, med, diabetic, medication
+2025-11-27 10:40:18,833 - extended_analysis - INFO - Topic 2: message, semaglutide, offer, private, discussion, permit, please, sub, question, concern
+2025-11-27 10:40:18,833 - extended_analysis - INFO - Topic 3: eat, food, calorie, carb, protein, like, meal, sugar, make, get
+2025-11-27 10:40:18,839 - extended_analysis - INFO - Creating coherence comparison visualization...
+2025-11-27 10:40:19,301 - extended_analysis - INFO - Coherence comparison visualization saved: visualizations/extended_analysis/coherence_comparison_with_4topics.png
+2025-11-27 10:40:19,503 - extended_analysis - INFO - 4-topic model saved: models/lda/lda_model_4_topics.model
+2025-11-27 10:40:19,503 - extended_analysis - ERROR - Error training 4-topic model: cannot access local variable 'perplexity_4' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 448, in train_and_evaluate_4_topic_model
+    'perplexity': float(perplexity_4),
+                        ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'perplexity_4' where it is not associated with a value
+2025-11-27 10:40:19,537 - extended_analysis - INFO - 
+=== PRE VS POST-PANDEMIC ANALYSIS ===
+2025-11-27 10:40:19,537 - extended_analysis - INFO - Analyzing posting behavior across time periods...
+2025-11-27 10:40:19,537 - extended_analysis - WARNING - Pre-2020 data insufficient (n=3 posts). Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:40:20,030 - extended_analysis - INFO - Period posting behavior saved: visualizations/extended_analysis/period_posting_behavior.png
+2025-11-27 10:40:20,035 - extended_analysis - INFO - Analyzing sentiment across time periods...
+2025-11-27 10:40:20,035 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:40:20,654 - extended_analysis - INFO - Period sentiment analysis saved: visualizations/extended_analysis/period_sentiment_analysis.png
+2025-11-27 10:40:20,656 - extended_analysis - INFO - Analyzing topic distribution across time periods...
+2025-11-27 10:40:20,656 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:40:21,383 - extended_analysis - INFO - Period topic distribution saved: visualizations/extended_analysis/period_topic_distribution.png
+2025-11-27 10:40:21,388 - extended_analysis - INFO - 
+=== TEMPORAL METHODOLOGY DOCUMENTATION ===
+2025-11-27 10:40:21,388 - extended_analysis - INFO - Documenting temporal trend methodology...
+2025-11-27 10:40:21,394 - extended_analysis - ERROR - Error documenting methodology: 'ExtendedAnalyzer' object has no attribute 'pandemic_cutoff'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 982, in document_temporal_methodology
+    "pre_pandemic": f"Before {self.pandemic_cutoff}",
+                              ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ExtendedAnalyzer' object has no attribute 'pandemic_cutoff'
+2025-11-27 10:40:21,395 - extended_analysis - INFO - Creating summary report...
+2025-11-27 10:40:21,395 - extended_analysis - ERROR - Error creating summary report: 'ExtendedAnalyzer' object has no attribute 'pandemic_cutoff'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 1441, in create_summary_report
+    "cutoff_date": str(self.pandemic_cutoff),
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ExtendedAnalyzer' object has no attribute 'pandemic_cutoff'
+2025-11-27 10:40:21,395 - extended_analysis - INFO - 
+================================================================================
+2025-11-27 10:40:21,395 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
+2025-11-27 10:40:21,395 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:41:30,172 - extended_analysis - INFO - Extended Analyzer initialized
+2025-11-27 10:41:30,172 - extended_analysis - INFO - Loading final dataset...
+2025-11-27 10:41:30,284 - extended_analysis - INFO - Loaded 23405 documents
+2025-11-27 10:41:30,284 - extended_analysis - INFO - Date range: 2019-03-20 16:13:21 to 2025-10-27 21:05:08
+2025-11-27 10:41:30,286 - extended_analysis - INFO - Subreddits: ['Ozempic' 'Semaglutide' 'WeightLossAdvice' 'diabetes_t2' nan]
+2025-11-27 10:41:30,286 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:41:30,286 - extended_analysis - INFO - STARTING EXTENDED ANALYSIS
+2025-11-27 10:41:30,286 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:41:30,286 - extended_analysis - INFO - 
+=== SUBREDDIT-LEVEL ANALYSIS ===
+2025-11-27 10:41:30,286 - extended_analysis - INFO - Creating Arctic-style subreddit bar plot...
+2025-11-27 10:41:30,728 - extended_analysis - INFO - Arctic-style subreddit bar plot saved: visualizations/extended_analysis/arctic_subreddit_distribution.png
+2025-11-27 10:41:30,728 - extended_analysis - INFO - Creating temporal trends by subreddit...
+2025-11-27 10:41:31,162 - extended_analysis - INFO - Temporal trends by subreddit saved: visualizations/extended_analysis/temporal_trends_by_subreddit.png
+2025-11-27 10:41:31,162 - extended_analysis - INFO - Creating subreddit sentiment temporal analysis...
+2025-11-27 10:41:31,553 - extended_analysis - INFO - Subreddit sentiment temporal saved: visualizations/extended_analysis/subreddit_sentiment_temporal.png
+2025-11-27 10:41:31,556 - extended_analysis - INFO - 
+=== 4-TOPIC MODEL EVALUATION ===
+2025-11-27 10:41:31,556 - extended_analysis - INFO - Training and evaluating 4-topic LDA model...
+2025-11-27 10:41:32,747 - extended_analysis - INFO - Loaded dictionary with 5992 terms
+2025-11-27 10:41:32,747 - extended_analysis - INFO - Loaded corpus with 23405 documents
+2025-11-27 10:41:32,747 - extended_analysis - INFO - Training 4-topic LDA model...
+2025-11-27 10:41:59,508 - extended_analysis - INFO - 4-topic model trained successfully
+2025-11-27 10:41:59,508 - extended_analysis - INFO - Calculating coherence score for 4-topic model...
+2025-11-27 10:42:10,355 - extended_analysis - INFO - Coherence score (4 topics): 0.6627
+2025-11-27 10:42:10,358 - extended_analysis - INFO - Extracting topics from 4-topic model...
+2025-11-27 10:42:10,359 - extended_analysis - INFO - Topic 0: weight, lose, get, like, look, start, feel, work, good, take
+2025-11-27 10:42:10,359 - extended_analysis - INFO - Topic 1: get, doctor, blood, take, use, dose, insulin, med, diabetic, medication
+2025-11-27 10:42:10,359 - extended_analysis - INFO - Topic 2: message, semaglutide, offer, private, discussion, permit, please, sub, question, concern
+2025-11-27 10:42:10,359 - extended_analysis - INFO - Topic 3: eat, food, calorie, carb, protein, like, meal, sugar, make, get
+2025-11-27 10:42:10,478 - extended_analysis - INFO - Creating coherence comparison visualization...
+2025-11-27 10:42:11,511 - extended_analysis - INFO - Coherence comparison visualization saved: visualizations/extended_analysis/coherence_comparison_with_4topics.png
+2025-11-27 10:42:11,801 - extended_analysis - INFO - 4-topic model saved: models/lda/lda_model_4_topics.model
+2025-11-27 10:42:11,801 - extended_analysis - ERROR - Error training 4-topic model: cannot access local variable 'perplexity_4' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 448, in train_and_evaluate_4_topic_model
+    'perplexity': float(perplexity_4),
+                        ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'perplexity_4' where it is not associated with a value
+2025-11-27 10:42:11,835 - extended_analysis - INFO - 
+=== PRE VS POST-PANDEMIC ANALYSIS ===
+2025-11-27 10:42:11,835 - extended_analysis - INFO - Analyzing posting behavior across time periods...
+2025-11-27 10:42:11,835 - extended_analysis - WARNING - Pre-2020 data insufficient (n=3 posts). Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:42:12,366 - extended_analysis - INFO - Period posting behavior saved: visualizations/extended_analysis/period_posting_behavior.png
+2025-11-27 10:42:12,371 - extended_analysis - INFO - Analyzing sentiment across time periods...
+2025-11-27 10:42:12,371 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:42:12,949 - extended_analysis - INFO - Period sentiment analysis saved: visualizations/extended_analysis/period_sentiment_analysis.png
+2025-11-27 10:42:12,951 - extended_analysis - INFO - Analyzing topic distribution across time periods...
+2025-11-27 10:42:12,951 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:42:13,589 - extended_analysis - INFO - Period topic distribution saved: visualizations/extended_analysis/period_topic_distribution.png
+2025-11-27 10:42:13,590 - extended_analysis - INFO - 
+=== TEMPORAL METHODOLOGY DOCUMENTATION ===
+2025-11-27 10:42:13,590 - extended_analysis - INFO - Documenting temporal trend methodology...
+2025-11-27 10:42:13,595 - extended_analysis - ERROR - Error documenting methodology: 'pandemic_periods'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 1150, in document_temporal_methodology
+    markdown_content = self._create_markdown_methodology(methodology)
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 1212, in _create_markdown_methodology
+    - Pre-Pandemic: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['pandemic_periods']['pre_pandemic']}
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'pandemic_periods'
+2025-11-27 10:42:13,596 - extended_analysis - INFO - Creating summary report...
+2025-11-27 10:42:13,601 - extended_analysis - INFO - Summary report saved: data/metadata/extended_analysis_summary.json
+2025-11-27 10:42:13,601 - extended_analysis - INFO - 
+================================================================================
+2025-11-27 10:42:13,601 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
+2025-11-27 10:42:13,601 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:42:35,720 - extended_analysis - INFO - Extended Analyzer initialized
+2025-11-27 10:42:35,720 - extended_analysis - INFO - Loading final dataset...
+2025-11-27 10:42:35,830 - extended_analysis - INFO - Loaded 23405 documents
+2025-11-27 10:42:35,830 - extended_analysis - INFO - Date range: 2019-03-20 16:13:21 to 2025-10-27 21:05:08
+2025-11-27 10:42:35,832 - extended_analysis - INFO - Subreddits: ['Ozempic' 'Semaglutide' 'WeightLossAdvice' 'diabetes_t2' nan]
+2025-11-27 10:42:35,832 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:42:35,832 - extended_analysis - INFO - STARTING EXTENDED ANALYSIS
+2025-11-27 10:42:35,832 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:42:35,832 - extended_analysis - INFO - 
+=== SUBREDDIT-LEVEL ANALYSIS ===
+2025-11-27 10:42:35,832 - extended_analysis - INFO - Creating Arctic-style subreddit bar plot...
+2025-11-27 10:42:36,437 - extended_analysis - INFO - Arctic-style subreddit bar plot saved: visualizations/extended_analysis/arctic_subreddit_distribution.png
+2025-11-27 10:42:36,437 - extended_analysis - INFO - Creating temporal trends by subreddit...
+2025-11-27 10:42:36,976 - extended_analysis - INFO - Temporal trends by subreddit saved: visualizations/extended_analysis/temporal_trends_by_subreddit.png
+2025-11-27 10:42:36,976 - extended_analysis - INFO - Creating subreddit sentiment temporal analysis...
+2025-11-27 10:42:37,520 - extended_analysis - INFO - Subreddit sentiment temporal saved: visualizations/extended_analysis/subreddit_sentiment_temporal.png
+2025-11-27 10:42:37,523 - extended_analysis - INFO - 
+=== 4-TOPIC MODEL EVALUATION ===
+2025-11-27 10:42:37,523 - extended_analysis - INFO - Training and evaluating 4-topic LDA model...
+2025-11-27 10:42:39,169 - extended_analysis - INFO - Loaded dictionary with 5992 terms
+2025-11-27 10:42:39,169 - extended_analysis - INFO - Loaded corpus with 23405 documents
+2025-11-27 10:42:39,169 - extended_analysis - INFO - Training 4-topic LDA model...
+2025-11-27 10:43:10,344 - extended_analysis - INFO - 4-topic model trained successfully
+2025-11-27 10:43:10,345 - extended_analysis - INFO - Calculating coherence score for 4-topic model...
+2025-11-27 10:43:24,778 - extended_analysis - INFO - Coherence score (4 topics): 0.6627
+2025-11-27 10:43:24,779 - extended_analysis - INFO - Extracting topics from 4-topic model...
+2025-11-27 10:43:24,780 - extended_analysis - INFO - Topic 0: weight, lose, get, like, look, start, feel, work, good, take
+2025-11-27 10:43:24,780 - extended_analysis - INFO - Topic 1: get, doctor, blood, take, use, dose, insulin, med, diabetic, medication
+2025-11-27 10:43:24,781 - extended_analysis - INFO - Topic 2: message, semaglutide, offer, private, discussion, permit, please, sub, question, concern
+2025-11-27 10:43:24,781 - extended_analysis - INFO - Topic 3: eat, food, calorie, carb, protein, like, meal, sugar, make, get
+2025-11-27 10:43:24,789 - extended_analysis - INFO - Creating coherence comparison visualization...
+2025-11-27 10:43:25,142 - extended_analysis - INFO - Coherence comparison visualization saved: visualizations/extended_analysis/coherence_comparison_with_4topics.png
+2025-11-27 10:43:25,151 - extended_analysis - INFO - 4-topic model saved: models/lda/lda_model_4_topics.model
+2025-11-27 10:43:25,151 - extended_analysis - ERROR - Error training 4-topic model: cannot access local variable 'perplexity_4' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 448, in train_and_evaluate_4_topic_model
+    'perplexity': float(perplexity_4),
+                        ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'perplexity_4' where it is not associated with a value
+2025-11-27 10:43:25,166 - extended_analysis - INFO - 
+=== PRE VS POST-PANDEMIC ANALYSIS ===
+2025-11-27 10:43:25,166 - extended_analysis - INFO - Analyzing posting behavior across time periods...
+2025-11-27 10:43:25,166 - extended_analysis - WARNING - Pre-2020 data insufficient (n=3 posts). Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:43:25,758 - extended_analysis - INFO - Period posting behavior saved: visualizations/extended_analysis/period_posting_behavior.png
+2025-11-27 10:43:25,764 - extended_analysis - INFO - Analyzing sentiment across time periods...
+2025-11-27 10:43:25,764 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:43:26,584 - extended_analysis - INFO - Period sentiment analysis saved: visualizations/extended_analysis/period_sentiment_analysis.png
+2025-11-27 10:43:26,591 - extended_analysis - INFO - Analyzing topic distribution across time periods...
+2025-11-27 10:43:26,591 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:43:27,879 - extended_analysis - INFO - Period topic distribution saved: visualizations/extended_analysis/period_topic_distribution.png
+2025-11-27 10:43:27,884 - extended_analysis - INFO - 
+=== TEMPORAL METHODOLOGY DOCUMENTATION ===
+2025-11-27 10:43:27,884 - extended_analysis - INFO - Documenting temporal trend methodology...
+2025-11-27 10:43:27,892 - extended_analysis - ERROR - Error documenting methodology: 'pandemic_comparison'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 1150, in document_temporal_methodology
+    markdown_content = self._create_markdown_methodology(methodology)
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 1319, in _create_markdown_methodology
+    {methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['pandemic_comparison']['description']}
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'pandemic_comparison'
+2025-11-27 10:43:27,893 - extended_analysis - INFO - Creating summary report...
+2025-11-27 10:43:27,900 - extended_analysis - INFO - Summary report saved: data/metadata/extended_analysis_summary.json
+2025-11-27 10:43:27,900 - extended_analysis - INFO - 
+================================================================================
+2025-11-27 10:43:27,900 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
+2025-11-27 10:43:27,900 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:43:52,643 - extended_analysis - INFO - Extended Analyzer initialized
+2025-11-27 10:43:52,643 - extended_analysis - INFO - Loading final dataset...
+2025-11-27 10:43:52,796 - extended_analysis - INFO - Loaded 23405 documents
+2025-11-27 10:43:52,797 - extended_analysis - INFO - Date range: 2019-03-20 16:13:21 to 2025-10-27 21:05:08
+2025-11-27 10:43:52,799 - extended_analysis - INFO - Subreddits: ['Ozempic' 'Semaglutide' 'WeightLossAdvice' 'diabetes_t2' nan]
+2025-11-27 10:43:52,799 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:43:52,799 - extended_analysis - INFO - STARTING EXTENDED ANALYSIS
+2025-11-27 10:43:52,799 - extended_analysis - INFO - ================================================================================
+2025-11-27 10:43:52,799 - extended_analysis - INFO - 
+=== SUBREDDIT-LEVEL ANALYSIS ===
+2025-11-27 10:43:52,799 - extended_analysis - INFO - Creating Arctic-style subreddit bar plot...
+2025-11-27 10:43:53,504 - extended_analysis - INFO - Arctic-style subreddit bar plot saved: visualizations/extended_analysis/arctic_subreddit_distribution.png
+2025-11-27 10:43:53,504 - extended_analysis - INFO - Creating temporal trends by subreddit...
+2025-11-27 10:43:54,001 - extended_analysis - INFO - Temporal trends by subreddit saved: visualizations/extended_analysis/temporal_trends_by_subreddit.png
+2025-11-27 10:43:54,001 - extended_analysis - INFO - Creating subreddit sentiment temporal analysis...
+2025-11-27 10:43:54,502 - extended_analysis - INFO - Subreddit sentiment temporal saved: visualizations/extended_analysis/subreddit_sentiment_temporal.png
+2025-11-27 10:43:54,506 - extended_analysis - INFO - 
+=== 4-TOPIC MODEL EVALUATION ===
+2025-11-27 10:43:54,506 - extended_analysis - INFO - Training and evaluating 4-topic LDA model...
+2025-11-27 10:43:56,126 - extended_analysis - INFO - Loaded dictionary with 5992 terms
+2025-11-27 10:43:56,126 - extended_analysis - INFO - Loaded corpus with 23405 documents
+2025-11-27 10:43:56,126 - extended_analysis - INFO - Training 4-topic LDA model...
+2025-11-27 10:44:32,857 - extended_analysis - INFO - 4-topic model trained successfully
+2025-11-27 10:44:32,859 - extended_analysis - INFO - Calculating coherence score for 4-topic model...
+2025-11-27 10:44:53,338 - extended_analysis - INFO - Coherence score (4 topics): 0.6627
+2025-11-27 10:44:53,339 - extended_analysis - INFO - Extracting topics from 4-topic model...
+2025-11-27 10:44:53,342 - extended_analysis - INFO - Topic 0: weight, lose, get, like, look, start, feel, work, good, take
+2025-11-27 10:44:53,342 - extended_analysis - INFO - Topic 1: get, doctor, blood, take, use, dose, insulin, med, diabetic, medication
+2025-11-27 10:44:53,342 - extended_analysis - INFO - Topic 2: message, semaglutide, offer, private, discussion, permit, please, sub, question, concern
+2025-11-27 10:44:53,342 - extended_analysis - INFO - Topic 3: eat, food, calorie, carb, protein, like, meal, sugar, make, get
+2025-11-27 10:44:53,373 - extended_analysis - INFO - Creating coherence comparison visualization...
+2025-11-27 10:44:55,028 - extended_analysis - INFO - Coherence comparison visualization saved: visualizations/extended_analysis/coherence_comparison_with_4topics.png
+2025-11-27 10:44:55,038 - extended_analysis - INFO - 4-topic model saved: models/lda/lda_model_4_topics.model
+2025-11-27 10:44:55,038 - extended_analysis - ERROR - Error training 4-topic model: cannot access local variable 'perplexity_4' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/08_extended_analysis.py", line 448, in train_and_evaluate_4_topic_model
+    'perplexity': float(perplexity_4),
+                        ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'perplexity_4' where it is not associated with a value
+2025-11-27 10:44:55,070 - extended_analysis - INFO - 
+=== PRE VS POST-PANDEMIC ANALYSIS ===
+2025-11-27 10:44:55,071 - extended_analysis - INFO - Analyzing posting behavior across time periods...
+2025-11-27 10:44:55,071 - extended_analysis - WARNING - Pre-2020 data insufficient (n=3 posts). Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:44:56,353 - extended_analysis - INFO - Period posting behavior saved: visualizations/extended_analysis/period_posting_behavior.png
+2025-11-27 10:44:56,467 - extended_analysis - INFO - Analyzing sentiment across time periods...
+2025-11-27 10:44:56,468 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:44:59,318 - extended_analysis - INFO - Period sentiment analysis saved: visualizations/extended_analysis/period_sentiment_analysis.png
+2025-11-27 10:44:59,375 - extended_analysis - INFO - Analyzing topic distribution across time periods...
+2025-11-27 10:44:59,375 - extended_analysis - WARNING - Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.
+2025-11-27 10:45:03,354 - extended_analysis - INFO - Period topic distribution saved: visualizations/extended_analysis/period_topic_distribution.png
+2025-11-27 10:45:03,373 - extended_analysis - INFO - 
+=== TEMPORAL METHODOLOGY DOCUMENTATION ===
+2025-11-27 10:45:03,373 - extended_analysis - INFO - Documenting temporal trend methodology...
+2025-11-27 10:45:03,406 - extended_analysis - INFO - Temporal methodology documented:
+2025-11-27 10:45:03,406 - extended_analysis - INFO -   JSON: data/metadata/temporal_methodology.json
+2025-11-27 10:45:03,406 - extended_analysis - INFO -   Markdown: docs/TEMPORAL_METHODOLOGY.md
+2025-11-27 10:45:03,406 - extended_analysis - INFO - Creating summary report...
+2025-11-27 10:45:03,414 - extended_analysis - INFO - Summary report saved: data/metadata/extended_analysis_summary.json
+2025-11-27 10:45:03,415 - extended_analysis - INFO - 
+================================================================================
+2025-11-27 10:45:03,415 - extended_analysis - INFO - EXTENDED ANALYSIS COMPLETE!
+2025-11-27 10:45:03,415 - extended_analysis - INFO - ================================================================================

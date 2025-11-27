@@ -4,8 +4,11 @@ Performs additional analyses requested:
 1. Subreddit-level analysis with Arctic-style visualizations
 2. Temporal trends across subreddits
 3. 4-topic LDA model evaluation
-4. Pre vs Post-Pandemic analysis
+4. Period-based analysis (Early 2020-2022 vs Recent 2023-2025)
 5. Temporal trend methodology documentation
+
+⚠️ NOTE: Pre-2020 data is insufficient (only 3 posts) for meaningful analysis.
+All temporal comparisons focus on 2020-2025 where data collection is robust.
 """
 
 import pandas as pd
@@ -70,8 +73,11 @@ class ExtendedAnalyzer:
             4: "Community Support"
         }
 
-        # Pandemic cutoff date
-        self.pandemic_cutoff = pd.Timestamp('2020-03-01')
+        # Period classification for temporal analysis
+        # Note: Pre-2020 data insufficient (only 3 posts), so we compare:
+        # Early Period (2020-2022) vs Recent Period (2023-2025)
+        self.early_period_start = pd.Timestamp('2020-01-01')
+        self.recent_period_start = pd.Timestamp('2023-01-01')
 
         self.logger.info("Extended Analyzer initialized")
 
@@ -92,10 +98,16 @@ class ExtendedAnalyzer:
             self.df['year'] = self.df['created_utc'].dt.year
             self.df['month'] = self.df['created_utc'].dt.month
 
-            # Add pandemic period indicator
-            self.df['pandemic_period'] = self.df['created_utc'].apply(
-                lambda x: 'Post-Pandemic' if x >= self.pandemic_cutoff else 'Pre-Pandemic'
-            )
+            # Add period classification (excluding pre-2020 due to insufficient data)
+            def classify_period(date):
+                if date < self.early_period_start:
+                    return 'Pre-2020 (Insufficient Data)'
+                elif date < self.recent_period_start:
+                    return 'Early Period (2020-2022)'
+                else:
+                    return 'Recent Period (2023-2025)'
+            
+            self.df['time_period'] = self.df['created_utc'].apply(classify_period)
 
             self.logger.info(f"Loaded {len(self.df)} documents")
             self.logger.info(f"Date range: {self.df['created_utc'].min()} to {self.df['created_utc'].max()}")
@@ -517,29 +529,39 @@ class ExtendedAnalyzer:
         except Exception as e:
             self.logger.error(f"Error creating coherence visualization: {e}", exc_info=True)
 
-    # ==================== PRE VS POST-PANDEMIC ANALYSIS ====================
+    # ==================== PERIOD-BASED ANALYSIS (2020-2025) ====================
+    # Note: Pre-2020 data insufficient (only 3 posts) for valid comparison
 
     def analyze_pandemic_posting_behavior(self):
-        """Analyze posting behavior before and after pandemic"""
-        self.logger.info("Analyzing pre vs post-pandemic posting behavior...")
+        """
+        Analyze posting behavior across time periods
+        
+        ⚠️ DEPRECATED: Original pandemic comparison invalid due to insufficient pre-2020 data.
+        This function now analyzes Early (2020-2022) vs Recent (2023-2025) periods.
+        """
+        self.logger.info("Analyzing posting behavior across time periods...")
+        self.logger.warning("Pre-2020 data insufficient (n=3 posts). Comparing 2020-2022 vs 2023-2025 only.")
 
         try:
-            # Group by pandemic period
-            posting_behavior = self.df.groupby('pandemic_period').agg({
+            # Filter to only 2020+ data (exclude insufficient pre-2020 data)
+            df_valid = self.df[self.df['created_utc'] >= self.early_period_start].copy()
+            
+            # Group by time period (Early 2020-2022 vs Recent 2023-2025)
+            posting_behavior = df_valid.groupby('time_period').agg({
                 'doc_id': 'count',
                 'created_utc': ['min', 'max']
             }).reset_index()
 
             posting_behavior.columns = ['period', 'total_posts', 'start_date', 'end_date']
 
-            # Calculate posts per month
-            pre_pandemic = self.df[self.df['pandemic_period'] == 'Pre-Pandemic']
-            post_pandemic = self.df[self.df['pandemic_period'] == 'Post-Pandemic']
+            # Calculate posts per month for each period
+            early_period = df_valid[df_valid['time_period'] == 'Early Period (2020-2022)']
+            recent_period = df_valid[df_valid['time_period'] == 'Recent Period (2023-2025)']
 
-            pre_months = (pre_pandemic['created_utc'].max() - pre_pandemic['created_utc'].min()).days / 30.44
-            post_months = (post_pandemic['created_utc'].max() - post_pandemic['created_utc'].min()).days / 30.44
+            early_months = (early_period['created_utc'].max() - early_period['created_utc'].min()).days / 30.44
+            recent_months = (recent_period['created_utc'].max() - recent_period['created_utc'].min()).days / 30.44
 
-            posting_behavior['months'] = [pre_months, post_months]
+            posting_behavior['months'] = [early_months, recent_months]
             posting_behavior['posts_per_month'] = posting_behavior['total_posts'] / posting_behavior['months']
 
             # Create visualization
@@ -552,7 +574,7 @@ class ExtendedAnalyzer:
                           color=colors, edgecolor='black', linewidth=1.5)
 
             ax1.set_ylabel('Total Posts/Comments', fontsize=12, fontweight='bold')
-            ax1.set_title('Total Posting Activity:\nPre vs Post-Pandemic',
+            ax1.set_title('Total Posting Activity:\nEarly (2020-2022) vs Recent (2023-2025)',
                          fontsize=13, fontweight='bold', pad=15)
             ax1.grid(axis='y', alpha=0.3)
 
@@ -569,7 +591,7 @@ class ExtendedAnalyzer:
                           color=colors, edgecolor='black', linewidth=1.5)
 
             ax2.set_ylabel('Posts/Comments per Month', fontsize=12, fontweight='bold')
-            ax2.set_title('Average Monthly Activity:\nPre vs Post-Pandemic',
+            ax2.set_title('Average Monthly Activity:\nEarly (2020-2022) vs Recent (2023-2025)',
                          fontsize=13, fontweight='bold', pad=15)
             ax2.grid(axis='y', alpha=0.3)
 
@@ -584,22 +606,22 @@ class ExtendedAnalyzer:
             ax3 = axes[1, 0]
             monthly_counts = self.df.groupby('year_month').size()
 
-            # Color by period
-            colors_timeline = ['#5A7C9B' if pd.Timestamp(str(ym)) < self.pandemic_cutoff
+            # Color by period (only 2020+)
+            colors_timeline = ['#5A7C9B' if pd.Timestamp(str(ym)) < self.recent_period_start
                              else '#C73E1D' for ym in monthly_counts.index]
 
             ax3.bar(range(len(monthly_counts)), monthly_counts.values,
                    color=colors_timeline, alpha=0.8, edgecolor='black', linewidth=0.5)
 
-            # Add vertical line at pandemic cutoff
-            cutoff_idx = sum(pd.Timestamp(str(ym)) < self.pandemic_cutoff
+            # Add vertical line at recent period start
+            cutoff_idx = sum(pd.Timestamp(str(ym)) < self.recent_period_start
                            for ym in monthly_counts.index)
             ax3.axvline(x=cutoff_idx, color='red', linestyle='--',
-                       linewidth=3, label='Pandemic Start (March 2020)')
+                       linewidth=3, label='Recent Period Start (2023)')
 
-            ax3.set_xlabel('Time Period', fontsize=12, fontweight='bold')
+            ax3.set_xlabel('Time Period (2020+)', fontsize=12, fontweight='bold')
             ax3.set_ylabel('Posts/Comments', fontsize=12, fontweight='bold')
-            ax3.set_title('Monthly Activity Timeline with Pandemic Marker',
+            ax3.set_title('Monthly Activity Timeline: Early vs Recent Period',
                          fontsize=13, fontweight='bold', pad=15)
             ax3.legend(loc='upper left', fontsize=10)
             ax3.grid(axis='y', alpha=0.3)
@@ -614,32 +636,36 @@ class ExtendedAnalyzer:
             ax4 = axes[1, 1]
 
             # Calculate growth
-            pre_rate = posting_behavior[posting_behavior['period'] == 'Pre-Pandemic']['posts_per_month'].values[0]
-            post_rate = posting_behavior[posting_behavior['period'] == 'Post-Pandemic']['posts_per_month'].values[0]
-            growth_rate = ((post_rate - pre_rate) / pre_rate) * 100
+            early_rate = posting_behavior[posting_behavior['period'] == 'Early Period (2020-2022)']['posts_per_month'].values[0]
+            recent_rate = posting_behavior[posting_behavior['period'] == 'Recent Period (2023-2025)']['posts_per_month'].values[0]
+            growth_rate = ((recent_rate - early_rate) / early_rate) * 100
 
             ax4.text(0.5, 0.6, f'{growth_rate:.1f}%',
                     ha='center', va='center', fontsize=60, fontweight='bold',
                     color='#C73E1D' if growth_rate > 0 else '#5A7C9B',
                     transform=ax4.transAxes)
 
-            ax4.text(0.5, 0.35, 'Growth in Monthly Activity\nPost-Pandemic vs Pre-Pandemic',
+            ax4.text(0.5, 0.35, 'Growth in Monthly Activity\nRecent vs Early Period',
                     ha='center', va='center', fontsize=13, fontweight='bold',
                     transform=ax4.transAxes)
+            
+            ax4.text(0.5, 0.15, '⚠️ Pre-2020 data insufficient for comparison',
+                    ha='center', va='center', fontsize=9, style='italic',
+                    color='gray', transform=ax4.transAxes)
 
             ax4.axis('off')
 
             plt.tight_layout()
 
             # Save
-            output_path = os.path.join(self.extended_viz_path, 'pandemic_posting_behavior.png')
+            output_path = os.path.join(self.extended_viz_path, 'period_posting_behavior.png')
             plt.savefig(output_path, dpi=self.dpi, bbox_inches='tight')
             plt.close()
 
-            self.logger.info(f"Pandemic posting behavior saved: {output_path}")
+            self.logger.info(f"Period posting behavior saved: {output_path}")
 
             # Save data
-            output_csv = os.path.join(self.processed_path, 'pandemic_posting_behavior.csv')
+            output_csv = os.path.join(self.processed_path, 'period_posting_behavior.csv')
             posting_behavior.to_csv(output_csv, index=False)
 
             return posting_behavior.to_dict('records')
@@ -649,12 +675,21 @@ class ExtendedAnalyzer:
             return None
 
     def analyze_pandemic_sentiment(self):
-        """Analyze sentiment trends before and after pandemic"""
-        self.logger.info("Analyzing pre vs post-pandemic sentiment...")
+        """
+        Analyze sentiment trends across time periods
+        
+        ⚠️ DEPRECATED: Original pandemic comparison invalid.
+        Now analyzes Early (2020-2022) vs Recent (2023-2025) periods only.
+        """
+        self.logger.info("Analyzing sentiment across time periods...")
+        self.logger.warning("Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.")
 
         try:
-            # Group by pandemic period
-            sentiment_stats = self.df.groupby('pandemic_period').agg({
+            # Filter to only 2020+ data
+            df_valid = self.df[self.df['created_utc'] >= self.early_period_start].copy()
+            
+            # Group by time period
+            sentiment_stats = df_valid.groupby('time_period').agg({
                 'compound': ['mean', 'std', 'median'],
                 'pos': 'mean',
                 'neu': 'mean',
@@ -666,10 +701,10 @@ class ExtendedAnalyzer:
                                        'compound_median', 'pos_mean', 'neu_mean',
                                        'neg_mean', 'count']
 
-            # Sentiment class distribution
+            # Sentiment class distribution (2020+ only)
             sentiment_class_dist = pd.crosstab(
-                self.df['pandemic_period'],
-                self.df['sentiment_class'],
+                df_valid['time_period'],
+                df_valid['sentiment_class'],
                 normalize='index'
             ) * 100
 
@@ -686,7 +721,7 @@ class ExtendedAnalyzer:
 
             ax1.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=2)
             ax1.set_ylabel('Mean Compound Sentiment', fontsize=12, fontweight='bold')
-            ax1.set_title('Average Sentiment:\nPre vs Post-Pandemic',
+            ax1.set_title('Average Sentiment:\nEarly (2020-2022) vs Recent (2023-2025)',
                          fontsize=13, fontweight='bold', pad=15)
             ax1.grid(axis='y', alpha=0.3)
 
@@ -706,7 +741,7 @@ class ExtendedAnalyzer:
 
             ax2.set_xlabel('Period', fontsize=12, fontweight='bold')
             ax2.set_ylabel('Percentage (%)', fontsize=12, fontweight='bold')
-            ax2.set_title('Sentiment Distribution:\nPre vs Post-Pandemic',
+            ax2.set_title('Sentiment Distribution:\nEarly (2020-2022) vs Recent (2023-2025)',
                          fontsize=13, fontweight='bold', pad=15)
             ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, ha='right')
             ax2.legend(title='Sentiment', title_fontsize=11, fontsize=10)
@@ -725,19 +760,19 @@ class ExtendedAnalyzer:
                            label='Negative', color='#C62828', edgecolor='black')
 
             ax3.set_ylabel('Mean Score', fontsize=12, fontweight='bold')
-            ax3.set_title('Sentiment Component Scores:\nPre vs Post-Pandemic',
+            ax3.set_title('Sentiment Component Scores:\nEarly (2020-2022) vs Recent (2023-2025)',
                          fontsize=13, fontweight='bold', pad=15)
             ax3.set_xticks(x)
             ax3.set_xticklabels(sentiment_stats['period'])
             ax3.legend(fontsize=10)
             ax3.grid(axis='y', alpha=0.3)
 
-            # Plot 4: Temporal sentiment trend with pandemic marker
+            # Plot 4: Temporal sentiment trend (2020+ only)
             ax4 = axes[1, 1]
-            monthly_sentiment = self.df.groupby('year_month')['compound'].mean()
+            monthly_sentiment = df_valid.groupby('year_month')['compound'].mean()
 
-            # Color by period
-            colors_timeline = ['#5A7C9B' if pd.Timestamp(str(ym)) < self.pandemic_cutoff
+            # Color by period (Early vs Recent)
+            colors_timeline = ['#5A7C9B' if pd.Timestamp(str(ym)) < self.recent_period_start
                              else '#C73E1D' for ym in monthly_sentiment.index]
 
             ax4.plot(range(len(monthly_sentiment)), monthly_sentiment.values,
@@ -745,17 +780,17 @@ class ExtendedAnalyzer:
             ax4.scatter(range(len(monthly_sentiment)), monthly_sentiment.values,
                        c=colors_timeline, s=50, edgecolor='black', linewidth=0.5, zorder=3)
 
-            # Add vertical line at pandemic cutoff
-            cutoff_idx = sum(pd.Timestamp(str(ym)) < self.pandemic_cutoff
+            # Add vertical line at recent period start
+            cutoff_idx = sum(pd.Timestamp(str(ym)) < self.recent_period_start
                            for ym in monthly_sentiment.index)
             ax4.axvline(x=cutoff_idx, color='red', linestyle='--',
-                       linewidth=3, label='Pandemic Start')
+                       linewidth=3, label='Recent Period Start (2023)')
 
             ax4.axhline(y=0, color='red', linestyle='--', alpha=0.3, linewidth=1)
 
-            ax4.set_xlabel('Time Period', fontsize=12, fontweight='bold')
+            ax4.set_xlabel('Time Period (2020+)', fontsize=12, fontweight='bold')
             ax4.set_ylabel('Mean Compound Sentiment', fontsize=12, fontweight='bold')
-            ax4.set_title('Sentiment Trend Over Time with Pandemic Marker',
+            ax4.set_title('Sentiment Trend Over Time: Early vs Recent Period',
                          fontsize=13, fontweight='bold', pad=15)
             ax4.legend(loc='best', fontsize=10)
             ax4.grid(alpha=0.3)
@@ -769,14 +804,14 @@ class ExtendedAnalyzer:
             plt.tight_layout()
 
             # Save
-            output_path = os.path.join(self.extended_viz_path, 'pandemic_sentiment_analysis.png')
+            output_path = os.path.join(self.extended_viz_path, 'period_sentiment_analysis.png')
             plt.savefig(output_path, dpi=self.dpi, bbox_inches='tight')
             plt.close()
 
-            self.logger.info(f"Pandemic sentiment analysis saved: {output_path}")
+            self.logger.info(f"Period sentiment analysis saved: {output_path}")
 
             # Save data
-            output_csv = os.path.join(self.processed_path, 'pandemic_sentiment_stats.csv')
+            output_csv = os.path.join(self.processed_path, 'period_sentiment_stats.csv')
             sentiment_stats.to_csv(output_csv, index=False)
 
             return sentiment_stats.to_dict('records')
@@ -786,21 +821,30 @@ class ExtendedAnalyzer:
             return None
 
     def analyze_pandemic_topic_distribution(self):
-        """Analyze topic distribution before and after pandemic"""
-        self.logger.info("Analyzing pre vs post-pandemic topic distribution...")
+        """
+        Analyze topic distribution across time periods
+        
+        ⚠️ DEPRECATED: Original pandemic comparison invalid.
+        Now analyzes Early (2020-2022) vs Recent (2023-2025) periods only.
+        """
+        self.logger.info("Analyzing topic distribution across time periods...")
+        self.logger.warning("Pre-2020 data insufficient. Comparing 2020-2022 vs 2023-2025 only.")
 
         try:
-            # Topic distribution by pandemic period
+            # Filter to only 2020+ data
+            df_valid = self.df[self.df['created_utc'] >= self.early_period_start].copy()
+            
+            # Topic distribution by time period
             topic_dist = pd.crosstab(
-                self.df['pandemic_period'],
-                self.df['topic_name'],
+                df_valid['time_period'],
+                df_valid['topic_name'],
                 normalize='index'
             ) * 100
 
             # Topic counts
             topic_counts = pd.crosstab(
-                self.df['pandemic_period'],
-                self.df['topic_name']
+                df_valid['time_period'],
+                df_valid['topic_name']
             )
 
             # Create visualization
@@ -814,7 +858,7 @@ class ExtendedAnalyzer:
 
             ax1.set_xlabel('Topic', fontsize=12, fontweight='bold')
             ax1.set_ylabel('Percentage (%)', fontsize=12, fontweight='bold')
-            ax1.set_title('Topic Distribution:\nPre vs Post-Pandemic (%)',
+            ax1.set_title('Topic Distribution:\nEarly (2020-2022) vs Recent (2023-2025) (%)',
                          fontsize=13, fontweight='bold', pad=15)
             ax1.set_xticklabels(ax1.get_xticklabels(), rotation=45, ha='right')
             ax1.legend(title='Period', title_fontsize=11, fontsize=10)
@@ -828,7 +872,7 @@ class ExtendedAnalyzer:
 
             ax2.set_xlabel('Topic', fontsize=12, fontweight='bold')
             ax2.set_ylabel('Number of Posts/Comments', fontsize=12, fontweight='bold')
-            ax2.set_title('Topic Distribution:\nPre vs Post-Pandemic (Counts)',
+            ax2.set_title('Topic Distribution:\nEarly (2020-2022) vs Recent (2023-2025) (Counts)',
                          fontsize=13, fontweight='bold', pad=15)
             ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, ha='right')
             ax2.legend(title='Period', title_fontsize=11, fontsize=10)
@@ -850,10 +894,10 @@ class ExtendedAnalyzer:
             # Plot 4: Change in topic proportions
             ax4 = axes[1, 1]
 
-            # Calculate change
-            pre_dist = topic_dist.loc['Pre-Pandemic']
-            post_dist = topic_dist.loc['Post-Pandemic']
-            change = post_dist - pre_dist
+            # Calculate change between periods
+            early_dist = topic_dist.loc['Early Period (2020-2022)']
+            recent_dist = topic_dist.loc['Recent Period (2023-2025)']
+            change = recent_dist - early_dist
             change = change.sort_values()
 
             colors_change = ['#C73E1D' if x > 0 else '#5A7C9B' for x in change]
@@ -864,7 +908,7 @@ class ExtendedAnalyzer:
             ax4.set_yticks(range(len(change)))
             ax4.set_yticklabels(change.index, fontsize=10)
             ax4.set_xlabel('Change in Percentage Points', fontsize=12, fontweight='bold')
-            ax4.set_title('Topic Proportion Change:\nPost-Pandemic vs Pre-Pandemic',
+            ax4.set_title('Topic Proportion Change:\nRecent vs Early Period',
                          fontsize=13, fontweight='bold', pad=15)
             ax4.grid(axis='x', alpha=0.3)
 
@@ -879,14 +923,14 @@ class ExtendedAnalyzer:
             plt.tight_layout()
 
             # Save
-            output_path = os.path.join(self.extended_viz_path, 'pandemic_topic_distribution.png')
+            output_path = os.path.join(self.extended_viz_path, 'period_topic_distribution.png')
             plt.savefig(output_path, dpi=self.dpi, bbox_inches='tight')
             plt.close()
 
-            self.logger.info(f"Pandemic topic distribution saved: {output_path}")
+            self.logger.info(f"Period topic distribution saved: {output_path}")
 
             # Save data
-            output_csv = os.path.join(self.processed_path, 'pandemic_topic_distribution.csv')
+            output_csv = os.path.join(self.processed_path, 'period_topic_distribution.csv')
             topic_dist.to_csv(output_csv)
 
             return topic_dist.to_dict()
@@ -934,10 +978,11 @@ class ExtendedAnalyzer:
                         "alternative_segmentation": {
                             "yearly": "For high-level trend analysis",
                             "quarterly": "For seasonal pattern analysis",
-                            "pandemic_periods": {
-                                "pre_pandemic": f"Before {self.pandemic_cutoff}",
-                                "post_pandemic": f"After {self.pandemic_cutoff}",
-                                "cutoff_rationale": "March 2020 marks WHO pandemic declaration"
+                            "period_classification": {
+                                "early_period": f"2020-2022 (from {self.early_period_start.date()})",
+                                "recent_period": f"2023-2025 (from {self.recent_period_start.date()})",
+                                "rationale": "Pre-2020 data insufficient (only 3 posts) for meaningful comparison",
+                                "note": "Original pandemic comparison deprecated due to sample size disparity"
                             }
                         }
                     },
@@ -958,7 +1003,7 @@ class ExtendedAnalyzer:
                                 "year_month: Monthly period",
                                 "year: Calendar year",
                                 "month: Month number (1-12)",
-                                "pandemic_period: Pre/Post pandemic classification"
+                                "time_period: Early (2020-2022) vs Recent (2023-2025) classification"
                             ]
                         },
 
@@ -1034,17 +1079,18 @@ class ExtendedAnalyzer:
                             ]
                         },
 
-                        "pandemic_comparison": {
-                            "description": "Compare metrics before and after pandemic",
-                            "cutoff_date": str(self.pandemic_cutoff),
+                        "period_comparison": {
+                            "description": "Compare metrics across time periods (Early 2020-2022 vs Recent 2023-2025)",
+                            "note": "Original pandemic comparison deprecated due to insufficient pre-2020 data",
+                            "early_period": f"{self.early_period_start.date()} onwards",
+                            "recent_period": f"{self.recent_period_start.date()} onwards",
                             "metrics_compared": [
-                                "Total posting volume",
-                                "Average monthly activity",
+                                "Total posting volume (absolute and monthly rates)",
                                 "Mean sentiment scores",
-                                "Topic distribution changes",
-                                "Growth rate calculations"
+                                "Topic distribution evolution",
+                                "Community engagement patterns"
                             ],
-                            "calculation_example": "growth_rate = ((post_rate - pre_rate) / pre_rate) * 100"
+                            "calculation_example": "growth_rate = ((recent_rate - early_rate) / early_rate) * 100"
                         }
                     },
 
@@ -1162,10 +1208,11 @@ class ExtendedAnalyzer:
 ### Alternative Segmentations
 - **Yearly:** {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['yearly']}
 - **Quarterly:** {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['quarterly']}
-- **Pandemic Periods:**
-  - Pre-Pandemic: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['pandemic_periods']['pre_pandemic']}
-  - Post-Pandemic: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['pandemic_periods']['post_pandemic']}
-  - Rationale: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['pandemic_periods']['cutoff_rationale']}
+- **Period Classification:**
+  - Early Period: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['period_classification']['early_period']}
+  - Recent Period: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['period_classification']['recent_period']}
+  - Rationale: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['period_classification']['rationale']}
+  - Note: {methodology_dict['temporal_trend_methodology']['time_segmentation']['alternative_segmentation']['period_classification']['note']}
 
 ## 3. Processing Pipeline
 
@@ -1268,21 +1315,23 @@ class ExtendedAnalyzer:
             md += f"- {insight}\n"
 
         md += f"""
-### 4.4 Pandemic Comparison Analysis
-{methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['pandemic_comparison']['description']}
+### 4.4 Period Comparison Analysis
+{methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['description']}
 
-- **Cutoff Date:** {methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['pandemic_comparison']['cutoff_date']}
+- **Note:** {methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['note']}
+- **Early Period:** {methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['early_period']}
+- **Recent Period:** {methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['recent_period']}
 
 **Metrics Compared:**
 """
 
-        for metric in methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['pandemic_comparison']['metrics_compared']:
+        for metric in methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['metrics_compared']:
             md += f"- {metric}\n"
 
         md += f"""
 **Example Calculation:**
 ```python
-{methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['pandemic_comparison']['calculation_example']}
+{methodology_dict['temporal_trend_methodology']['specific_temporal_analyses']['period_comparison']['calculation_example']}
 ```
 
 ## 5. Output Files
@@ -1393,14 +1442,17 @@ The temporal analysis pipeline generates the following CSV files:
                         "visualization": "coherence_comparison_with_4topics.png"
                     },
 
-                    "pandemic_analysis": {
-                        "cutoff_date": str(self.pandemic_cutoff),
-                        "pre_pandemic_docs": len(self.df[self.df['pandemic_period'] == 'Pre-Pandemic']),
-                        "post_pandemic_docs": len(self.df[self.df['pandemic_period'] == 'Post-Pandemic']),
+                    "period_analysis": {
+                        "note": "Pre-2020 data insufficient (only 3 posts) - pandemic comparison deprecated",
+                        "early_period": f"2020-2022 (from {self.early_period_start.date()})",
+                        "recent_period": f"2023-2025 (from {self.recent_period_start.date()})",
+                        "early_period_docs": len(self.df[self.df['time_period'] == 'Early Period (2020-2022)']),
+                        "recent_period_docs": len(self.df[self.df['time_period'] == 'Recent Period (2023-2025)']),
+                        "pre_2020_docs_excluded": len(self.df[self.df['time_period'] == 'Pre-2020 (Insufficient Data)']),
                         "visualizations_created": [
-                            "pandemic_posting_behavior.png",
-                            "pandemic_sentiment_analysis.png",
-                            "pandemic_topic_distribution.png"
+                            "period_posting_behavior.png",
+                            "period_sentiment_analysis.png",
+                            "period_topic_distribution.png"
                         ]
                     },
 

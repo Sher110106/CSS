@@ -1,6 +1,6 @@
 # Temporal Trend Derivation Methodology
 
-**Generated:** 2025-11-11T16:10:59.235578
+**Generated:** 2025-11-27T10:45:03.405271
 
 ## Overview
 
@@ -40,10 +40,11 @@ df['year_month'] = df['created_utc'].dt.to_period('M')
 ### Alternative Segmentations
 - **Yearly:** For high-level trend analysis
 - **Quarterly:** For seasonal pattern analysis
-- **Pandemic Periods:**
-  - Pre-Pandemic: Before 2020-03-01 00:00:00
-  - Post-Pandemic: After 2020-03-01 00:00:00
-  - Rationale: March 2020 marks WHO pandemic declaration
+- **Period Classification:**
+  - Early Period: 2020-2022 (from 2020-01-01)
+  - Recent Period: 2023-2025 (from 2023-01-01)
+  - Rationale: Pre-2020 data insufficient (only 3 posts) for meaningful comparison
+  - Note: Original pandemic comparison deprecated due to sample size disparity
 
 ## 3. Processing Pipeline
 
@@ -61,7 +62,7 @@ Extract temporal features for aggregation
 - year_month: Monthly period
 - year: Calendar year
 - month: Month number (1-12)
-- pandemic_period: Pre/Post pandemic classification
+- time_period: Early (2020-2022) vs Recent (2023-2025) classification
 
 ### Step 3: Aggregation
 Group data by temporal bins and calculate statistics
@@ -134,21 +135,22 @@ Track topic prevalence over time
 - Track declining interests
 - Detect topic shifts around events
 
-### 4.4 Pandemic Comparison Analysis
-Compare metrics before and after pandemic
+### 4.4 Period Comparison Analysis
+Compare metrics across time periods (Early 2020-2022 vs Recent 2023-2025)
 
-- **Cutoff Date:** 2020-03-01 00:00:00
+- **Note:** Original pandemic comparison deprecated due to insufficient pre-2020 data
+- **Early Period:** 2020-01-01 onwards
+- **Recent Period:** 2023-01-01 onwards
 
 **Metrics Compared:**
-- Total posting volume
-- Average monthly activity
+- Total posting volume (absolute and monthly rates)
 - Mean sentiment scores
-- Topic distribution changes
-- Growth rate calculations
+- Topic distribution evolution
+- Community engagement patterns
 
 **Example Calculation:**
 ```python
-growth_rate = ((post_rate - pre_rate) / pre_rate) * 100
+growth_rate = ((recent_rate - early_rate) / early_rate) * 100
 ```
 
 ## 5. Output Files

@@ -271,6 +271,44 @@ Edit `config/config.yaml` to customize:
 - Strong peer support in communities
 - Sentiment varies significantly by topic (p<8.79e-44)
 
+## ⚠️ Study Limitations
+
+### Data Collection Limitations
+
+**Historical Data Undersampling:**
+Due to Reddit API behavior with relevance-based sorting, historical data (pre-2020) is severely underrepresented:
+
+- **Only 3 posts collected before March 2020** (compared to 1,399 after)
+- **Only 1 post from entire 2019** despite drug FDA approval in Dec 2017
+- Reddit API with `time_filter="all"` prioritizes recent, popular content
+- Collection methods ('search', 'hot', 'top', 'new') all favor recent posts
+
+**Impact on Analysis:**
+- ❌ Pre/post pandemic comparisons are **statistically invalid** (n=3 vs n=1,399)
+- ❌ Cannot analyze 2019 trends or early adoption patterns
+- ✅ 2020-2025 temporal analysis is valid and robust
+- ✅ 2024-2025 explosive growth analysis (83% of posts) reflects genuine trend
+
+**Why This Matters:**
+The data does show real explosive growth in semaglutide discussion (2024-2025), likely due to:
+- Wegovy weight loss FDA approval (June 2021)
+- Celebrity usage and mainstream media coverage (2022-2023)
+- Viral TikTok/social media trends (2023-2024)
+- Supply shortages and insurance debates (2023-2024)
+
+However, we cannot make statements about "pre-pandemic" sentiment or compare pandemic periods meaningfully. All temporal analysis focuses on 2020-2025 where data collection was adequate.
+
+### Sample Representativeness
+- Data represents Reddit users discussing semaglutide (self-selected population)
+- May not represent all patients using semaglutide
+- Skewed toward weight loss discussions vs diabetes management
+- English-language posts only
+
+### Subreddit Context
+- r/Ozempic and r/Semaglutide were small/new in 2019, limiting historical data
+- Community demographics may shift over time
+- Moderation policies affect discussion content
+
 ## ⚠️ Ethics & Privacy
 
 - All data is anonymized (usernames hashed/removed)
