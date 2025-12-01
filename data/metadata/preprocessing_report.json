@@ -1,12 +1,12 @@
 {
-  "preprocessing_timestamp": "2025-10-27T21:14:45.960360",
+  "preprocessing_timestamp": "2025-12-01T19:12:53.043547",
   "original_document_count": 54734,
   "processed_document_count": 23405,
   "documents_filtered": 31329,
   "token_statistics": {
-    "total_tokens": 733369,
-    "unique_tokens": 17987,
-    "avg_tokens_per_doc": 31.33386028626362,
+    "total_tokens": 733360,
+    "unique_tokens": 17996,
+    "avg_tokens_per_doc": 31.333475753044223,
     "median_tokens_per_doc": 21.0,
     "min_tokens": 10,
     "max_tokens": 1625
@@ -43,7 +43,7 @@
     "loss": 3228,
     "would": 3223,
     "say": 3221,
-    "use": 3189,
+    "use": 3181,
     "calorie": 3180,
     "thing": 3170,
     "body": 2901,
@@ -59,13 +59,13 @@
     "ozempic": 2461,
     "thank": 2415,
     "diet": 2361,
-    "dose": 2292,
     "great": 2177,
-    "long": 2172
+    "long": 2172,
+    "doctor": 2146
   },
   "document_length_distribution": {
     "short (10-25 tokens)": 14048,
-    "medium (26-100 tokens)": 8607,
-    "long (100+ tokens)": 750
+    "medium (26-100 tokens)": 8608,
+    "long (100+ tokens)": 749
   }
 }

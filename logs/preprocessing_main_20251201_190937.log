@@ -1,0 +1,29 @@
+2025-12-01 19:09:37,339 - preprocessing_main - INFO - ============================================================
+2025-12-01 19:09:37,339 - preprocessing_main - INFO - Starting Data Preprocessing
+2025-12-01 19:09:37,339 - preprocessing_main - INFO - ============================================================
+2025-12-01 19:09:37,339 - preprocessing_main - INFO - Loading raw data...
+2025-12-01 19:09:37,554 - preprocessing_main - INFO - Loaded 1402 posts and 53332 comments
+2025-12-01 19:09:37,558 - preprocessing_main - ERROR - Preprocessing failed: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+2025-12-01 19:09:37,559 - preprocessing_main - ERROR - Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/02_data_preprocessing.py", line 403, in main
+    preprocessor = TextPreprocessor(config)
+  File "/Users/sher/project/sema/CSS/scripts/02_data_preprocessing.py", line 58, in __init__
+    self._initialize_nlp_tools()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sher/project/sema/CSS/scripts/02_data_preprocessing.py", line 65, in _initialize_nlp_tools
+    self.nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/spacy/__init__.py", line 52, in load
+    return util.load_model(
+           ~~~~~~~~~~~~~~~^
+        name,
+        ^^^^^
+    ...<4 lines>...
+        config=config,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/spacy/util.py", line 531, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+

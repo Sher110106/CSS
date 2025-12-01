@@ -1,6 +1,6 @@
 {
   "report_metadata": {
-    "generated_at": "2025-10-27T21:15:08.357662",
+    "generated_at": "2025-12-01T19:13:14.375272",
     "data_source": "combined_processed.csv",
     "total_documents_analyzed": 23405
   },
@@ -84,9 +84,9 @@
     "min_posts_in_month": 5
   },
   "vocabulary": {
-    "total_tokens": 733369,
-    "unique_tokens": 17987,
-    "vocabulary_richness": 0.024526534391281878,
+    "total_tokens": 733360,
+    "unique_tokens": 17996,
+    "vocabulary_richness": 0.024539107668812045,
     "top_50_words": [
       [
         "weight",
@@ -214,7 +214,7 @@
       ],
       [
         "use",
-        3189
+        3181
       ],
       [
         "calorie",
@@ -277,16 +277,16 @@
         2361
       ],
       [
-        "dose",
-        2292
-      ],
-      [
         "great",
         2177
       ],
       [
         "long",
         2172
+      ],
+      [
+        "doctor",
+        2146
       ]
     ],
     "top_100_words": [
@@ -416,7 +416,7 @@
       ],
       [
         "use",
-        3189
+        3181
       ],
       [
         "calorie",
@@ -479,10 +479,6 @@
         2361
       ],
       [
-        "dose",
-        2292
-      ],
-      [
         "great",
         2177
       ],
@@ -521,6 +517,10 @@
       [
         "pound",
         1985
+      ],
+      [
+        "dose",
+        1942
       ],
       [
         "give",
@@ -691,9 +691,9 @@
         1273
       ]
     ],
-    "singleton_words": 7595,
-    "words_appearing_more_than_10_times": 4042,
-    "words_appearing_more_than_100_times": 1073
+    "singleton_words": 7599,
+    "words_appearing_more_than_10_times": 4047,
+    "words_appearing_more_than_100_times": 1074
   },
   "ngrams": {
     "top_bigrams": [
@@ -900,10 +900,10 @@
         474
       ]
     ],
-    "total_bigrams": 709964,
-    "unique_bigrams": 346602,
-    "total_trigrams": 686559,
-    "unique_trigrams": 599897
+    "total_bigrams": 709955,
+    "unique_bigrams": 347117,
+    "total_trigrams": 686550,
+    "unique_trigrams": 600093
   },
   "subreddit_analysis": {
     "Ozempic": {

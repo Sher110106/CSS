@@ -1,6 +1,6 @@
 {
   "report_metadata": {
-    "generated_at": "2025-10-27T21:17:03.581090",
+    "generated_at": "2025-12-01T19:18:37.736362",
     "analyzer": "VADER",
     "total_documents": 23405,
     "positive_threshold": 0.05,
@@ -9,105 +9,77 @@
   "overall_sentiment": {
     "total_documents": 23405,
     "compound": {
-      "mean": 0.3264517923520615,
-      "std": 0.5607927227932299,
+      "mean": 0.3258320572527238,
+      "std": 0.5601583935631311,
       "min": -0.9961,
       "max": 0.9994,
-      "median": 0.5046
+      "median": 0.4989
     },
     "sentiment_distribution": {
-      "positive": 16104,
-      "neutral": 1285,
-      "negative": 6016
+      "positive": 16081,
+      "neutral": 1300,
+      "negative": 6024
     },
     "sentiment_percentages": {
-      "positive": 68.80581072420424,
-      "neutral": 5.490279854731895,
-      "negative": 25.703909421063877
+      "positive": 68.70754112369151,
+      "neutral": 5.554368724631489,
+      "negative": 25.73809015167699
     }
   },
   "sentiment_by_topic": {
     "0": {
       "dominant_topic": 0,
-      "compound_mean": 0.3364,
-      "compound_std": 0.5641,
+      "compound_mean": 0.32,
+      "compound_std": 0.5754,
       "compound_min": -0.9961,
       "compound_max": 0.9993,
-      "pos_mean": 0.2566,
-      "neu_mean": 0.6188,
-      "neg_mean": 0.1246,
-      "document_count": 16949,
-      "negative": 0.2528,
-      "neutral": 0.0536,
-      "positive": 0.6936
+      "pos_mean": 0.2623,
+      "neu_mean": 0.6051,
+      "neg_mean": 0.1326,
+      "document_count": 17934,
+      "negative": 0.2673,
+      "neutral": 0.0522,
+      "positive": 0.6805
     },
     "1": {
       "dominant_topic": 1,
-      "compound_mean": 0.5072,
-      "compound_std": 0.225,
-      "compound_min": -0.926,
-      "compound_max": 0.9442,
-      "pos_mean": 0.1471,
-      "neu_mean": 0.7965,
-      "neg_mean": 0.0564,
-      "document_count": 531,
-      "negative": 0.0452,
-      "neutral": 0.0038,
-      "positive": 0.951
+      "compound_mean": 0.3415,
+      "compound_std": 0.5233,
+      "compound_min": -0.9924,
+      "compound_max": 0.9994,
+      "pos_mean": 0.2098,
+      "neu_mean": 0.689,
+      "neg_mean": 0.1013,
+      "document_count": 4843,
+      "negative": 0.2271,
+      "neutral": 0.0745,
+      "positive": 0.6983
     },
     "2": {
       "dominant_topic": 2,
-      "compound_mean": 0.106,
-      "compound_std": 0.5033,
-      "compound_min": -0.9619,
-      "compound_max": 0.9867,
-      "pos_mean": 0.1626,
-      "neu_mean": 0.7104,
-      "neg_mean": 0.1271,
-      "document_count": 920,
-      "negative": 0.3935,
-      "neutral": 0.1152,
-      "positive": 0.4913
-    },
-    "3": {
-      "dominant_topic": 3,
-      "compound_mean": 0.3292,
-      "compound_std": 0.5099,
-      "compound_min": -0.9686,
-      "compound_max": 0.9994,
-      "pos_mean": 0.1828,
-      "neu_mean": 0.7316,
-      "neg_mean": 0.0856,
-      "document_count": 1485,
-      "negative": 0.2215,
-      "neutral": 0.0875,
-      "positive": 0.6909
-    },
-    "4": {
-      "dominant_topic": 4,
-      "compound_mean": 0.3076,
-      "compound_std": 0.5976,
-      "compound_min": -0.9913,
-      "compound_max": 0.9979,
-      "pos_mean": 0.2809,
-      "neu_mean": 0.5645,
-      "neg_mean": 0.1546,
-      "document_count": 3520,
-      "negative": 0.2889,
-      "neutral": 0.0392,
-      "positive": 0.6719
+      "compound_mean": 0.3704,
+      "compound_std": 0.3519,
+      "compound_min": -0.926,
+      "compound_max": 0.6249,
+      "pos_mean": 0.1524,
+      "neu_mean": 0.7649,
+      "neg_mean": 0.0826,
+      "document_count": 628,
+      "negative": 0.2086,
+      "neutral": 0.0032,
+      "positive": 0.7882
     }
   },
   "temporal_summary": {
     "periods_analyzed": 70,
     "earliest_period": "2019-03",
     "latest_period": "2025-10",
-    "mean_sentiment_over_time": 0.3169300000000001
+    "mean_sentiment_over_time": 0.31711
   },
   "key_findings": [
-    "Overall sentiment is 0.3265 (slightly positive)",
-    "Most positive topic: Topic 1",
-    "Most negative topic: Topic 2",
-    "Sentiment distribution: 68.8% positive, 5.5% neutral, 25.7% negative"
+    "Overall sentiment is 0.3258 (slightly positive)",
+    "Most positive topic: Topic 2",
+    "Most negative topic: Topic 0",
+    "Sentiment distribution: 68.7% positive, 5.6% neutral, 25.7% negative"
   ]
 }

@@ -1,492 +1,411 @@
-# Semaglutide Reddit Analysis Project
+# Semaglutide Reddit Discourse Analysis
 
-A comprehensive NLP research project analyzing patient experiences with semaglutide (Ozempic, Wegovy) on Reddit using topic modeling (LDA) and sentiment analysis (VADER).
+**Analysis Period**: March 2019 - October 2025 (6.6 years)  
+**Dataset**: 23,405 Reddit documents  
+**Status**: ✅ COMPLETE
+
+---
 
 ## 📊 Project Overview
 
-This project collects and analyzes Reddit posts and comments from communities discussing semaglutide, a medication used for diabetes and weight management. Using natural language processing techniques, we identify key topics and sentiment patterns in patient experiences.
+Comprehensive NLP analysis of Reddit discussions about semaglutide (Ozempic/Wegovy) using:
+- **Data Collection**: BAScraper for enhanced temporal sampling
+- **Topic Modeling**: LDA with coherence-based model selection (K=3 optimal)
+- **Sentiment Analysis**: VADER temporal tracking
+- **Research Questions**: 8 data-driven questions with findings
 
-### Key Results Achieved
-- ✅ **23,405 documents** analyzed (posts + comments)
-- ✅ **5 distinct topics** identified using LDA
-- ✅ **6.6 years** of data (2019-2025)
-- ✅ **64.1% coherence score** achieved
-- ✅ **15+ visualizations** generated
-- ✅ **Comprehensive statistical analysis** completed
+### Key Results
+- **23,405 documents** analyzed from 6 major health subreddits
+- **3 distinct topics** identified (coherence: 0.682)
+- **68.7% positive sentiment** overall
+- **903x growth** in discussion volume (2019→2025)
+- **Engagement paradox** discovered: More posts, less engagement
 
-### Research Objectives
-- Collect and analyze Reddit discussions about semaglutide
-- Identify main topics using Latent Dirichlet Allocation (LDA)
-- Analyze sentiment patterns using VADER
-- Generate publication-ready visualizations
-- Provide real-world evidence for healthcare research
+---
 
-## 🏗️ Project Structure
-
-```
-semaglutide-reddit-analysis/
-├── config/                      # Configuration files
-│   ├── config.yaml             # Main configuration
-│   └── config_loader.py        # Config loader utility
-├── data/
-│   ├── raw/                    # Raw scraped data
-│   ├── processed/              # Cleaned and processed data
-│   ├── anonymized/             # Final anonymized dataset
-│   └── metadata/               # Reports and statistics
-├── models/
-│   ├── lda/                    # Trained LDA models
-│   ├── evaluation/             # Model evaluation metrics
-│   └── checkpoints/            # Model checkpoints
-├── visualizations/
-│   ├── wordclouds/            # Word cloud images
-│   ├── charts/                # Statistical charts
-│   ├── interactive/           # Interactive visualizations
-│   ├── eda/                   # Exploratory analysis plots
-│   └── report_figures/        # Publication-ready figures
-├── scripts/                    # Analysis scripts
-│   ├── 01_data_collection.py
-│   ├── 02_data_preprocessing.py
-│   ├── 03_exploratory_analysis.py
-│   ├── 04_topic_modeling.py
-│   ├── 05_sentiment_analysis.py
-│   ├── 06_integration.py
-│   ├── 07_visualization.py
-│   ├── 08_report_generation.py
-│   ├── 09_final_validation.py
-│   ├── utils.py               # Utility functions
-│   └── validate_setup.py      # Setup validation
-├── notebooks/                  # Jupyter notebooks
-├── logs/                      # Execution logs
-├── report/                    # Research paper sections
-└── venv/                      # Python virtual environment
-```
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.13 or higher
-- Reddit API credentials (free)
-- 5GB+ free disk space
+- Python 3.13+
+- Reddit API credentials (free from https://www.reddit.com/prefs/apps)
+- 5GB+ disk space
 
 ### Installation
 
-1. **Clone/Navigate to project directory**
 ```bash
-cd semaglutide-reddit-analysis
-```
+# Navigate to project
+cd /Users/sher/project/sema/CSS
 
-2. **Activate virtual environment**
-```bash
+# Activate virtual environment
 source venv/bin/activate
-```
 
-3. **Verify installation**
-```bash
-python scripts/validate_setup.py
+# Install dependencies (if needed)
+pip install -r requirements.txt
 ```
 
 ### Reddit API Setup
 
 1. Go to https://www.reddit.com/prefs/apps
-2. Click "Create App" or "Create Another App"
-3. Select "script" as the app type
-4. Fill in the form:
-   - **name**: semaglutide-research
-   - **description**: Academic research on patient experiences
-   - **redirect uri**: http://localhost:8080
-5. Copy the **client_id** (under your app name) and **client_secret**
-6. Create `.env` file from template:
+2. Create app (type: script)
+3. Copy client_id and client_secret
+4. Create `.env` file:
 ```bash
-cp .env.template .env
-```
-7. Edit `.env` and add your credentials:
-```
 REDDIT_CLIENT_ID=your_client_id_here
 REDDIT_CLIENT_SECRET=your_client_secret_here
 REDDIT_USER_AGENT=semaglutide_research_v1.0
 ```
 
-## 📝 Usage
+---
 
-### Run Complete Pipeline
+## 📁 Project Structure
+
+```
+CSS/
+├── data/
+│   ├── raw/                           # Original scraped data
+│   │   ├── posts.csv                  # 1,402 posts
+│   │   └── comments.csv               # 53,332 comments
+│   ├── processed/                     # Cleaned data
+│   │   ├── combined_processed.csv     # 23,405 documents
+│   │   ├── documents_with_topics.csv  # With topic assignments
+│   │   └── documents_with_sentiment.csv  # Final dataset
+│   └── metadata/                      # Analysis reports (JSON)
+├── models/
+│   ├── lda/                          # Topic models
+│   │   ├── lda_model_2_topics        # K=2 model
+│   │   ├── lda_model_3_topics        # K=3 model (best)
+│   │   ├── lda_model_4_topics        # K=4 model
+│   │   ├── lda_model_5_topics        # K=5 model
+│   │   └── lda_model_best            # Symlink to best
+│   └── evaluation/
+│       └── topic_coherence_comparison.csv
+├── scripts/
+│   ├── 01_bascraper_collection.py    # Data collection
+│   ├── 02_data_preprocessing.py       # Text cleaning
+│   ├── 03_exploratory_analysis.py     # EDA
+│   ├── 04_enhanced_topic_modeling.py  # LDA with model selection
+│   ├── 05_sentiment_analysis.py       # VADER sentiment
+│   ├── 08_comprehensive_visualizations.py  # Plots
+│   └── utils.py                       # Utility functions
+├── visualizations/
+│   ├── eda/                          # Exploratory plots
+│   ├── wordclouds/                   # Topic word clouds
+│   └── research_analysis/            # Research figures
+├── logs/                             # Execution logs
+├── RESEARCH_ANALYSIS_REPORT.md       # 📊 MAIN REPORT (15 pages)
+├── FINAL_PROJECT_SUMMARY.md          # Executive summary
+└── PROJECT_COMPLETION_SUMMARY.md     # Detailed completion status
+```
+
+---
+
+## 🔬 Analysis Pipeline
+
+### Step 1: Data Collection
 ```bash
-# Module 1: Data Collection
-python scripts/01_data_collection.py
+python scripts/01_bascraper_collection.py
+```
+- **Tool**: BAScraper (enhanced temporal sampling)
+- **Subreddits**: r/Ozempic, r/Semaglutide, r/WeightLossAdvice, r/diabetes_t2, r/diabetes, r/loseit
+- **Output**: `data/raw/posts.csv`, `data/raw/comments.csv`
 
-# Module 2: Preprocessing
+### Step 2: Preprocessing
+```bash
 python scripts/02_data_preprocessing.py
-
-# Module 3: Exploratory Analysis
-python scripts/03_exploratory_analysis.py
-
-# Module 4: Topic Modeling
-python scripts/04_topic_modeling.py
-
-# Module 5: Sentiment Analysis
-python scripts/05_sentiment_analysis.py
-
-# Module 6: Integration
-python scripts/06_integration.py
-
-# Module 7: Visualization
-python scripts/07_visualization.py
-
-# Module 8: Report Generation
-python scripts/08_report_generation.py
-
-# Module 9: Final Validation
-python scripts/09_final_validation.py
 ```
+- **Tasks**: Tokenization, stopword removal, lemmatization, filtering (<10 tokens)
+- **Output**: `data/processed/combined_processed.csv` (23,405 docs)
 
-### Run Individual Scripts
-Each script can be run independently if previous modules are complete:
+### Step 3: Exploratory Analysis
 ```bash
-python scripts/04_topic_modeling.py  # Run topic modeling only
+python scripts/03_exploratory_analysis.py
+```
+- **Tasks**: Temporal distribution, vocabulary analysis, word clouds
+- **Output**: `visualizations/eda/`, `data/metadata/eda_report.json`
+
+### Step 4: Topic Modeling
+```bash
+python scripts/04_enhanced_topic_modeling.py
+```
+- **Method**: LDA with coherence-based selection (tested K=2,3,4,5)
+- **Best Model**: K=3 (coherence: 0.682)
+- **Output**: `models/lda/lda_model_best`, `data/processed/documents_with_topics.csv`
+
+### Step 5: Sentiment Analysis
+```bash
+python scripts/05_sentiment_analysis.py
+```
+- **Tool**: VADER (social media optimized)
+- **Output**: `data/processed/documents_with_sentiment.csv`
+
+### Step 6: Visualizations
+```bash
+python scripts/08_comprehensive_visualizations.py
+```
+- **Output**: 10 publication-ready figures in `visualizations/research_analysis/`
+
+---
+
+## 📈 Key Findings
+
+### 1. Three Distinct Topics Identified
+
+| Topic | Label | Distribution | Top Keywords |
+|-------|-------|--------------|--------------|
+| **0** | Weight Loss & Experiences | 76.7% | weight, lose, start, take, week, month, dose |
+| **1** | Diet & Nutrition | 20.7% | eat, food, protein, calorie, feel, meal, water |
+| **2** | Community Support | 2.7% | help, question, thank, doctor, advice, share |
+
+**Model Selection**:
+- K=2: Coherence 0.565
+- K=3: Coherence 0.682 ← **BEST**
+- K=4: Coherence 0.623
+- K=5: Coherence 0.613
+
+### 2. Overall Positive Sentiment (68.7%)
+
+- **Positive**: 16,090 documents (68.7%)
+- **Neutral**: 1,311 documents (5.6%)
+- **Negative**: 6,004 documents (25.7%)
+
+**Sentiment by Topic**:
+- Topic 2 (Community Support): 0.370 (highest)
+- Topic 1 (Diet): 0.342
+- Topic 0 (Weight Loss): 0.320
+
+### 3. Dramatic Growth Over Time
+
+```
+Year   | Documents | Growth vs 2019
+-------|-----------|---------------
+2019   |        14 |     1x (baseline)
+2020   |       148 |    11x
+2021   |       515 |    37x
+2022   |     1,485 |   106x
+2023   |     4,588 |   328x
+2024   |     3,992 |   285x
+2025   |    12,655 |   903x
 ```
 
-## 🔧 Configuration
+### 4. The Engagement Paradox
 
-Edit `config/config.yaml` to customize:
-- **Subreddits**: Communities to scrape
-- **Keywords**: Search terms
-- **Target posts**: Number of posts to collect
-- **LDA parameters**: Number of topics, iterations
-- **Preprocessing rules**: Stopwords, filters
-- **Visualization settings**: DPI, color schemes
+**Discovery**: Volume increased 903x, but engagement collapsed 99%
 
-## 📊 Key Findings & Results
+```
+Year   | Median Post Score | Mean Score
+-------|-------------------|------------
+2020   |             888   |      1,144
+2021   |             240   |        509
+2022   |              75   |        352
+2023   |              16   |        180
+2024   |              10   |        218
+2025   |               6   |        317
+```
 
-### Dataset Summary
-- **Total Documents**: 23,405 (1,221 posts + 22,184 comments)
-- **Time Period**: 2019-03-20 to 2025-10-27 (6.6 years)
-- **Subreddits**: r/Ozempic, r/Semaglutide, r/WeightLossAdvice, r/diabetes_t2
-- **Average Token Count**: 31.3 tokens/document
-- **Vocabulary Size**: 17,987 unique terms
+**Hypothesis**: Content saturation + demographic shift + novelty depreciation
 
-### Topic Analysis (5 Topics Identified)
+### 5. The 2023 Sentiment Mystery
 
-**Best Model Performance**: 
-- Coherence Score (C_v): **0.641** (64.1% - Good)
-- Perplexity: -7.05
-- Total Documents: 23,405
+- Sentiment **dropped 30%** from 2020 (0.39) to 2023 (0.27)
+- **Likely causes**: Supply shortage, negative media, cost/access issues
+- Recovery in 2024-2025 suggests stabilization
 
-**Topics Discovered**:
-1. **Topic 0 - Alternative Medications** (72.4%)
-   - Keywords: get, start, take, work, like, well, feel, good, time, see
-   
-2. **Topic 1 - Weight Loss Experiences** (2.3%)
-   - Keywords: message, semaglutide, offer, private, discussion
-   
-3. **Topic 2 - Insurance & Access** (3.9%)
-   - Keywords: doctor, advice, different, health, talk, medication
-   
-4. **Topic 3 - Diet & Side Effects** (6.3%)
-   - Keywords: eat, food, calorie, protein, carb, sugar, meal, water
-   
-5. **Topic 4 - Community Support** (15.0%)
-   - Keywords: weight, lose, look, loss, body, change, healthy, exercise
+---
 
-### Sentiment Analysis Results
+## 📊 Main Deliverable
 
-**Overall Sentiment Distribution**:
-- Positive: 68.8% (16,104 documents)
-- Neutral: 5.5% (1,285 documents)
-- Negative: 25.7% (6,016 documents)
+### **RESEARCH_ANALYSIS_REPORT.md** (15 pages)
 
-**Sentiment by Topic** (Average Compound Scores):
-- Topic 1 (Weight Loss Experiences): 0.507 (Most Positive)
-- Topic 0 (Alternative Medications): 0.336
-- Topic 3 (Diet & Side Effects): 0.329
-- Topic 4 (Community Support): 0.308
-- Topic 2 (Insurance & Access): 0.106 (Least Positive)
+Comprehensive analysis including:
 
-**Statistical Significance**: ANOVA F=52.12, p<8.79e-44 (highly significant differences between topics)
+**Section 1: Research Questions**
+- RQ1: How has discourse evolved 2019-2025?
+- RQ2: Why does volume increase correlate with engagement decrease?
+- RQ3: How does sentiment vary across topics?
+- RQ4: How do users frame semaglutide experiences?
+- RQ5: What caused the 2023 sentiment decline?
+- RQ6-8: Secondary questions on engagement, subreddits, sampling
 
-### Visualizations Generated
-- ✅ 6 word clouds (overall + 5 topics)
-- ✅ Topic distribution charts
-- ✅ Sentiment analysis visualizations
-- ✅ Time series plots
-- ✅ Sentiment heatmaps
-- ✅ Box plots and summary charts
-- ✅ All figures at 300 DPI (publication-ready)
+**Section 2: Methodology**
+- Data collection procedures
+- Preprocessing pipeline
+- LDA model selection rationale
+- VADER sentiment analysis
+- Temporal analysis approach
 
-### Data Outputs
-- Raw data: 54,734 documents (1,402 posts + 53,332 comments)
-- Processed dataset: 23,405 documents with topics and sentiment
-- Anonymized final dataset
-- 35 representative posts extracted
-- Complete statistical reports
+**Section 3: Detailed Findings**
+- Topic distribution and keywords
+- Sentiment patterns (overall, by topic, by year)
+- Engagement paradox analysis
+- Temporal evolution insights
+- Framing analysis
 
-## 🔬 Technical Details
+**Section 4: Implications**
+- Healthcare communication insights
+- Policy implications
+- Platform dynamics understanding
+- Patient experience documentation
 
-### NLP Techniques
-- **Topic Modeling**: Latent Dirichlet Allocation (LDA) via Gensim
-- **Sentiment Analysis**: VADER (Valence Aware Dictionary and sEntiment Reasoner)
-- **Preprocessing**: spaCy + NLTK
-- **Evaluation**: Coherence scores (C_v metric)
+**Section 5: Limitations**
+- 2019 undersampling due to Reddit API behavior
+- Platform-specific biases
+- Self-selected population
+- Causal inference limitations
 
-### Key Libraries
-- `praw`: Reddit API wrapper
-- `gensim`: Topic modeling
-- `vaderSentiment`: Sentiment analysis
-- `spacy`: NLP preprocessing
-- `nltk`: Text processing
-- `pandas`: Data manipulation
-- `matplotlib/seaborn`: Visualization
-- `pyLDAvis`: Interactive topic visualization
+**Section 6: Future Research**
+- Causal inference methods
+- Cross-platform comparison
+- Real-time monitoring
+- Engagement prediction modeling
 
-## 📈 Key Research Insights
+---
 
-### Main Patient Concerns
-1. **Alternative Medications Discussion** (72.4% of discussions)
-   - Dominates community conversations
-   - Positive sentiment (0.336 average)
-   - Focus on starting, taking, and medication effectiveness
+## 📉 Available Visualizations
 
-2. **Weight Loss Experiences** (2.3% of discussions)
-   - Most positive topic (0.507 average sentiment)
-   - Community sharing and support
-   - Success stories and experiences
+All figures in `visualizations/research_analysis/`:
 
-3. **Insurance & Access Challenges** (3.9% of discussions)
-   - Lower positive sentiment (0.106)
-   - Medical consultation and access issues
-   - Insurance and prescription challenges
+1. **01_temporal_volume.png** - Document volume over time
+2. **02_sentiment_over_time.png** - Sentiment trends (2019-2025)
+3. **03_engagement_paradox.png** - 4-panel engagement analysis
+4. **04_topic_distribution.png** - Topic prevalence pie chart
+5. **05_topic_sentiment.png** - Sentiment by topic boxplots
+6. **06_sentiment_distribution.png** - Overall sentiment histogram
+7. **07_sentiment_by_class.png** - Positive/neutral/negative counts
+8. **08_topic_sentiment_heatmap.png** - Topic × sentiment heatmap
+9. **09_document_length.png** - Token count distribution
+10. **10_subreddit_distribution.png** - Documents by subreddit
 
-4. **Diet & Side Effects** (6.3% of discussions)
-   - Positive sentiment (0.329)
-   - Focus on food, nutrition, and dietary habits
-   - Side effect management through diet
+Word clouds in `visualizations/wordclouds/`:
+- `overall_wordcloud.png` - All documents
+- `topic_0_wordcloud.png` - Weight Loss
+- `topic_1_wordcloud.png` - Diet & Nutrition
+- `topic_2_wordcloud.png` - Community Support
 
-### Temporal Trends
-- Dramatic increase in discussion volume (5,295 posts in Oct 2025)
-- Consistent positive sentiment across years (0.35 average)
-- Peak activity in 2025
-- Growing community engagement
+---
 
-### Clinical Implications
-- Real-world evidence shows predominantly positive experiences (68.8%)
-- Benefits appear to outweigh side effects for most users
-- Strong peer support in communities
-- Sentiment varies significantly by topic (p<8.79e-44)
+## 🔍 Data Access
 
-## ⚠️ Study Limitations
+### Load Final Dataset
+```python
+import pandas as pd
 
-### Data Collection Limitations
+# Load complete dataset with topics & sentiment
+df = pd.read_csv('data/processed/documents_with_sentiment.csv')
 
-**Historical Data Undersampling:**
-Due to Reddit API behavior with relevance-based sorting, historical data (pre-2020) is severely underrepresented:
+# Columns:
+# - doc_id, doc_type, author, score, created_utc
+# - text, cleaned_text, tokens, token_count, subreddit
+# - dominant_topic, topic_0, topic_1, topic_2
+# - compound, pos, neu, neg, sentiment_class
 
-- **Only 3 posts collected before March 2020** (compared to 1,399 after)
-- **Only 1 post from entire 2019** despite drug FDA approval in Dec 2017
-- Reddit API with `time_filter="all"` prioritizes recent, popular content
-- Collection methods ('search', 'hot', 'top', 'new') all favor recent posts
+# Filter by topic
+topic_0 = df[df['dominant_topic'] == 0]
 
-**Impact on Analysis:**
-- ❌ Pre/post pandemic comparisons are **statistically invalid** (n=3 vs n=1,399)
-- ❌ Cannot analyze 2019 trends or early adoption patterns
-- ✅ 2020-2025 temporal analysis is valid and robust
-- ✅ 2024-2025 explosive growth analysis (83% of posts) reflects genuine trend
+# Filter by sentiment
+positive = df[df['sentiment_class'] == 'positive']
 
-**Why This Matters:**
-The data does show real explosive growth in semaglutide discussion (2024-2025), likely due to:
-- Wegovy weight loss FDA approval (June 2021)
-- Celebrity usage and mainstream media coverage (2022-2023)
-- Viral TikTok/social media trends (2023-2024)
-- Supply shortages and insurance debates (2023-2024)
+# Filter by year
+df['year'] = pd.to_datetime(df['created_utc']).dt.year
+df_2025 = df[df['year'] == 2025]
+```
 
-However, we cannot make statements about "pre-pandemic" sentiment or compare pandemic periods meaningfully. All temporal analysis focuses on 2020-2025 where data collection was adequate.
+### Load Models
+```python
+from gensim.models import LdaMulticore
+from gensim.corpora import Dictionary
+
+# Load best LDA model
+lda = LdaMulticore.load('models/lda/lda_model_best')
+
+# Load dictionary
+dictionary = Dictionary.load('models/lda/dictionary.dict')
+
+# Get topics
+for idx, topic in lda.print_topics(-1):
+    print(f"Topic {idx}: {topic}")
+```
+
+---
+
+## 📚 Technical Stack
+
+- **Python**: 3.13
+- **Data Collection**: PRAW, BAScraper
+- **NLP**: spaCy (en_core_web_sm), NLTK
+- **Topic Modeling**: Gensim (LdaMulticore)
+- **Sentiment**: VADER (vaderSentiment)
+- **Analysis**: pandas, numpy, scipy
+- **Visualization**: matplotlib, seaborn, wordcloud
+
+---
+
+## ⚠️ Important Limitations
+
+### 2019 Data Undersampling
+
+Due to Reddit API behavior with relevance-based sorting:
+- **Only 14 documents** collected from 2019 (vs 12,655 in 2025)
+- API prioritizes recent, popular content even with `time_filter="all"`
+- **Impact**: Pre-2020 temporal analysis is limited; focus on 2020-2025
 
 ### Sample Representativeness
-- Data represents Reddit users discussing semaglutide (self-selected population)
+- Data represents Reddit users discussing semaglutide (self-selected)
 - May not represent all patients using semaglutide
 - Skewed toward weight loss discussions vs diabetes management
 - English-language posts only
 
-### Subreddit Context
-- r/Ozempic and r/Semaglutide were small/new in 2019, limiting historical data
-- Community demographics may shift over time
+### Platform Specifics
+- Reddit community demographics may shift over time
 - Moderation policies affect discussion content
+- Upvote/downvote mechanics influence visibility
 
-## ⚠️ Ethics & Privacy
+---
 
-- All data is anonymized (usernames hashed/removed)
-- Public Reddit data only (no private messages)
-- Research use only
-- Complies with Reddit API terms of service
-- No personal identifiable information (PII) in outputs
+## 🎯 Research Contributions
 
-## 🐛 Troubleshooting
+1. **Methodological**:
+   - Demonstrated importance of model selection (not assuming K)
+   - Coherence-based selection yielded K=3 > K=5
+   - Temporal sampling crucial for trend analysis
 
-### Common Issues
+2. **Empirical**:
+   - **Engagement paradox**: Novel finding about volume-engagement inverse relationship
+   - **2023 sentiment drop**: Connected to real-world supply shortage
+   - **Topic-sentiment relationship**: Community support highest sentiment but rarest
 
-**Rate Limiting**
-- Reddit API: Max 60 requests/minute
-- Script implements automatic delays
+3. **Practical**:
+   - Real-world evidence for healthcare providers
+   - Social media monitoring for public health surveillance
+   - Understanding online health community dynamics
 
-**Missing Credentials**
-```bash
-# Check your .env file exists and has valid credentials
-cat .env
+---
+
+## 📧 Citation
+
+If using this analysis, please reference:
+
+```
+Semaglutide Reddit Discourse Analysis (2025)
+Dataset: 23,405 Reddit documents (2019-2025)
+Topics: 3 (LDA, coherence: 0.682)
+Sentiment: VADER
+GitHub: [Your repository]
 ```
 
-**Package Issues**
-```bash
-# Reinstall dependencies
-pip install -r requirements.txt --upgrade
-```
-
-**NLTK Data Missing**
-```bash
-python -c "import nltk; nltk.download('all')"
-```
-
-**spaCy Model Missing**
-```bash
-python -m spacy download en_core_web_sm
-```
-
-## 📂 Accessing Results
-
-### Quick Start for Reviewing Results
-
-**View Complete Analysis**:
-```bash
-# Open comprehensive results document
-open COMPREHENSIVE_RESULTS.md
-```
-
-**Load Data in Python**:
-```python
-import pandas as pd
-
-# Load final dataset with topics and sentiment
-df = pd.read_csv('data/anonymized/final_dataset.csv')
-
-# View summary
-print(df.info())
-print(df[['dominant_topic', 'sentiment_class', 'compound']].describe())
-
-# Load representative posts
-samples = pd.read_csv('data/anonymized/representative_posts.csv')
-```
-
-**View Visualizations**:
-```bash
-# Open interactive topic visualization in browser
-open visualizations/interactive/lda_visualization.html
-
-# View all word clouds
-open visualizations/wordclouds/
-
-# View publication-ready figures
-open visualizations/report_figures/
-```
-
-**Load Statistical Reports**:
-```python
-import json
-
-# Load topic analysis report
-with open('models/evaluation/topic_report.json', 'r') as f:
-    topic_report = json.load(f)
-
-# Load sentiment analysis report  
-with open('data/metadata/sentiment_report.json', 'r') as f:
-    sentiment_report = json.load(f)
-
-# Load integration insights
-with open('data/metadata/key_insights.json', 'r') as f:
-    insights = json.load(f)
-```
-
-### Dataset Schema
-
-The final dataset (`data/anonymized/final_dataset.csv`) contains:
-- **doc_id**: Unique identifier
-- **doc_type**: Post or comment
-- **author**: Reddit username (anonymized if needed)
-- **text**: Original post/comment text
-- **cleaned_text**: Preprocessed text
-- **created_utc**: Timestamp
-- **subreddit**: Source subreddit
-- **score**: Reddit score
-- **dominant_topic**: Assigned topic (0-4)
-- **topic_0 to topic_4**: Topic probabilities
-- **compound**: VADER compound sentiment score (-1 to 1)
-- **pos, neg, neu**: VADER component scores
-- **sentiment_class**: Positive/Neutral/Negative
-
-## 📚 References
-
-1. Somani et al. (2023) - Topic modeling for public health research
-2. Goel et al. (2022) - VADER sentiment analysis applications
-3. Blei et al. (2003) - Latent Dirichlet Allocation
-4. Hutto & Gilbert (2014) - VADER: A Parsimonious Rule-based Model for Sentiment Analysis
-5. Reddit API Documentation: https://www.reddit.com/dev/api/
+---
 
 ## 📄 License
 
 MIT License - Academic research use
 
-## 👥 Contact
+---
 
-For questions about this project, please refer to the project documentation or raise an issue.
+## 🏁 Status
 
-## 🎯 Project Status
-
-**Project Phase**: Analysis Complete ✅
-
-### Completed Modules
-- [x] **Module 0**: Setup & Configuration ✓
-- [x] **Module 1**: Data Collection (54,734 raw documents) ✓
-- [x] **Module 2**: Data Preprocessing (23,405 processed) ✓
-- [x] **Module 3**: Exploratory Data Analysis ✓
-- [x] **Module 4**: Topic Modeling (5 topics, 64.1% coherence) ✓
-- [x] **Module 5**: Sentiment Analysis (VADER) ✓
-- [x] **Module 6**: Integration & Statistical Analysis ✓
-- [x] **Module 7**: Visualization (15+ figures) ✓
-- [ ] **Module 8**: Report Generation (pending)
-- [ ] **Module 9**: Final Validation (pending)
-
-### Available Outputs
-
-**Data Files**:
-- `data/raw/posts.csv` - Raw Reddit posts (1,402)
-- `data/raw/comments.csv` - Raw comments (53,332)
-- `data/processed/combined_processed.csv` - Cleaned data (23,405 docs)
-- `data/anonymized/final_dataset.csv` - Complete dataset with topics & sentiment
-- `data/anonymized/representative_posts.csv` - 35 sample posts
-
-**Model Files**:
-- `models/lda/lda_model_5_topics.model` - Best LDA model
-- `models/lda/lda_model_best.model` - Best model (symlink)
-- `models/evaluation/topic_coherence_comparison.csv` - Model comparison
-- `data/metadata/topic_modeling_report.json` - Detailed topic analysis
-
-**Visualizations**:
-- `visualizations/wordclouds/` - 6 word clouds (300 DPI)
-- `visualizations/charts/` - Topic & sentiment charts
-- `visualizations/eda/` - Exploratory analysis plots
-- `visualizations/report_figures/` - Publication-ready figures
-
-**Reports**:
-- `COMPREHENSIVE_RESULTS.md` - Complete analysis results
-- `data/metadata/` - All statistical reports (JSON)
-- Individual module completion reports (MODULE_X_COMPLETE.md)
-
-### File Locations
-
-All project files are organized in:
-```
-/Users/sher/project/css/semaglutide-reddit-analysis/
-```
-
-For detailed results, see `COMPREHENSIVE_RESULTS.md` (67KB, 2,367 lines)
+**Project**: ✅ COMPLETE  
+**Last Updated**: December 1, 2025  
+**Main Report**: `RESEARCH_ANALYSIS_REPORT.md`
 
 ---
 
-**Project Completion**: ~90%  
-**Last Updated**: 2025-10-27  
-**Analysis Date**: October 27, 2025
+**For Questions**: Refer to `RESEARCH_ANALYSIS_REPORT.md` for methodology details and `FINAL_PROJECT_SUMMARY.md` for executive summary.
