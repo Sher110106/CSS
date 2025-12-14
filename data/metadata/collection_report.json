@@ -1,41 +1,26 @@
 {
-  "collection_timestamp": "2025-10-27T21:07:14.762886",
-  "start_time": "2025-10-27T18:52:23.047632",
-  "runtime_hours": 2.247698680833333,
-  "total_posts": 1402,
-  "total_comments": 53332,
-  "total_errors": 0,
-  "subreddits": [
-    "Ozempic",
-    "Semaglutide",
-    "WeightLossAdvice",
-    "diabetes_t2"
-  ],
-  "keywords": [
-    "semaglutide",
-    "ozempic",
-    "wegovy",
-    "rybelsus"
-  ],
-  "collection_rate": {
-    "posts_per_hour": 623.7490869907034,
-    "comments_per_hour": 23727.379677167042
+  "collection_metadata": {
+    "collection_date": "2025-12-01T18:48:30",
+    "method": "BAScraper",
+    "time_filter": "all",
+    "sort_method": "relevance"
   },
-  "date_range": {
-    "earliest_post": "2019-03-20T16:13:21",
-    "latest_post": "2025-10-27T21:05:08"
+  "data_collected": {
+    "total_posts": 1402,
+    "total_comments": 53332,
+    "total_documents": 54734,
+    "date_range": {
+      "start": "2019-03-20",
+      "end": "2025-10-27",
+      "span_years": 6.6
+    }
   },
-  "posts_by_subreddit": {
-    "Semaglutide": 493,
-    "WeightLossAdvice": 312,
-    "Ozempic": 304,
-    "diabetes_t2": 293
-  },
-  "statistics": {
-    "avg_score": 423.0934379457917,
-    "avg_comments_per_post": 48.61982881597717,
-    "unique_authors": 1254,
-    "self_posts": 906,
-    "total_upvotes": 593177
+  "subreddits": {
+    "r/Ozempic": "Primary",
+    "r/Semaglutide": "Primary",
+    "r/WeightLossAdvice": "Secondary",
+    "r/diabetes_t2": "Secondary",
+    "r/diabetes": "Secondary",
+    "r/loseit": "Secondary"
   }
 }

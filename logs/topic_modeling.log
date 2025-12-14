@@ -246,3 +246,201 @@ Topic Distribution:
 2025-10-27 21:16:49,757 - topic_modeling - INFO -   Topic 4: 3520 docs (15.0%)
 2025-10-27 21:16:50,283 - topic_modeling - INFO - Documents with topics saved to data/processed/documents_with_topics.csv
 2025-10-27 21:16:50,287 - topic_modeling - INFO - Report saved to data/metadata/topic_modeling_report.json
+2025-12-01 19:14:20,230 - topic_modeling_main - INFO - ================================================================================
+2025-12-01 19:14:20,230 - topic_modeling_main - INFO - MODULE 4: ENHANCED TOPIC MODELING
+2025-12-01 19:14:20,230 - topic_modeling_main - INFO - ================================================================================
+2025-12-01 19:14:20,233 - topic_modeling - INFO - Enhanced Topic Modeler initialized
+2025-12-01 19:14:20,233 - topic_modeling - INFO - Will test topic numbers: [2, 3, 4, 5]
+2025-12-01 19:14:20,233 - topic_modeling - INFO - Loading processed data...
+2025-12-01 19:14:21,332 - topic_modeling - INFO - Loaded 23405 documents
+2025-12-01 19:14:21,332 - topic_modeling - INFO - Preparing corpus...
+2025-12-01 19:14:21,789 - topic_modeling - INFO - Initial dictionary: 17996 terms
+2025-12-01 19:14:21,802 - topic_modeling - INFO - Filtered dictionary: 6001 terms
+2025-12-01 19:14:22,493 - topic_modeling - INFO - Saved dictionary and corpus
+2025-12-01 19:14:22,494 - topic_modeling - INFO - 
+================================================================================
+2025-12-01 19:14:22,494 - topic_modeling - INFO - TRAINING LDA MODELS WITH DIFFERENT TOPIC NUMBERS
+2025-12-01 19:14:22,494 - topic_modeling - INFO - ================================================================================
+2025-12-01 19:14:22,494 - topic_modeling - INFO - 
+Training LDA model with 2 topics...
+2025-12-01 19:14:33,344 - topic_modeling - INFO -   Model trained with 2 topics
+2025-12-01 19:14:41,489 - topic_modeling - INFO -   Coherence (C_v): 0.5651
+2025-12-01 19:14:41,489 - topic_modeling - INFO -   Perplexity: -7.0338
+2025-12-01 19:14:41,495 - topic_modeling - INFO -   Saved model to models/lda/lda_model_2_topics
+2025-12-01 19:14:41,495 - topic_modeling - INFO - 
+Training LDA model with 3 topics...
+2025-12-01 19:14:52,785 - topic_modeling - INFO -   Model trained with 3 topics
+2025-12-01 19:15:01,178 - topic_modeling - INFO -   Coherence (C_v): 0.6822
+2025-12-01 19:15:01,179 - topic_modeling - INFO -   Perplexity: -6.9493
+2025-12-01 19:15:01,182 - topic_modeling - INFO -   Saved model to models/lda/lda_model_3_topics
+2025-12-01 19:15:01,182 - topic_modeling - INFO - 
+Training LDA model with 4 topics...
+2025-12-01 19:15:13,241 - topic_modeling - INFO -   Model trained with 4 topics
+2025-12-01 19:15:22,139 - topic_modeling - INFO -   Coherence (C_v): 0.6234
+2025-12-01 19:15:22,139 - topic_modeling - INFO -   Perplexity: -6.9204
+2025-12-01 19:15:22,142 - topic_modeling - INFO -   Saved model to models/lda/lda_model_4_topics
+2025-12-01 19:15:22,142 - topic_modeling - INFO - 
+Training LDA model with 5 topics...
+2025-12-01 19:15:36,035 - topic_modeling - INFO -   Model trained with 5 topics
+2025-12-01 19:15:45,211 - topic_modeling - INFO -   Coherence (C_v): 0.6132
+2025-12-01 19:15:45,212 - topic_modeling - INFO -   Perplexity: -6.9298
+2025-12-01 19:15:45,215 - topic_modeling - INFO -   Saved model to models/lda/lda_model_5_topics
+2025-12-01 19:15:45,220 - topic_modeling - INFO - 
+Saved comparison results to models/evaluation/topic_coherence_comparison.csv
+2025-12-01 19:15:45,220 - topic_modeling - INFO - 
+================================================================================
+2025-12-01 19:15:45,220 - topic_modeling - INFO - SELECTING BEST MODEL
+2025-12-01 19:15:45,220 - topic_modeling - INFO - ================================================================================
+2025-12-01 19:15:45,220 - topic_modeling - INFO - 
+Best Model: 3 topics
+2025-12-01 19:15:45,220 - topic_modeling - INFO -   Coherence Score: 0.6822
+2025-12-01 19:15:45,220 - topic_modeling - INFO -   Perplexity: -6.9493
+2025-12-01 19:15:45,222 - topic_modeling - INFO -   Saved best model to models/lda/lda_model_best
+2025-12-01 19:15:45,222 - topic_modeling - INFO - 
+All Models Comparison:
+2025-12-01 19:15:45,222 - topic_modeling - INFO - ------------------------------------------------------------
+2025-12-01 19:15:45,222 - topic_modeling - INFO -   Topics |    Coherence |   Perplexity
+2025-12-01 19:15:45,222 - topic_modeling - INFO - ------------------------------------------------------------
+2025-12-01 19:15:45,222 - topic_modeling - INFO -        2 |       0.5651 |      -7.0338
+2025-12-01 19:15:45,222 - topic_modeling - INFO -        3 |       0.6822 |      -6.9493 ← BEST
+2025-12-01 19:15:45,223 - topic_modeling - INFO -        4 |       0.6234 |      -6.9204
+2025-12-01 19:15:45,223 - topic_modeling - INFO -        5 |       0.6132 |      -6.9298
+2025-12-01 19:15:45,223 - topic_modeling - INFO - 
+Extracting topics from best model...
+2025-12-01 19:15:45,223 - topic_modeling - INFO - 
+Topic 0:
+2025-12-01 19:15:45,223 - topic_modeling - INFO -   Top 10 words: weight, get, lose, look, like, feel, start, take, people, work
+2025-12-01 19:15:45,223 - topic_modeling - INFO - 
+Topic 1:
+2025-12-01 19:15:45,223 - topic_modeling - INFO -   Top 10 words: eat, food, calorie, like, carb, get, sugar, make, protein, meal
+2025-12-01 19:15:45,223 - topic_modeling - INFO - 
+Topic 2:
+2025-12-01 19:15:45,223 - topic_modeling - INFO -   Top 10 words: semaglutide, message, offer, permit, discussion, private, please, sub, question, concern
+2025-12-01 19:15:45,223 - topic_modeling - INFO - 
+Assigning topics to documents...
+2025-12-01 19:15:47,637 - topic_modeling - INFO - Saved documents with topics to data/processed/documents_with_topics.csv
+2025-12-01 19:15:47,647 - topic_modeling - INFO - 
+Topic Distribution:
+2025-12-01 19:15:47,647 - topic_modeling - INFO -   Topic 0: 17985 docs ( 76.8%)
+2025-12-01 19:15:47,647 - topic_modeling - INFO -   Topic 1:  4792 docs ( 20.5%)
+2025-12-01 19:15:47,647 - topic_modeling - INFO -   Topic 2:   628 docs (  2.7%)
+2025-12-01 19:15:47,648 - topic_modeling - INFO - 
+Generating topic modeling report...
+2025-12-01 19:15:47,649 - topic_modeling_main - ERROR - Topic modeling failed: Object of type float32 is not JSON serializable
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/04_enhanced_topic_modeling.py", line 374, in main
+    report = modeler.generate_report(topics, topic_dist)
+  File "/Users/sher/project/sema/CSS/scripts/04_enhanced_topic_modeling.py", line 336, in generate_report
+    save_json(report, report_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/scripts/utils.py", line 119, in save_json
+    json.dump(data, f, indent=2)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 433, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 440, in _iterencode
+    o = _default(o)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.6/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type float32 is not JSON serializable
+2025-12-01 19:16:11,545 - topic_modeling_main - INFO - ================================================================================
+2025-12-01 19:16:11,546 - topic_modeling_main - INFO - MODULE 4: ENHANCED TOPIC MODELING
+2025-12-01 19:16:11,546 - topic_modeling_main - INFO - ================================================================================
+2025-12-01 19:16:11,549 - topic_modeling - INFO - Enhanced Topic Modeler initialized
+2025-12-01 19:16:11,549 - topic_modeling - INFO - Will test topic numbers: [2, 3, 4, 5]
+2025-12-01 19:16:11,550 - topic_modeling - INFO - Loading processed data...
+2025-12-01 19:16:12,651 - topic_modeling - INFO - Loaded 23405 documents
+2025-12-01 19:16:12,651 - topic_modeling - INFO - Preparing corpus...
+2025-12-01 19:16:13,119 - topic_modeling - INFO - Initial dictionary: 17996 terms
+2025-12-01 19:16:13,132 - topic_modeling - INFO - Filtered dictionary: 6001 terms
+2025-12-01 19:16:13,843 - topic_modeling - INFO - Saved dictionary and corpus
+2025-12-01 19:16:13,843 - topic_modeling - INFO - 
+================================================================================
+2025-12-01 19:16:13,843 - topic_modeling - INFO - TRAINING LDA MODELS WITH DIFFERENT TOPIC NUMBERS
+2025-12-01 19:16:13,843 - topic_modeling - INFO - ================================================================================
+2025-12-01 19:16:13,843 - topic_modeling - INFO - 
+Training LDA model with 2 topics...
+2025-12-01 19:16:24,626 - topic_modeling - INFO -   Model trained with 2 topics
+2025-12-01 19:16:32,637 - topic_modeling - INFO -   Coherence (C_v): 0.5651
+2025-12-01 19:16:32,638 - topic_modeling - INFO -   Perplexity: -7.0338
+2025-12-01 19:16:32,645 - topic_modeling - INFO -   Saved model to models/lda/lda_model_2_topics
+2025-12-01 19:16:32,645 - topic_modeling - INFO - 
+Training LDA model with 3 topics...
+2025-12-01 19:16:44,378 - topic_modeling - INFO -   Model trained with 3 topics
+2025-12-01 19:16:52,717 - topic_modeling - INFO -   Coherence (C_v): 0.6819
+2025-12-01 19:16:52,718 - topic_modeling - INFO -   Perplexity: -6.9504
+2025-12-01 19:16:52,721 - topic_modeling - INFO -   Saved model to models/lda/lda_model_3_topics
+2025-12-01 19:16:52,721 - topic_modeling - INFO - 
+Training LDA model with 4 topics...
+2025-12-01 19:17:05,488 - topic_modeling - INFO -   Model trained with 4 topics
+2025-12-01 19:17:14,216 - topic_modeling - INFO -   Coherence (C_v): 0.6234
+2025-12-01 19:17:14,217 - topic_modeling - INFO -   Perplexity: -6.9207
+2025-12-01 19:17:14,221 - topic_modeling - INFO -   Saved model to models/lda/lda_model_4_topics
+2025-12-01 19:17:14,221 - topic_modeling - INFO - 
+Training LDA model with 5 topics...
+2025-12-01 19:17:27,470 - topic_modeling - INFO -   Model trained with 5 topics
+2025-12-01 19:17:36,645 - topic_modeling - INFO -   Coherence (C_v): 0.6134
+2025-12-01 19:17:36,646 - topic_modeling - INFO -   Perplexity: -6.9307
+2025-12-01 19:17:36,650 - topic_modeling - INFO -   Saved model to models/lda/lda_model_5_topics
+2025-12-01 19:17:36,653 - topic_modeling - INFO - 
+Saved comparison results to models/evaluation/topic_coherence_comparison.csv
+2025-12-01 19:17:36,653 - topic_modeling - INFO - 
+================================================================================
+2025-12-01 19:17:36,653 - topic_modeling - INFO - SELECTING BEST MODEL
+2025-12-01 19:17:36,653 - topic_modeling - INFO - ================================================================================
+2025-12-01 19:17:36,653 - topic_modeling - INFO - 
+Best Model: 3 topics
+2025-12-01 19:17:36,653 - topic_modeling - INFO -   Coherence Score: 0.6819
+2025-12-01 19:17:36,653 - topic_modeling - INFO -   Perplexity: -6.9504
+2025-12-01 19:17:36,656 - topic_modeling - INFO -   Saved best model to models/lda/lda_model_best
+2025-12-01 19:17:36,656 - topic_modeling - INFO - 
+All Models Comparison:
+2025-12-01 19:17:36,656 - topic_modeling - INFO - ------------------------------------------------------------
+2025-12-01 19:17:36,656 - topic_modeling - INFO -   Topics |    Coherence |   Perplexity
+2025-12-01 19:17:36,656 - topic_modeling - INFO - ------------------------------------------------------------
+2025-12-01 19:17:36,656 - topic_modeling - INFO -        2 |       0.5651 |      -7.0338
+2025-12-01 19:17:36,656 - topic_modeling - INFO -        3 |       0.6819 |      -6.9504 ← BEST
+2025-12-01 19:17:36,656 - topic_modeling - INFO -        4 |       0.6234 |      -6.9207
+2025-12-01 19:17:36,656 - topic_modeling - INFO -        5 |       0.6134 |      -6.9307
+2025-12-01 19:17:36,656 - topic_modeling - INFO - 
+Extracting topics from best model...
+2025-12-01 19:17:36,656 - topic_modeling - INFO - 
+Topic 0:
+2025-12-01 19:17:36,656 - topic_modeling - INFO -   Top 10 words: weight, get, lose, look, like, feel, start, take, people, work
+2025-12-01 19:17:36,656 - topic_modeling - INFO - 
+Topic 1:
+2025-12-01 19:17:36,656 - topic_modeling - INFO -   Top 10 words: eat, food, calorie, like, carb, get, sugar, make, protein, meal
+2025-12-01 19:17:36,657 - topic_modeling - INFO - 
+Topic 2:
+2025-12-01 19:17:36,657 - topic_modeling - INFO -   Top 10 words: semaglutide, message, offer, permit, discussion, private, please, sub, question, concern
+2025-12-01 19:17:36,657 - topic_modeling - INFO - 
+Assigning topics to documents...
+2025-12-01 19:17:39,202 - topic_modeling - INFO - Saved documents with topics to data/processed/documents_with_topics.csv
+2025-12-01 19:17:39,203 - topic_modeling - INFO - 
+Topic Distribution:
+2025-12-01 19:17:39,203 - topic_modeling - INFO -   Topic 0: 17934 docs ( 76.6%)
+2025-12-01 19:17:39,203 - topic_modeling - INFO -   Topic 1:  4843 docs ( 20.7%)
+2025-12-01 19:17:39,203 - topic_modeling - INFO -   Topic 2:   628 docs (  2.7%)
+2025-12-01 19:17:39,205 - topic_modeling - INFO - 
+Generating topic modeling report...
+2025-12-01 19:17:39,205 - topic_modeling - INFO - Report saved to data/metadata/topic_modeling_report.json
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO - 
+================================================================================
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO - ✓ MODULE 4 COMPLETE: Topic Modeling
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO - ================================================================================
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO - 
+Best Model: 3 topics with coherence 0.6819
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO - Next step: Run sentiment analysis
+2025-12-01 19:17:39,205 - topic_modeling_main - INFO -   → python scripts/05_sentiment_analysis.py

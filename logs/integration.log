@@ -135,3 +135,106 @@ Significant pairwise differences:
 2025-10-27 21:17:14,634 - integration - INFO - Saved to data/anonymized/final_dataset.csv
 2025-10-27 21:17:14,640 - integration - INFO - Integration report saved to data/metadata/integration_report.json
 2025-10-27 21:17:14,640 - integration - INFO - Key insights saved to data/metadata/key_insights.json
+2025-12-01 19:18:45,361 - integration - INFO - Integration Analyzer initialized
+2025-12-01 19:18:45,361 - integration - INFO - Loading integrated dataset...
+2025-12-01 19:18:46,484 - integration - INFO - Loaded 23405 documents with all features
+2025-12-01 19:18:46,484 - integration - INFO - Columns: ['doc_id', 'doc_type', 'author', 'score', 'created_utc', 'text', 'cleaned_text', 'tokens', 'token_count', 'subreddit', 'dominant_topic', 'topic_0', 'topic_1', 'topic_2', 'compound', 'pos', 'neu', 'neg', 'sentiment_class']
+2025-12-01 19:18:46,484 - integration - INFO - Assigning topic names...
+2025-12-01 19:18:46,485 - integration - INFO - Topic names assigned
+2025-12-01 19:18:46,485 - integration - INFO -   Topic 0 (Alternative Medications): 17934 docs
+2025-12-01 19:18:46,485 - integration - INFO -   Topic 1 (Weight Loss Experiences): 4843 docs
+2025-12-01 19:18:46,485 - integration - INFO -   Topic 2 (Insurance & Access): 628 docs
+2025-12-01 19:18:46,485 - integration - INFO -   Topic 3 (Diet & Side Effects): 0 docs
+2025-12-01 19:18:46,486 - integration - INFO -   Topic 4 (Community Support): 0 docs
+2025-12-01 19:18:46,486 - integration - INFO - Generating integration report...
+2025-12-01 19:18:46,486 - integration - INFO - Analyzing topic-sentiment correlation...
+2025-12-01 19:18:46,493 - integration - INFO - 
+ANOVA Results:
+2025-12-01 19:18:46,493 - integration - INFO -   F-statistic: 4.8430
+2025-12-01 19:18:46,493 - integration - INFO -   P-value: 7.8911e-03
+2025-12-01 19:18:46,493 - integration - INFO -   Result: Significant difference in sentiment across topics
+2025-12-01 19:18:46,503 - integration - INFO - 
+Significant pairwise differences:
+2025-12-01 19:18:46,503 - integration - INFO -   Alternative Medications vs Weight Loss Experiences: p=0.0189
+2025-12-01 19:18:46,503 - integration - INFO -   Alternative Medications vs Insurance & Access: p=0.0293
+2025-12-01 19:18:46,503 - integration - INFO - Extracting representative posts...
+2025-12-01 19:18:46,506 - integration - ERROR - Error extracting representative posts: 'topic_probability'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'topic_probability'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/06_integration.py", line 169, in extract_representative_posts
+    most_rep = topic_df.nlargest(3, 'topic_probability')
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 7666, in nlargest
+    return selectn.SelectNFrame(self, n=n, keep=keep, columns=columns).nlargest()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/methods/selectn.py", line 57, in nlargest
+    return self.compute("nlargest")
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/methods/selectn.py", line 199, in compute
+    dtype = frame[column].dtype
+            ~~~~~^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'topic_probability'
+2025-12-01 19:18:46,515 - integration - INFO - Analyzing keywords by topic and sentiment...
+2025-12-01 19:18:47,445 - integration - INFO - Keyword analysis complete
+2025-12-01 19:18:47,445 - integration - INFO - Generating key insights...
+2025-12-01 19:18:47,453 - integration - INFO - Generated 5 key insights
+2025-12-01 19:18:47,453 - integration - INFO - Creating final anonymized dataset...
+2025-12-01 19:18:47,453 - integration - ERROR - Error creating final dataset: "['topic_probability'] not in index"
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/06_integration.py", line 412, in create_final_dataset
+    final_df = self.df[[
+               ~~~~~~~^^
+        'doc_id', 'doc_type', 'created_utc',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        'score', 'subreddit'
+        ^^^^^^^^^^^^^^^^^^^^
+    ]].copy()
+    ^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4119, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['topic_probability'] not in index"
+2025-12-01 19:18:47,454 - integration - ERROR - Error generating report: 'topic_name'
+Traceback (most recent call last):
+  File "/Users/sher/project/sema/CSS/scripts/06_integration.py", line 490, in generate_integration_report
+    'per_topic': rep_posts.groupby('topic_name').size().to_dict()
+                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 9210, in groupby
+    return DataFrameGroupBy(
+        obj=self,
+    ...<7 lines>...
+        dropna=dropna,
+    )
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/groupby/groupby.py", line 1331, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        dropna=self.dropna,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/sher/project/sema/CSS/venv/lib/python3.13/site-packages/pandas/core/groupby/grouper.py", line 1043, in get_grouper
+    raise KeyError(gpr)
+KeyError: 'topic_name'
